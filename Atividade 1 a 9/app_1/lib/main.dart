@@ -3,12 +3,20 @@ import 'package:flutter/material.dart';
 void main() {
   MaterialApp app = MaterialApp(
       theme: ThemeData(primarySwatch: Colors.deepPurple),
-
       home: Scaffold(
+        appBar: AppBar(title: Text("Lista de coisas para fazer")),
+        body: Center(
 
-        appBar: AppBar(title: Text("Meu app")),
+          child: Column(children: [
+              Text("Estilzar o texto"),
+              Text("Mudar a cor"),
+              Text("Aumentar a fonte"),
+              Text("Mudar ícone do aplicativo")
+            ],
+          )
 
-        body: Text("Apenas começando..."),
+
+        ),
 
         bottomNavigationBar: Text("Botão 1"),
 
