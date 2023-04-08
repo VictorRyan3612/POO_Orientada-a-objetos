@@ -18,7 +18,7 @@ void main() {
               const Text("Mudar a cor",
               style: TextStyle(color: Color.fromARGB(255, 192, 0, 9))
               ),
-              
+
               Text("Aumentar a fonte",
               style: TextStyle(fontSize: 50),
               ),
@@ -30,7 +30,34 @@ void main() {
 
         ),
 
-        bottomNavigationBar: Text("Botão 1"),
+        bottomNavigationBar: BottomNavigationBar(items: const [
+          BottomNavigationBarItem(
+            label: 'Voltar',
+            icon: Icon(Icons.arrow_back),
+          ),
+
+          BottomNavigationBarItem(
+            label: "Inicio", 
+            icon: Icon(Icons.home)),
+
+          BottomNavigationBarItem(
+            label: "Avançar", 
+            icon: Icon(Icons.arrow_forward)),
+          ]
+        
+        
+        
+        )
+
+
+          // child: Row(
+            
+          //   children: [
+          //     Text("Voltar"),
+          //     Text("Tela inicial"),
+          //     Text("Avançar")
+          //   ],
+          // ),)
 
       ));
   runApp(app);
