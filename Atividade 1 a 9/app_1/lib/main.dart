@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 
 void main() {
   MaterialApp app = MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      theme: ThemeData(primarySwatch: Colors.deepPurple,
+      colorScheme: ColorScheme.dark()
+      ),
+
+
       home: Scaffold(
         appBar: AppBar(title: Text("Lista de coisas para fazer")),
+        
         body: Center(
-
           child: Column(children: [
               Text("Estilzar o texto"),
               Text("Mudar a cor"),
