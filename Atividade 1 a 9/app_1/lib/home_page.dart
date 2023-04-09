@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget{
 
 class HomePageStates extends State<HomePage>{
   int count = 0;
-  Color _currentTextColor = Color.fromARGB(255, 16, 106, 180);
+  final Color _currentTextColor = Color.fromARGB(255, 16, 106, 180);
 
 
   @override
@@ -19,9 +19,9 @@ class HomePageStates extends State<HomePage>{
     return
     Scaffold(
       appBar: AppBar(
-        title: 
+        title: const
           Center(child: 
-            const Text("Lista de coisas para fazer",
+            Text("Lista de coisas para fazer",
             style: TextStyle(fontSize: 25)
             )
           )
@@ -73,6 +73,7 @@ class HomePageStates extends State<HomePage>{
         onPressed:(){
           count ++;
         },
+        tooltip: "Novo",
        ),
 
 
