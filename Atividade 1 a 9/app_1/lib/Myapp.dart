@@ -9,6 +9,7 @@ class Myapp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       theme: ThemeData(
+      fontFamily: 'Times new roman',
       primarySwatch: Colors.deepPurple,
       colorScheme: const ColorScheme.dark()
       ),
