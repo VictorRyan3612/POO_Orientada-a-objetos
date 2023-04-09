@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,7 +25,7 @@ class MyStatelessWidget extends StatelessWidget {
         DataColumn(
           label: Expanded(
             child: Text(
-              'Name',
+              'Nome',
               style: TextStyle(fontStyle: FontStyle.italic),
             ),
           ),
@@ -35,7 +33,7 @@ class MyStatelessWidget extends StatelessWidget {
         DataColumn(
           label: Expanded(
             child: Text(
-              'Age',
+              'Estilo',
               style: TextStyle(fontStyle: FontStyle.italic),
             ),
           ),
@@ -43,7 +41,7 @@ class MyStatelessWidget extends StatelessWidget {
         DataColumn(
           label: Expanded(
             child: Text(
-              'Role',
+              'IBU',
               style: TextStyle(fontStyle: FontStyle.italic),
             ),
           ),
@@ -52,23 +50,23 @@ class MyStatelessWidget extends StatelessWidget {
       rows: const <DataRow>[
         DataRow(
           cells: <DataCell>[
-            DataCell(Text('Sarah')),
-            DataCell(Text('19')),
-            DataCell(Text('Student')),
+            DataCell(Text('La Fin Du Monde')),
+            DataCell(Text('Dock')),
+            DataCell(Text('65')),
           ],
         ),
         DataRow(
           cells: <DataCell>[
-            DataCell(Text('Janine')),
-            DataCell(Text('43')),
-            DataCell(Text('Professor')),
+            DataCell(Text('Sapporo Premium')),
+            DataCell(Text('Sour Ale')),
+            DataCell(Text('54')),
           ],
         ),
         DataRow(
           cells: <DataCell>[
-            DataCell(Text('William')),
-            DataCell(Text('27')),
-            DataCell(Text('Associate Professor')),
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('82')),
           ],
         ),
       ],
