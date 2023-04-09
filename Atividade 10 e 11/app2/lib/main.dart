@@ -69,6 +69,91 @@ class MyStatelessWidget extends StatelessWidget {
             DataCell(Text('82')),
           ],
         ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('1')),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('2')),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('3')),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('4')),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('5')),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('6')),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('7')),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('8')),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('9')),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('10')),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('11')),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text('Duvel')),
+            DataCell(Text('Pilsner')),
+            DataCell(Text('12')),
+          ],
+        ),
+
       ],
     )
     );
