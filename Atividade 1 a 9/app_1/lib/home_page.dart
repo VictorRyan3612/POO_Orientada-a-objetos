@@ -11,6 +11,9 @@ class HomePage extends StatefulWidget{
 
 class HomePageStates extends State<HomePage>{
   int count = 0;
+  Color _currentTextColor = Color.fromARGB(255, 16, 106, 180);
+
+
   @override
   Widget build(BuildContext context) {
     return
@@ -48,15 +51,15 @@ class HomePageStates extends State<HomePage>{
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Estilzar o texto",
-                    style: TextStyle(fontWeight: FontWeight.bold)
+                    style: TextStyle(fontWeight: FontWeight.bold, color: _currentTextColor)
                     ),
 
                     Text("Mudar a cor",
-                    style: TextStyle(color: Color.fromARGB(255, 192, 0, 9))
+                    style: TextStyle(color: _currentTextColor)
                     ),
                     Text("Aumentar a fonte",
-                    style: TextStyle(fontSize: 50)
-                    )
+                    style: TextStyle(fontSize: 50, color: _currentTextColor)
+                    ),
                   ],
                 ),
               ),
