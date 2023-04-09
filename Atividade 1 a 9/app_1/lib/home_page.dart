@@ -14,7 +14,16 @@ class HomePageStates extends State<HomePage>{
   Widget build(BuildContext context) {
     return
     Scaffold(
-      appBar: AppBar(title: const Text("Lista de coisas para fazer")),
+      appBar: AppBar(
+        title: 
+          Center(child: 
+            const Text("Lista de coisas para fazer",
+            style: TextStyle(fontSize: 25)
+            )
+          )
+        ),
+
+
 
       body: Center(
         child: Column(
