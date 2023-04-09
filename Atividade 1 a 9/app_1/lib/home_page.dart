@@ -23,29 +23,47 @@ class HomePageStates extends State<HomePage>{
             )
           )
         ),
+ 
 
 
-
-      body: Center(
-        child: Column(
-          children: const [
-            Text("Estilzar o texto",
-            style: TextStyle(fontWeight: FontWeight.bold)),
-
-            Text("Mudar a cor",
-            style: TextStyle(color: Color.fromARGB(255, 192, 0, 9))
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+              "https://cf.shopee.com.br/file/d2343b578c8d343870438a4046bc9091",
             ),
+            fit: BoxFit.cover,
+          ),
+        ),
+      
+        
+       child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Column(
+                  
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Estilzar o texto",
+                    style: TextStyle(fontWeight: FontWeight.bold)
+                    ),
 
-            Text("Aumentar a fonte",
-            style: TextStyle(fontSize: 50),
+                    Text("Mudar a cor",
+                    style: TextStyle(color: Color.fromARGB(255, 192, 0, 9))
+                    ),
+                    Text("Aumentar a fonte",
+                    style: TextStyle(fontSize: 50)
+                    )
+                  ],
+                ),
+              ),
             ),
-
-            Text("Mudar ícone do aplicativo")
           ],
-        )
-
+        ),
       ),
-
 
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
