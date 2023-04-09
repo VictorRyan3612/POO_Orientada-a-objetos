@@ -10,6 +10,7 @@ class HomePage extends StatefulWidget{
 
 
 class HomePageStates extends State<HomePage>{
+  int count = 0;
   @override
   Widget build(BuildContext context) {
     return
@@ -44,6 +45,16 @@ class HomePageStates extends State<HomePage>{
         )
 
       ),
+
+
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed:(){
+          count ++;
+        },
+       ),
+
+
 
       bottomNavigationBar: BottomNavigationBar(
         items: const [
