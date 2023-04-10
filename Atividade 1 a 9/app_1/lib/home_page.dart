@@ -116,26 +116,27 @@ class HomePageStates extends State<HomePage>{
 
 
 
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: (){},
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: "Voltar",
           ),
 
-          IconButton(
-            icon: Icon(Icons.home),
-            onPressed: (){},
-            ),
 
-          IconButton(
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Tela Inicial",
+          ),
+
+
+          BottomNavigationBarItem(
             icon: Icon(Icons.arrow_forward),
-            onPressed: (){},
-            ),
-          ]
-        )
+            label: "Avançar",
+          ),
+
+        ],
+        
       
       )
 
