@@ -116,32 +116,40 @@ class HomePageStates extends State<HomePage>{
 
 
 
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
-            label: "Voltar",
-          ),
+      bottomNavigationBar: MyAppBar()
 
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Tela Inicial",
-          ),
-
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_forward),
-            label: "Avançar",
-          ),
-
-        ],
-        
-      
-      )
 
 
     );
   }
 
 }
+
+class MyAppBar extends StatelessWidget{
+  MyAppBar();
+
+  @override
+  Widget build(BuildContext context){
+  
+      return BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            label: "Voltar",
+            icon: Icon(Icons.arrow_back),
+          ),
+
+          BottomNavigationBarItem(
+            label: "Tela inicial", 
+            icon: Icon(Icons.home)
+            ),
+
+          BottomNavigationBarItem(
+            label: "Avançar", 
+            icon: Icon(Icons.arrow_forward)
+          )
+
+        ]
+      );
+
+    }
+  }
