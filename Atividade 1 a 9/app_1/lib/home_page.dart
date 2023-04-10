@@ -17,7 +17,6 @@ class HomePage extends StatefulWidget{
 
 
 class HomePageStates extends State<HomePage>{
-  int count = 0;
   final Color _currentTextColor = Color.fromARGB(255, 16, 106, 180);
 
 
@@ -111,7 +110,7 @@ class HomePageStates extends State<HomePage>{
         onPressed:(){
           _notepage(context);
         },
-        tooltip: "Novo",
+        tooltip: "Nova anotação",
        ),
 
 
@@ -128,10 +127,16 @@ class HomePageStates extends State<HomePage>{
 class MyAppBar extends StatelessWidget{
   MyAppBar();
 
+  void botaoTocado(int index) {
+    print("Tocaram no botão $index");
+  }
+
+
+
   @override
   Widget build(BuildContext context){
   
-      return BottomNavigationBar(
+      return BottomNavigationBar(onTap: botaoTocado,
         items: const [
           BottomNavigationBarItem(
             label: "Voltar",
