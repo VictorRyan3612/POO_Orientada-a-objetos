@@ -1,6 +1,13 @@
+import 'package:app_1/note_page.dart';
 import 'package:flutter/material.dart';
 
 
+
+void _Notepage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => NotePage()),
+    );
+  }
 
 class HomePage extends StatefulWidget{
   @override
@@ -71,7 +78,7 @@ class HomePageStates extends State<HomePage>{
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed:(){
-          count ++;
+          _Notepage(context);
         },
         tooltip: "Novo",
        ),
