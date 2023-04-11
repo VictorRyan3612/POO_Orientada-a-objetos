@@ -24,14 +24,7 @@ class HomePageStates extends State<HomePage>{
   Widget build(BuildContext context) {
     return
     Scaffold(
-      appBar: AppBar(
-        title: const
-          Center(child: 
-            Text("Lista de coisas para fazer",
-            style: TextStyle(fontSize: 25)
-            )
-          )
-        ),
+      appBar: MyAppBar(),
 
 
       // Pego de https://docs.flutter.dev/cookbook/design/drawer
@@ -78,7 +71,7 @@ class HomePageStates extends State<HomePage>{
 
 
 
-      bottomNavigationBar: MyAppBar()
+      bottomNavigationBar: MyBottomAppBar()
 
 
 
@@ -87,8 +80,27 @@ class HomePageStates extends State<HomePage>{
 
 }
 
-class MyAppBar extends StatelessWidget{
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget{
   MyAppBar();
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  
+  @override
+  Widget build(BuildContext context){
+    return 
+      AppBar(
+        title: const
+          Center(child: 
+            Text("Lista de coisas para fazer",
+            style: TextStyle(fontSize: 25)
+            )
+          )
+        );
+      }
+    }
+
+
+class MyBottomAppBar extends StatelessWidget{
+  MyBottomAppBar();
 
   void botaoTocado(int index) {
     print("Tocaram no botão $index");
