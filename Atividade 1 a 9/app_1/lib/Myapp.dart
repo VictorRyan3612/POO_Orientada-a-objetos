@@ -3,7 +3,7 @@ import 'package:app_1/home_page.dart';
 
 
 
-class Myapp extends StatelessWidget{
+class MyApp extends StatelessWidget{
 
  @override
   Widget build(BuildContext context){
