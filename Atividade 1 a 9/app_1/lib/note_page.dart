@@ -19,7 +19,7 @@ class NotePageStates extends State<NotePage>{
         title: const
           Center(child: 
             Text("Teste de nova Página",
-            style: TextStyle(fontSize: 25)
+                style: TextStyle(fontSize: 25)
             )
           )
         ),

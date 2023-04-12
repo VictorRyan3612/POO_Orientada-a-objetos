@@ -32,14 +32,14 @@ class MyHomeBody extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Estilzar o texto",
-                    style: TextStyle(fontWeight: FontWeight.bold, color: _currentTextColor)
+                        style: TextStyle(fontWeight: FontWeight.bold, color: _currentTextColor)
                     ),
 
                     Text("Mudar a cor",
-                    style: TextStyle(color: _currentTextColor)
+                        style: TextStyle(color: _currentTextColor)
                     ),
                     Text("Aumentar a fonte",
-                    style: TextStyle(fontSize: 50, color: _currentTextColor)
+                        style: TextStyle(fontSize: 50, color: _currentTextColor)
                     ),
                   ],
                 ),
