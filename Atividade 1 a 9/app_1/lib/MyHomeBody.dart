@@ -7,6 +7,12 @@ class MyHomeBody extends StatelessWidget{
 
   MyHomeBody( {this.objects = const [] });
 
+  // Expanded processarUmElemento(String obj){
+  //   return Expanded(                
+  //     child: Center(child: Text(obj)),
+  //   );
+  // }
+
 
   final Color _currentTextColor = Color.fromARGB(255, 16, 106, 180);
 
@@ -33,7 +39,13 @@ class MyHomeBody extends StatelessWidget{
             ),
           ),
         
-        child: Column(children: allTheLines),
+          child: Column(
+            children: objects.map((obj) => 
+              Expanded(
+                child: Center(child: Text(obj)),
+              )
+              ).toList()
+            )
         );
         // Column(children: allTheLines);
     
