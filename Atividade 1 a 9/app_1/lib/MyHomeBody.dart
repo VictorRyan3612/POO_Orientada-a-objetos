@@ -21,8 +21,9 @@ class MyHomeBody extends StatelessWidget{
           )
         );
       } 
-      return 
+      return  
         Container(
+        
           decoration: BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(
@@ -32,9 +33,9 @@ class MyHomeBody extends StatelessWidget{
             ),
           ),
         
-        
+        child: Column(children: allTheLines),
         );
+        // Column(children: allTheLines);
     
-        Column(children: allTheLines);
     }
 }
