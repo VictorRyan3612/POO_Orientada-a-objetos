@@ -60,11 +60,11 @@ class HomePageStates extends State<HomePage>{
       ),  // Populate the Drawer in the next step.
 
 
-      body: MyHomeBody(objects: ["La Fin Du Monde - Bock - 65 ibu",
-
-          "Sapporo Premiume - Sour Ale - 54 ibu",
-
-          "Duvel - Pilsner - 82 ibu"]),
+      body: MyHomeBody(objects: [
+        "La Fin Du Monde - Bock - 65 ibu",
+        "Sapporo Premiume - Sour Ale - 54 ibu",
+        "Duvel - Pilsner - 82 ibu"]
+        ),
 
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
