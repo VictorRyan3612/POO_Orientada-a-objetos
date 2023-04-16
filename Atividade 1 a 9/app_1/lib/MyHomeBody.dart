@@ -42,7 +42,7 @@ class MyHomeBody extends StatelessWidget{
           child: Column(
             children: objects.map((obj) => 
               Expanded(
-                child: Center(child: Text(obj)),
+                child: Center(child: Text(obj,style: TextStyle(fontSize: 30,color: Color.fromARGB(255, 203, 11, 11)),)),
               )
               ).toList()
             )

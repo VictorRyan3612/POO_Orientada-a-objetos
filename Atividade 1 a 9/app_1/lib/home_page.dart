@@ -61,9 +61,9 @@ class HomePageStates extends State<HomePage>{
 
 
       body: MyHomeBody(objects: [
-        "La Fin Du Monde - Bock - 65 ibu",
-        "Sapporo Premiume - Sour Ale - 54 ibu",
-        "Duvel - Pilsner - 82 ibu"]
+        "Salvar as notas em arquivos ou banco de dados",
+        "Fazer Calendário",
+        "Mudar tema do app"]
         ),
 
       floatingActionButton: FloatingActionButton(
