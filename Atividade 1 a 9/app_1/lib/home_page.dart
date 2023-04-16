@@ -76,7 +76,13 @@ class HomePageStates extends State<HomePage>{
 
 
 
-      bottomNavigationBar: MyHomeBottomAppBar()
+      bottomNavigationBar: MyHomeBottomAppBar(
+        myIcones: [
+          Icons.arrow_back,
+          Icons.home,
+          Icons.arrow_forward,
+        ],
+      )
 
 
 

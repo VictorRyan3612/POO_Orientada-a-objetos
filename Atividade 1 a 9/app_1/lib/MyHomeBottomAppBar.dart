@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 
 // Adaptado do chatGPT
-class NewNavBar extends StatelessWidget {
+class MyHomeBottomAppBar extends StatelessWidget {
   final List<IconData> myIcones;
 
-  NewNavBar({required this.myIcones});
+  MyHomeBottomAppBar({required this.myIcones});
 
   void botaoTocado(int index) {
     print("Tocaram no botão $index");
@@ -22,22 +22,6 @@ class NewNavBar extends StatelessWidget {
         )
       
       ).toList()
-    );
-  }
-}
-
-class MyHomeBottomAppBar extends StatelessWidget {
-  MyHomeBottomAppBar();
-
-
-  @override
-  Widget build(BuildContext context) {
-    return NewNavBar(
-      myIcones: [
-        Icons.arrow_back,
-        Icons.home,
-        Icons.arrow_forward,
-      ],
     );
   }
 }
