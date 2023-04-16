@@ -23,28 +23,28 @@ class MyHomeAppBar extends StatelessWidget implements PreferredSizeWidget{
               return [
                     PopupMenuItem<int>(
                         value: 0,
-                        child: Text("My Account"),
+                        child: Text("Tema Branco"),
                     ),
 
                     PopupMenuItem<int>(
                         value: 1,
-                        child: Text("Settings"),
+                        child: Text("Tema Preto"),
                     ),
 
                     PopupMenuItem<int>(
                         value: 2,
-                        child: Text("Logout"),
+                        child: Text("Configurações"),
                     ),
                 ];
             },
             
             onSelected:(value){
               if(value == 0){
-                  print("My account menu is selected.");
+                  print("Tema Branco selecionado.");
               }else if(value == 1){
-                  print("Settings menu is selected.");
+                  print("Tema Preto selecionado.");
               }else if(value == 2){
-                  print("Logout menu is selected.");
+                  print("Configurações selecionado.");
               }
             }
           ),
