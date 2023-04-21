@@ -20,7 +20,7 @@ class MyHomeAppBar extends StatelessWidget implements PreferredSizeWidget{
           PopupMenuButton(
             icon: Icon(Icons.more_vert),
             itemBuilder: (context){
-              return [
+              return const[
                     PopupMenuItem<int>(
                         value: 0,
                         child: Text("Tema Branco"),

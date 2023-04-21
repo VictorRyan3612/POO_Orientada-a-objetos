@@ -3,7 +3,7 @@ import 'package:app_1/MyHomeAppBar.dart';
 import 'package:app_1/MyHomeBottomAppBar.dart';
 import 'package:app_1/note_page.dart';
 import 'package:flutter/material.dart';
-
+import 'package:app_1/Var_globais.dart';
 
 
 void _notepage(BuildContext context) {
@@ -20,7 +20,7 @@ class HomePage extends StatefulWidget{
 
 
 class HomePageStates extends State<HomePage>{
-
+ 
   @override
   Widget build(BuildContext context) {
     return
@@ -60,10 +60,7 @@ class HomePageStates extends State<HomePage>{
       ),  // Populate the Drawer in the next step.
 
 
-      body: MyHomeBody(objects: [
-        "Salvar as notas em arquivos ou banco de dados",
-        "Fazer Calendário",
-        "Mudar tema do app"]
+      body: MyHomeBody(objects: dataObjects
         ),
 
       floatingActionButton: FloatingActionButton(
@@ -77,7 +74,7 @@ class HomePageStates extends State<HomePage>{
 
 
       bottomNavigationBar: MyHomeBottomAppBar(
-        myIcones: [
+        myIcones: const [
           Icons.arrow_back,
           Icons.home,
           Icons.arrow_forward,
