@@ -18,34 +18,27 @@ class MyHomeBody extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-      return  
-        Container(
-          child: 
-            DataTable(
-              columns: [
-                DataColumn(
-                  label: Expanded(
-                    child: Text("Fazer", style: TextStyle(fontStyle: FontStyle.italic)),
-                )),
-                DataColumn(
-                  label: Expanded(
-                    child: Text("Prioridade", style: TextStyle(fontStyle: FontStyle.italic)),
-                )),
-                DataColumn(
-                  label: Expanded(
-                    child: Text("Importancia", style: TextStyle(fontStyle: FontStyle.italic)),
-                ))
-              ],
-              rows: objects.map(
-                (obj) => DataRow(
-                  cells:[
-                    DataCell(Text(obj["Fazer"])),
-                    DataCell(Text(obj["Prioridade"])),
-                    DataCell(Text(obj["Importancia"]))
-                  ]
+    var columnNames = ["Nome","Estilo","IBU"],
+        propertyNames = ["name", "style", "ibu"];
+
+    return  
+      Container(
+        child: 
+          DataTable(
+          columns: columnNames.map( 
+              (name) => DataColumn(
+                label: Expanded(
+                  child: Text(name, style: TextStyle(fontStyle: FontStyle.italic))
                 )
+              )
+            ).toList(),
+          rows: objects.map( 
+            (obj) => DataRow(
+              cells: propertyNames.map(
+                (propName) => DataCell(Text(obj[propName]))
               ).toList()
             )
-        );
-    }
+          ).toList())
+      );
+  }
 }

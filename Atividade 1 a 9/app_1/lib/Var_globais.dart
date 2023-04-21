@@ -1,17 +1,21 @@
- var dataObjects = [
+var dataObjects = [
+  
     {
-      "Fazer": "Salvar as notas em arquivos ou banco de dados",
-      "Prioridade": "Alta",
-      "Importancia": "Vital"
+      "name": "La Fin Du Monde",
+      "style": "Bock",
+      "ibu": "65"
     },
+
     {
-      "Fazer": "Fazer Calendário",
-      "Prioridade": "baixa",
-      "Importancia": "Opcional"
+      "name": "Sapporo Premiume",
+      "style": "Sour Ale",
+      "ibu": "54"
     },
+
     {
-      "Fazer": "Mudar tema", 
-      "Prioridade": "Baixa", 
-      "Importancia": "Opcional"
+      "name": "Duvel", 
+      "style": "Pilsner", 
+      "ibu": "82"
     }
-    ];
+
+  ];
