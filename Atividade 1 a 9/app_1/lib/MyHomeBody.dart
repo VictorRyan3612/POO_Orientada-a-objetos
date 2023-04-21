@@ -7,11 +7,6 @@ class MyHomeBody extends StatelessWidget{
 
   MyHomeBody( {this.objects = const [] });
 
-  // Expanded processarUmElemento(String obj){
-  //   return Expanded(                
-  //     child: Center(child: Text(obj)),
-  //   );
-  // }
 
 
   final Color _currentTextColor = Color.fromARGB(255, 16, 106, 180);
@@ -29,7 +24,7 @@ class MyHomeBody extends StatelessWidget{
             columns: columnNames.map( 
                 (name) => DataColumn(
                   label: Expanded(
-                    child: Text(name, style: TextStyle(fontWeight: FontWeight.bold ))
+                    child: Text(name, style: TextStyle(fontFamily: "Times new roman",fontSize: 20,fontWeight: FontWeight.bold ))
                   )
                 )
               ).toList(),
