@@ -23,22 +23,29 @@ class MyHomeBody extends StatelessWidget{
 
     return  
       Container(
-        child: 
-          DataTable(
-          columns: columnNames.map( 
-              (name) => DataColumn(
-                label: Expanded(
-                  child: Text(name, style: TextStyle(fontWeight: FontWeight.bold ))
+        child: Center(
+          child: 
+            DataTable(
+            columns: columnNames.map( 
+                (name) => DataColumn(
+                  label: Expanded(
+                    child: Text(name, style: TextStyle(fontWeight: FontWeight.bold ))
+                  )
                 )
+              ).toList(),
+
+
+            rows: objects.map( 
+              (obj) => DataRow(
+                cells: propertyNames.map(
+                  (propName) => DataCell(Text(obj[propName]))
+                ).toList()
               )
-            ).toList(),
-          rows: objects.map( 
-            (obj) => DataRow(
-              cells: propertyNames.map(
-                (propName) => DataCell(Text(obj[propName]))
-              ).toList()
-            )
-          ).toList())
+            ).toList()
+
+
+          )
+        )
       );
   }
 }
