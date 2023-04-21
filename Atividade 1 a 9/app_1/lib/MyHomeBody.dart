@@ -18,8 +18,8 @@ class MyHomeBody extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    var columnNames = ["Nome","Estilo","IBU"],
-        propertyNames = ["name", "style", "ibu"];
+    var columnNames = ["Fazer","Impotancia","Dificuldade"],
+        propertyNames = ["name", "importancy", "difficulty"];
 
     return  
       Container(
@@ -28,7 +28,7 @@ class MyHomeBody extends StatelessWidget{
           columns: columnNames.map( 
               (name) => DataColumn(
                 label: Expanded(
-                  child: Text(name, style: TextStyle(fontStyle: FontStyle.italic))
+                  child: Text(name, style: TextStyle(fontWeight: FontWeight.bold ))
                 )
               )
             ).toList(),
