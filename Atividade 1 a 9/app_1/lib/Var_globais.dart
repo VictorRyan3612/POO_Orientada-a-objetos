@@ -16,6 +16,75 @@ var dataObjects = [
       "name": "Mudar tema", 
       "importancy": "opcional", 
       "difficulty": "baixa"
-    }
-
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
+    {
+      "name": "Fazer Calendário",
+      "importancy": "desejável",
+      "difficulty": "alta"
+    },
   ];

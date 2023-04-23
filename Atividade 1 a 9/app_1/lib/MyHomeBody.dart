@@ -18,28 +18,32 @@ class MyHomeBody extends StatelessWidget{
 
     return  
       Container(
-        child: Center(
-          child: 
-            DataTable(
-            columns: columnNames.map( 
-                (name) => DataColumn(
-                  label: Expanded(
-                    child: Text(name, style: TextStyle(fontFamily: "Times new roman",fontSize: 20,fontWeight: FontWeight.bold ))
+        child: 
+        SingleChildScrollView(
+          child: Center(
+            child: 
+              DataTable(
+                
+                columns: columnNames.map( 
+                    (name) => DataColumn(
+                      label: Expanded(
+                        child: Text(name, style: TextStyle(fontFamily: "Times new roman",fontSize: 20,fontWeight: FontWeight.bold ))
+                      )
+                    )
+                  ).toList(),
+                
+                rows: objects.map( 
+                  (obj) => DataRow(
+                    cells: propertyNames.map(
+                      (propName) => DataCell(Text(obj[propName]))
+                    ).toList()
                   )
-                )
-              ).toList(),
-
-
-            rows: objects.map( 
-              (obj) => DataRow(
-                cells: propertyNames.map(
-                  (propName) => DataCell(Text(obj[propName]))
                 ).toList()
-              )
-            ).toList()
-
-
-          )
+              ),
+            
+            
+            
+            )
         )
       );
   }
