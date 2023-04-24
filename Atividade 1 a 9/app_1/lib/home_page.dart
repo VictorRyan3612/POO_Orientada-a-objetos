@@ -68,7 +68,7 @@ class HomePageStates extends State<HomePage>{
       // De lucas https://github.com/mts-lucas/POO/blob/main/dart/exercicios/receita4/lib/main.dart
       body: MyTileWidget(
             objects: dataObjects,
-            propertyNames: ["name", "style", "ibu"],
+            propertyNames: const ["name", "style", "ibu"],
           ),
 
       floatingActionButton: FloatingActionButton(

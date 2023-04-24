@@ -95,25 +95,27 @@ class MyTileWidget extends StatelessWidget {
   final List objects;
   final List propertyNames;
 
-  MyTileWidget({this.objects = const [], this.propertyNames = const []});
+  const MyTileWidget({super.key, this.objects = const [], this.propertyNames = const []});
 
   @override
   Widget build(BuildContext context) {
-    // var propertyNames = ["name", "style", "ibu"];
 
     return ListView(
-      children: objects
-          .map(
-            (obj) => Card(
-              child: ListTile(
-                title: Text(obj[propertyNames[0]]),
-                subtitle: Text(
-                  "${obj[propertyNames[1]]}\n${obj[propertyNames[2]]}",
-                ),
-              ),
+      children: objects.map(
+        (obj) => ListTile(
+          title: Text("${obj[propertyNames[0]]}"),
+          subtitle: Text("${obj[propertyNames[1]]}\n${obj[propertyNames[2]]}"),
+          trailing: SizedBox(
+            width: 100,
+            child: Row(
+              children: const [
+                IconButton(icon: Icon(Icons.edit),tooltip: "Editar", onPressed: null,),
+                IconButton(icon: Icon(Icons.delete),tooltip: "Excluir", onPressed: null),
+              ],
             ),
-          )
-          .toList(),
+          ) ,
+        )
+      ).toList(),
     );
   }
 }
