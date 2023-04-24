@@ -2,7 +2,7 @@ import 'package:app_1/my_home_appbar.dart';
 import 'package:app_1/my_home_bottom_appbar.dart';
 import 'package:app_1/note_page.dart';
 import 'package:flutter/material.dart';
-import 'package:app_1/var_globais.dart';
+import 'package:app_1/var_global.dart';
 import 'package:app_1/my_home_body.dart';
 
 void _notepage(BuildContext context) {
@@ -63,13 +63,16 @@ class HomePageStates extends State<HomePage>{
 
       // body: MyHomeBody(objects: dataListaNotas
       //   ),
-      // body: MyTitleWidget(),
+      body: MyTitleWidget(
+        objects: listaPhoneListview,
+        propertyNames: const ["nome", "telefone"]
+      ), //
 
       // De lucas https://github.com/mts-lucas/POO/blob/main/dart/exercicios/receita4/lib/main.dart
-      body: MyTileWidget(
-            objects: dataObjects,
-            propertyNames: const ["name", "style", "ibu"],
-          ),
+      // body: MyTileWidget(
+      //       objects: dataObjects,
+      //       propertyNames: const ["name", "style", "ibu"],
+      //     ),
 
       floatingActionButton: FloatingActionButton(
         onPressed:(){

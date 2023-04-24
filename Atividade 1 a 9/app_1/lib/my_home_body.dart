@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:app_1/Var_globais.dart';
+import 'package:app_1/var_global.dart';
 
-
+// Lista de afazeres
 class MyHomeBody extends StatelessWidget{
   List<Map<String,dynamic>> objects;
 
@@ -56,25 +56,21 @@ e no arquivo do github:
 https://github.com/heliokamakawa/agenda_crud_flutter/blob/11fd0a1d1dcbb81da8cbe22a8dc11375478705b6/lib/app/view/contact_list.dart
 */
 
-
+// lista de telefone
 class MyTitleWidget extends StatelessWidget{
   List<Map<String,dynamic>> objects;
+  final List propertyNames;
 
-  MyTitleWidget( {super.key, this.objects = const [] });
+  MyTitleWidget( {super.key, this.objects = const [], this.propertyNames = const []});
 
-      
   @override
   Widget build(BuildContext context) {
-    
-    return
-    ListView.builder(
-      itemCount: listaListview.length,
-      itemBuilder: (context, i){
-        var contato = listaListview[i];
 
-        return ListTile(
-          title: Text(contato["nome"]!),
-          subtitle:  Text(contato["telefone"]!),
+    return ListView(
+      children: objects.map(
+        (obj) => ListTile(
+          title: Text("${obj[propertyNames[0]]}"),
+          subtitle: Text("${obj[propertyNames[1]]}"),
           trailing: SizedBox(
             width: 100,
             child: Row(
@@ -84,13 +80,15 @@ class MyTitleWidget extends StatelessWidget{
               ],
             ),
           ) ,
-        );
-      },
+        )
+      ).toList(),
     );
-
   }
+    
+
 }
 
+// lista de bebida
 class MyTileWidget extends StatelessWidget {
   final List objects;
   final List propertyNames;
