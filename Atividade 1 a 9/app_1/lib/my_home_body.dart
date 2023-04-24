@@ -15,18 +15,21 @@ class MyListaAfazeres extends StatelessWidget{
 
     return ListView(
       children: objects.map(
-        (obj) => ListTile(
-          title: Text("${obj[propertyNames[0]]}"),
-          subtitle: Text("${obj[propertyNames[1]]}\n${obj[propertyNames[2]]}"),
-          trailing: SizedBox(
-            width: 100,
-            child: Row(
-              children: const [
-                IconButton(icon: Icon(Icons.edit),tooltip: "Editar", onPressed: null,),
-                IconButton(icon: Icon(Icons.delete),tooltip: "Excluir", onPressed: null),
-              ],
-            ),
-          ) ,
+        (obj) => Card(
+          child: ListTile(
+            
+            title: Text("${obj[propertyNames[0]]}"),
+            subtitle: Text("${obj[propertyNames[1]]}\n${obj[propertyNames[2]]}"),
+            trailing: SizedBox(
+              width: 100,
+              child: Row(
+                children: const [
+                  IconButton(icon: Icon(Icons.edit),tooltip: "Editar", onPressed: null,),
+                  IconButton(icon: Icon(Icons.delete),tooltip: "Excluir", onPressed: null),
+                ],
+              ),
+            ) ,
+          )
         )
       ).toList(),
     );
