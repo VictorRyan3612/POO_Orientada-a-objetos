@@ -88,3 +88,18 @@ var dataObjects = [
       "difficulty": "alta"
     },
   ];
+
+var listaListview = [
+  {
+    "nome": "Nome 1",
+    "telefone": "telefone 1",
+  },
+    {
+    "nome": "Nome 1",
+    "telefone": "telefone 1",
+  },
+    {
+    "nome": "Nome 1",
+    "telefone": "telefone 1",
+  },
+];

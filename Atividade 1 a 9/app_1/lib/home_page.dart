@@ -60,8 +60,11 @@ class HomePageStates extends State<HomePage>{
       ),  // Populate the Drawer in the next step.
 
 
-      body: MyHomeBody(objects: dataObjects
-        ),
+      
+
+      // body: MyHomeBody(objects: dataObjects
+      //   ),
+      body: MyTitleWidget(),
 
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
