@@ -29,7 +29,7 @@ class HomePageStates extends State<HomePage>{
       appBar: const MyHomeAppBar(),
 
 
-      // Pego de https://docs.flutter.dev/cookbook/design/drawer
+      // Adaptado de https://docs.flutter.dev/cookbook/design/drawer
       drawer: Drawer(
         child: ListView(
           // Important: Remove any padding from the ListView.
@@ -44,16 +44,14 @@ class HomePageStates extends State<HomePage>{
             ListTile(
               title: const Text('Item 1'),
               onTap: () {
-                // Update the state of the app.
-                // ...
+
               },
             ),
 
             ListTile(
               title: const Text('Item 2'),
               onTap: () {
-                // Update the state of the app.
-                // ...
+
               },
             ),
           ],

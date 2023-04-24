@@ -6,10 +6,7 @@ class MyHomeBody extends StatelessWidget{
   List<Map<String,dynamic>> objects;
 
   MyHomeBody( {super.key, this.objects = const [] });
-/*
-Deixar a tabela mais genrica? pegar 
-Já usei o list view e list title na atividade 10 e 11
-*/
+
 
   final Color _currentTextColor = const Color.fromARGB(255, 16, 106, 180);
 
@@ -83,7 +80,7 @@ class MyTitleWidget extends StatelessWidget{
             child: Row(
               children: const [
                 IconButton(icon: Icon(Icons.edit),tooltip: "Editar", onPressed: null,),
-                IconButton(icon: Icon(Icons.delete),tooltip: "Excluit", onPressed: null),
+                IconButton(icon: Icon(Icons.delete),tooltip: "Excluir", onPressed: null),
               ],
             ),
           ) ,
