@@ -1,18 +1,19 @@
-import 'package:app_1/MyHomeBody.dart';
-import 'package:app_1/MyHomeAppBar.dart';
-import 'package:app_1/MyHomeBottomAppBar.dart';
+import 'package:app_1/my_home_appbar.dart';
+import 'package:app_1/my_home_bottom_appbar.dart';
 import 'package:app_1/note_page.dart';
 import 'package:flutter/material.dart';
-import 'package:app_1/Var_globais.dart';
-
+import 'package:app_1/var_globais.dart';
+import 'package:app_1/my_home_body.dart';
 
 void _notepage(BuildContext context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => NotePage()),
+      MaterialPageRoute(builder: (context) => const NotePage()),
     );
   }
 
 class HomePage extends StatefulWidget{
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() => HomePageStates();
 }
@@ -25,7 +26,7 @@ class HomePageStates extends State<HomePage>{
   Widget build(BuildContext context) {
     return
     Scaffold(
-      appBar: MyHomeAppBar(),
+      appBar: const MyHomeAppBar(),
 
 
       // Pego de https://docs.flutter.dev/cookbook/design/drawer
@@ -67,17 +68,17 @@ class HomePageStates extends State<HomePage>{
       body: MyTitleWidget(),
 
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         onPressed:(){
           _notepage(context);
         },
         tooltip: "Nova anotação",
+        child: const Icon(Icons.add),
        ),
 
 
 
-      bottomNavigationBar: MyHomeBottomAppBar(
-        myIcones: const [
+      bottomNavigationBar: const MyHomeBottomAppBar(
+        myIcones: [
           Icons.arrow_back,
           Icons.home,
           Icons.arrow_forward,

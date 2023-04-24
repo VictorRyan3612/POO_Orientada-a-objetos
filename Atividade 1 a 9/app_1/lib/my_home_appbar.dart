@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 
 
 class MyHomeAppBar extends StatelessWidget implements PreferredSizeWidget{
-  MyHomeAppBar();
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  const MyHomeAppBar({super.key});
+  
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
   
   @override
   Widget build(BuildContext context){
     return 
       AppBar(
-        title: Text("Lista de coisas para fazer",
+        title: const Text("Lista de coisas para fazer",
                 style: TextStyle(fontSize: 25)),
         // backgroundColor: Colors.redAccent,
         actions: [
@@ -18,7 +20,7 @@ class MyHomeAppBar extends StatelessWidget implements PreferredSizeWidget{
 
           // adaptado de https://www.fluttercampus.com/guide/223/popup-menu-on-flutter-appbar/
           PopupMenuButton(
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             itemBuilder: (context){
               return const[
                     PopupMenuItem<int>(
@@ -40,6 +42,7 @@ class MyHomeAppBar extends StatelessWidget implements PreferredSizeWidget{
             
             onSelected:(value){
               if(value == 0){
+                
                   print("Tema Branco selecionado.");
               }else if(value == 1){
                   print("Tema Preto selecionado.");

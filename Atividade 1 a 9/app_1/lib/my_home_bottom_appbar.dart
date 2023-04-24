@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class MyHomeBottomAppBar extends StatelessWidget {
   final List<IconData> myIcones;
 
-  MyHomeBottomAppBar({required this.myIcones});
+  const MyHomeBottomAppBar({super.key, required this.myIcones});
 
   void botaoTocado(int index) {
     print("Tocaram no botão $index");

@@ -4,6 +4,8 @@ import 'package:app_1/home_page.dart';
 
 
 class MyApp extends StatelessWidget{
+  const MyApp({super.key});
+
 
  @override
   Widget build(BuildContext context){
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget{
       ),
 
 
-      home: HomePage()
+      home: const HomePage()
 
     );
 

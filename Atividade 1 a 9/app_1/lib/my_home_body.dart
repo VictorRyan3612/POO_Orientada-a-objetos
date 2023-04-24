@@ -5,13 +5,13 @@ import 'package:app_1/Var_globais.dart';
 class MyHomeBody extends StatelessWidget{
   List<Map<String,dynamic>> objects;
 
-  MyHomeBody( {this.objects = const [] });
+  MyHomeBody( {super.key, this.objects = const [] });
 /*
 Deixar a tabela mais genrica? pegar 
 Já usei o list view e list title na atividade 10 e 11
 */
 
-  final Color _currentTextColor = Color.fromARGB(255, 16, 106, 180);
+  final Color _currentTextColor = const Color.fromARGB(255, 16, 106, 180);
 
   @override
   Widget build(BuildContext context){
@@ -19,8 +19,7 @@ Já usei o list view e list title na atividade 10 e 11
         propertyNames = ["name", "importancy", "difficulty"];
 
     return  
-      Container(
-        child: 
+
         SingleChildScrollView(
           child: Center(
             child: 
@@ -29,7 +28,10 @@ Já usei o list view e list title na atividade 10 e 11
                 columns: columnNames.map( 
                     (name) => DataColumn(
                       label: Expanded(
-                        child: Text(name, style: TextStyle(fontFamily: "Times new roman",fontSize: 20,fontWeight: FontWeight.bold ))
+                        child: Text(
+                          name, style: const TextStyle(
+                            fontFamily: "Times new roman",fontSize: 20,fontWeight: FontWeight.bold )
+                          )
                       )
                     )
                   ).toList(),
@@ -46,7 +48,7 @@ Já usei o list view e list title na atividade 10 e 11
             
             
             )
-        )
+        
       );
   }
 }
@@ -56,10 +58,12 @@ baseado no vídeo https://www.youtube.com/watch?v=N36B7FOvxkY
 e no arquivo do github:
 https://github.com/heliokamakawa/agenda_crud_flutter/blob/11fd0a1d1dcbb81da8cbe22a8dc11375478705b6/lib/app/view/contact_list.dart
 */
+
+
 class MyTitleWidget extends StatelessWidget{
   List<Map<String,dynamic>> objects;
 
-  MyTitleWidget( {this.objects = const [] });
+  MyTitleWidget( {super.key, this.objects = const [] });
 
       
   @override
@@ -74,12 +78,12 @@ class MyTitleWidget extends StatelessWidget{
         return ListTile(
           title: Text(contato["nome"]!),
           subtitle:  Text(contato["telefone"]!),
-          trailing: Container(
+          trailing: SizedBox(
             width: 100,
             child: Row(
-              children: [
-                IconButton(icon: Icon(Icons.edit), onPressed: null,),
-                IconButton(icon: Icon(Icons.delete), onPressed: null),
+              children: const [
+                IconButton(icon: Icon(Icons.edit),tooltip: "Editar", onPressed: null,),
+                IconButton(icon: Icon(Icons.delete),tooltip: "Excluit", onPressed: null),
               ],
             ),
           ) ,

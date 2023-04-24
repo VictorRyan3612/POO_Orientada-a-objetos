@@ -1,10 +1,10 @@
-import 'package:app_1/MyApp.dart';
+import 'package:app_1/my_app.dart';
 import 'package:flutter/material.dart';
 
 
 
 void main() {
-  MyApp app = MyApp();
+  MyApp app = const MyApp();
 
   runApp(app);
 }

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 
 class NotePage extends StatefulWidget{
+  const NotePage({super.key});
+
   @override
   State<NotePage> createState() => NotePageStates();
 }
