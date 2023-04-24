@@ -90,3 +90,30 @@ class MyTitleWidget extends StatelessWidget{
 
   }
 }
+
+class MyTileWidget extends StatelessWidget {
+  final List objects;
+  final List propertyNames;
+
+  MyTileWidget({this.objects = const [], this.propertyNames = const []});
+
+  @override
+  Widget build(BuildContext context) {
+    // var propertyNames = ["name", "style", "ibu"];
+
+    return ListView(
+      children: objects
+          .map(
+            (obj) => Card(
+              child: ListTile(
+                title: Text(obj[propertyNames[0]]),
+                subtitle: Text(
+                  "${obj[propertyNames[1]]}\n${obj[propertyNames[2]]}",
+                ),
+              ),
+            ),
+          )
+          .toList(),
+    );
+  }
+}

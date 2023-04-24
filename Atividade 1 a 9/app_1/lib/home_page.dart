@@ -61,9 +61,15 @@ class HomePageStates extends State<HomePage>{
 
       
 
-      // body: MyHomeBody(objects: dataObjects
+      // body: MyHomeBody(objects: dataListaNotas
       //   ),
-      body: MyTitleWidget(),
+      // body: MyTitleWidget(),
+
+      // De lucas https://github.com/mts-lucas/POO/blob/main/dart/exercicios/receita4/lib/main.dart
+      body: MyTileWidget(
+            objects: dataObjects,
+            propertyNames: ["name", "style", "ibu"],
+          ),
 
       floatingActionButton: FloatingActionButton(
         onPressed:(){
