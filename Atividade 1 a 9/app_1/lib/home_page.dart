@@ -1,15 +1,25 @@
+import 'package:flutter/material.dart';
 import 'package:app_1/my_home_appbar.dart';
 import 'package:app_1/my_home_bottom_appbar.dart';
 import 'package:app_1/note_page.dart';
-import 'package:flutter/material.dart';
 import 'package:app_1/var_global.dart';
 import 'package:app_1/my_home_body.dart';
+import 'package:app_1/form_app.dart';
+
+
+
 
 void _notepage(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => const NotePage()),
-    );
-  }
+  Navigator.of(context).push(
+    MaterialPageRoute(builder: (context) => const NotePage()),
+  );
+}
+
+void _formAppPage(BuildContext context) {
+  Navigator.of(context).push(
+    MaterialPageRoute(builder: (context) => const FormApp()),
+  );
+}
 
 class HomePage extends StatefulWidget{
   const HomePage({super.key});
@@ -17,6 +27,7 @@ class HomePage extends StatefulWidget{
   @override
   State<HomePage> createState() => HomePageStates();
 }
+
 
 
 
@@ -39,21 +50,22 @@ class HomePageStates extends State<HomePage>{
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('Drawer Header'),
+              child: Text('Aplicativos secundários(Testes)',style: TextStyle(fontSize: 21),),
             ),
             ListTile(
-              title: const Text('Item 1'),
+              title: const Text('Formulários'),
               onTap: () {
-
+                _formAppPage(context);
               },
             ),
 
             ListTile(
               title: const Text('Item 2'),
               onTap: () {
-
+                
               },
             ),
+            
           ],
         ),
       ),  // Populate the Drawer in the next step.

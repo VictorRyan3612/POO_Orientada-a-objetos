@@ -3,11 +3,11 @@ import 'package:app_1/home_page.dart';
 
 
 
+
 class MyApp extends StatelessWidget{
-  const MyApp({super.key});
-
-
- @override
+  MyApp();
+  
+  @override
   Widget build(BuildContext context){
     return MaterialApp(
       theme: ThemeData(

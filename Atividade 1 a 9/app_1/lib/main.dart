@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 
 
 
+// o codigo pode estar semelhante ao tutorial pois fiz as adaptacoes em cima dele
+
+
 void main() {
-  MyApp app = const MyApp();
+  MyApp app = MyApp();
 
   runApp(app);
 }
