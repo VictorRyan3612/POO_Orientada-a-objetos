@@ -31,14 +31,17 @@ class FormAppStates extends State<FormApp>{
       
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(appTitle),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.popUntil(context, ModalRoute.withName('/'));
-              // Navigator.pop(context);
-            },
-          )
+          title: Center(
+            child: const Text(appTitle),
+          ),
+
+          // leading: IconButton(
+          //   icon: Icon(Icons.arrow_back),
+          //   onPressed: () {
+          //     Navigator.popUntil(context, ModalRoute.withName('/'));
+          //     // Navigator.pop(context);
+          //   },
+          // )
 
         ),
         body: Align(
@@ -104,11 +107,15 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: ElevatedButton(
               onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  ScaffoldMessenger.of(context).showSnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Processing Data')),
                   );
-                }
+
+                // if (_formKey.currentState!.validate()) {
+                //   ScaffoldMessenger.of(context).showSnackBar(
+                //     const SnackBar(content: Text('Processing Data')),
+                //   );
+                // }
               },
               child: const Text('Submit'),
             ),
