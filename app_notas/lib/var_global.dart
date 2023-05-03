@@ -13,6 +13,11 @@ var dataObjects = [
   {"name": "Duvel", "style": "Pilsner", "ibu": "82"},
 ];
 
+const iconesnomesVar = [
+  "Voltar",
+  "Inical",
+  "Avançar",
+];
 
 
 var dataListaNotas = [

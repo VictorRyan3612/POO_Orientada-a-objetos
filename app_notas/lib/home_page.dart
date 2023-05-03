@@ -100,6 +100,7 @@ class HomePageStates extends State<HomePage>{
           Icons.home,
           Icons.arrow_forward,
         ],
+        nomesIcones: iconesnomesVar
       )
 
 
