@@ -20,20 +20,24 @@ class MyHomeBottomAppBar extends StatelessWidget {
     return BottomNavigationBar(
       onTap: botaoTocado,
 
-      items: [
-        for(var i=0; i< myIcones.length; i++)BottomNavigationBarItem(
+
+      items: List.filled(myIcones.length, 0, growable: true).map( (i) => 
+        BottomNavigationBarItem(
           icon: Icon(myIcones[i]),
           label: nomesIcones[i]
-           // rótulo vazio para não mostrar o texto
-        )
-      ],
-      // items: myIcones.map((icon) =>
-      //    BottomNavigationBarItem(
-      //     icon: Icon(icon),
+          )
+        ).toList()
+
+
+      // items: [
+      //   for(var i=0; i< myIcones.length; i++)BottomNavigationBarItem(
+      //     icon: Icon(myIcones[i]),
+      //     label: nomesIcones[i]
       //      // rótulo vazio para não mostrar o texto
       //   )
-      
-      // ).toList()
+      // ],
+
+
     );
   }
 }
