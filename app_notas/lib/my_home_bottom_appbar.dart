@@ -18,15 +18,22 @@ class MyHomeBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      
       onTap: botaoTocado,
 
-
-      items: List.filled(myIcones.length, 0, growable: true).map( (i) => 
+      items: myIcones.asMap().keys.map( (i) =>
         BottomNavigationBarItem(
           icon: Icon(myIcones[i]),
-          label: nomesIcones[i]
+          label: nomesIcones[i],
           )
         ).toList()
+
+      // items: List.generate(myIcones.length, (index)=>index).map( (i) =>
+      //   BottomNavigationBarItem(
+      //     icon: Icon(myIcones[i]),
+      //     label: nomesIcones[i],
+      //     )
+      //   ).toList()
 
 
       // items: [
