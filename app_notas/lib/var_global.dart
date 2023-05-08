@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final ValueNotifier<List> twitter = new ValueNotifier([]); 
+final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]); 
 // var dataObjects = [
 //   {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
 //   {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},

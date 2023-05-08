@@ -92,10 +92,10 @@ class HomePageStates extends State<HomePage>{
       ),
 
       body: ValueListenableBuilder(
-          valueListenable: twitter,
+          valueListenable: tableStateNotifier,
           builder:(_, value, __){
             return MyListaAfazeres(
-              objects: twitter.value,
+              objects: tableStateNotifier.value,
                     propertyNames: ["name","style","ibu"], 
               );
 

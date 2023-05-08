@@ -25,7 +25,7 @@ class MyHomeBottomAppBar extends HookWidget {
       
       onTap: (index){
         state.value = index;
-        twitter.value = [
+        tableStateNotifier.value = [
           {"name": "La Fin Du Monde",
           "style": "Bock",
           "ibu": "65"
