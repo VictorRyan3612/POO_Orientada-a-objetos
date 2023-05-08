@@ -19,6 +19,7 @@ class MyHomeBottomAppBar extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("no build da classe Myhomebottomappbar");
     var state = useState(1);
     return BottomNavigationBar(
       
@@ -26,7 +27,7 @@ class MyHomeBottomAppBar extends HookWidget {
         state.value = index;
       }, 
       currentIndex: state.value,
-      
+
       items: myIcones.asMap().keys.map( (i) =>
         BottomNavigationBarItem(
           icon: Icon(myIcones[i]),

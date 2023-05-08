@@ -15,6 +15,7 @@ class NotePageStates extends State<NotePage>{
 
   @override
   Widget build(BuildContext context){
+    print("no build da classe notepage");
     return
    Scaffold(
       appBar: AppBar(

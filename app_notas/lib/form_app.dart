@@ -19,6 +19,7 @@ class FormAppStates extends State<FormApp>{
 
   @override
   Widget build(BuildContext context) {
+    print("no build da classe formularios");
     const appTitle = 'Formulários';
 
     return MaterialApp(

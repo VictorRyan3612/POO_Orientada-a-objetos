@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget{
   
   @override
   Widget build(BuildContext context){
+    print("no build da classe MyApp");
     return MaterialApp(
       theme: ThemeData(
       fontFamily: 'Times new roman',

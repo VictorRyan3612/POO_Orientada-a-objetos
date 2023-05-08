@@ -10,6 +10,7 @@ class MyHomeAppBar extends StatelessWidget implements PreferredSizeWidget{
   
   @override
   Widget build(BuildContext context){
+    print("no build da classe MyhomeAppBar");
     return 
       AppBar(
         title: const Text("Lista de coisas para fazer",

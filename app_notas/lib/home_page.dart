@@ -35,6 +35,7 @@ class HomePageStates extends State<HomePage>{
  
   @override
   Widget build(BuildContext context) {
+    print("no build da classe HomepageStates");
     return
     Scaffold(
       appBar: const MyHomeAppBar(),
