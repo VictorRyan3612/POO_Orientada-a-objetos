@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 
 
-class NotePage extends StatefulWidget{
-  const NotePage({super.key});
-
-  @override
-  State<NotePage> createState() => NotePageStates();
-}
-
-
-
-class NotePageStates extends State<NotePage>{
+class NotePage extends HookWidget{
 
   @override
   Widget build(BuildContext context){

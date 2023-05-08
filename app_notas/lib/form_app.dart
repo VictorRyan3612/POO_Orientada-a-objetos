@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_hooks/flutter_hooks.dart';
 /*
   Código pego e adaptado de Lucas 
   https://github.com/mts-lucas/POO/commit/71329d9c706b7bd6ad42869b875cbd42f1ad3c1d
   Retirei as validações para fazer aprender a fazer sozinho
 */
 
-class FormApp extends StatefulWidget{
-  const FormApp({super.key});
-
-  @override
-  State<FormApp> createState() => FormAppStates();
-}
 
 
-
-class FormAppStates extends State<FormApp>{
+class FormApp extends HookWidget{
 
   @override
   Widget build(BuildContext context) {

@@ -11,13 +11,13 @@ import 'package:app_notas/form_app.dart';
 
 void _notepage(BuildContext context) {
   Navigator.of(context).push(
-    MaterialPageRoute(builder: (context) => const NotePage()),
+    MaterialPageRoute(builder: (context) => NotePage()),
   );
 }
 
 void _formAppPage(BuildContext context) {
   Navigator.of(context).push(
-    MaterialPageRoute(builder: (context) => const FormApp()),
+    MaterialPageRoute(builder: (context) => FormApp()),
   );
 }
 
@@ -110,12 +110,3 @@ class HomePageStates extends State<HomePage>{
   }
 
 }
-
-
-
-
-
-
-
-
-
