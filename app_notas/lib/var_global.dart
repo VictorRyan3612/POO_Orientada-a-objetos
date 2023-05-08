@@ -1,17 +1,20 @@
-var dataObjects = [
-  {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
-  {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
-  {"name": "Duvel", "style": "Pilsner", "ibu": "82"},
-  {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
-  {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
-  {"name": "Duvel", "style": "Pilsner", "ibu": "82"},
-  {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
-  {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
-  {"name": "Duvel", "style": "Pilsner", "ibu": "82"},
-  {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
-  {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
-  {"name": "Duvel", "style": "Pilsner", "ibu": "82"},
-];
+import 'package:flutter/material.dart';
+
+final ValueNotifier<List> twitter = new ValueNotifier([]); 
+// var dataObjects = [
+//   {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
+//   {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
+//   {"name": "Duvel", "style": "Pilsner", "ibu": "82"},
+//   {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
+//   {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
+//   {"name": "Duvel", "style": "Pilsner", "ibu": "82"},
+//   {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
+//   {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
+//   {"name": "Duvel", "style": "Pilsner", "ibu": "82"},
+//   {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
+//   {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
+//   {"name": "Duvel", "style": "Pilsner", "ibu": "82"},
+// ];
 
 const iconesnomesVar = [
   "Voltar",

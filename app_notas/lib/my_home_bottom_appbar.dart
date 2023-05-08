@@ -9,7 +9,7 @@ class MyHomeBottomAppBar extends HookWidget {
   final List<IconData> myIcones;
   // final List nomesIcones;
   final List<String> nomesIcones;
-  final ValueNotifier<List> twitter = new ValueNotifier([]);
+
 
   MyHomeBottomAppBar({super.key, required this.myIcones, required this.nomesIcones});
 

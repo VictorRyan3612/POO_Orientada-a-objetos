@@ -7,9 +7,6 @@ import 'package:app_notas/my_home_body.dart';
 import 'package:app_notas/form_app.dart';
 
 
-class DataService{
-  final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
-}
 
 
 void _notepage(BuildContext context) {
@@ -35,7 +32,6 @@ class HomePage extends StatefulWidget{
 
 
 class HomePageStates extends State<HomePage>{
- final ValueNotifier<List> twitter = new ValueNotifier([]);
   @override
   Widget build(BuildContext context) {
     print("no build da classe HomepageStates");
@@ -76,18 +72,6 @@ class HomePageStates extends State<HomePage>{
 
 
       
-
-      body: MyListaAfazeres(
-        objects: twitter.value,
-        propertyNames: const ["name","style","IBU"]
-        ),
-      // body: MyListaTelefone(
-      //   objects: listaPhoneListview,
-      //   propertyNames: const ["nome", "telefone"]
-      // ), //
-
-
-
       floatingActionButton: FloatingActionButton(
         onPressed:(){
           _notepage(context);
@@ -105,11 +89,30 @@ class HomePageStates extends State<HomePage>{
           Icons.arrow_forward,
         ],
         nomesIcones: iconesnomesVar
-      )
+      ),
+
+      body: ValueListenableBuilder(
+          valueListenable: twitter,
+          builder:(_, value, __){
+            return MyListaAfazeres(
+              jsonObjects: twitter.value,
+              objects: twitter.value,
+                    propertyNames: ["name","style","ibu"], 
+                    columnNames: ["Nome", "Estilo", "IBU"]
+              );
+
+        // body: MyListaTelefone(
+        //   objects: listaPhoneListview,
+        //   propertyNames: const ["nome", "telefone"]
+        // ), //
+
+          },
 
 
 
-    );
+
+
+    ));
   }
 
 }
