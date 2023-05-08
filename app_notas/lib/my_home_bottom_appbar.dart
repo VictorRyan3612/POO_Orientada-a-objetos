@@ -9,9 +9,9 @@ class MyHomeBottomAppBar extends HookWidget {
   final List<IconData> myIcones;
   // final List nomesIcones;
   final List<String> nomesIcones;
+  final ValueNotifier<List> twitter = new ValueNotifier([]);
 
-
-  const MyHomeBottomAppBar({super.key, required this.myIcones, required this.nomesIcones});
+  MyHomeBottomAppBar({super.key, required this.myIcones, required this.nomesIcones});
 
   void botaoTocado(int index) {
     print("Tocaram no botão $index");
@@ -25,7 +25,25 @@ class MyHomeBottomAppBar extends HookWidget {
       
       onTap: (index){
         state.value = index;
+        twitter.value = [
+          {"name": "La Fin Du Monde",
+          "style": "Bock",
+          "ibu": "65"
+          },
+          {"name": "Sapporo Premiume",
+          "style": "Sour Ale",
+          "ibu": "54"
+          },
+          {"name": "Duvel", 
+          "style": "Pilsner", 
+          "ibu": "82"
+          }
+        ];
       }, 
+
+      
+
+
       currentIndex: state.value,
 
       items: myIcones.asMap().keys.map( (i) =>

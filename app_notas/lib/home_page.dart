@@ -7,6 +7,9 @@ import 'package:app_notas/my_home_body.dart';
 import 'package:app_notas/form_app.dart';
 
 
+class DataService{
+  final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
+}
 
 
 void _notepage(BuildContext context) {
@@ -32,7 +35,7 @@ class HomePage extends StatefulWidget{
 
 
 class HomePageStates extends State<HomePage>{
- 
+ final ValueNotifier<List> twitter = new ValueNotifier([]);
   @override
   Widget build(BuildContext context) {
     print("no build da classe HomepageStates");
@@ -75,8 +78,8 @@ class HomePageStates extends State<HomePage>{
       
 
       body: MyListaAfazeres(
-        objects: dataListaNotas,
-        propertyNames: const ["name","importancy","difficulty"]
+        objects: twitter.value,
+        propertyNames: const ["name","style","IBU"]
         ),
       // body: MyListaTelefone(
       //   objects: listaPhoneListview,
@@ -95,7 +98,7 @@ class HomePageStates extends State<HomePage>{
 
 
 
-      bottomNavigationBar: const MyHomeBottomAppBar(
+      bottomNavigationBar: MyHomeBottomAppBar(
         myIcones: [
           Icons.arrow_back,
           Icons.home,
