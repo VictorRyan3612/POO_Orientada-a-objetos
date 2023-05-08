@@ -95,10 +95,8 @@ class HomePageStates extends State<HomePage>{
           valueListenable: twitter,
           builder:(_, value, __){
             return MyListaAfazeres(
-              jsonObjects: twitter.value,
               objects: twitter.value,
                     propertyNames: ["name","style","ibu"], 
-                    columnNames: ["Nome", "Estilo", "IBU"]
               );
 
         // body: MyListaTelefone(
