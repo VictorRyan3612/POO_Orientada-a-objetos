@@ -1,9 +1,11 @@
 import 'package:app_notas/var_global.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+
 
 
 // Adaptado do chatGPT
-class MyHomeBottomAppBar extends StatelessWidget {
+class MyHomeBottomAppBar extends HookWidget {
   final List<IconData> myIcones;
   // final List nomesIcones;
   final List<String> nomesIcones;
