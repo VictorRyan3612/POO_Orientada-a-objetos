@@ -6,12 +6,16 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 // Adaptado do chatGPT
 class MyHomeBottomAppBar extends HookWidget {
+  var itemSelectedCallback;
+  
   final List<IconData> myIcones;
   // final List nomesIcones;
   final List<String> nomesIcones;
 
 
-  MyHomeBottomAppBar({super.key, required this.myIcones, required this.nomesIcones});
+  MyHomeBottomAppBar({super.key, required this.myIcones, required this.nomesIcones, this.itemSelectedCallback}){
+    itemSelectedCallback ??= (){};
+  }
 
   void botaoTocado(int index) {
     print("Tocaram no botão $index");
@@ -25,24 +29,8 @@ class MyHomeBottomAppBar extends HookWidget {
       
       onTap: (index){
         state.value = index;
-        tableStateNotifier.value = [
-          {"name": "La Fin Du Monde",
-          "style": "Bock",
-          "ibu": "65"
-          },
-          {"name": "Sapporo Premiume",
-          "style": "Sour Ale",
-          "ibu": "54"
-          },
-          {"name": "Duvel", 
-          "style": "Pilsner", 
-          "ibu": "82"
-          }
-        ];
-      }, 
-
-      
-
+        itemSelectedCallback();
+      },      
 
       currentIndex: state.value,
 
@@ -72,4 +60,25 @@ class MyHomeBottomAppBar extends HookWidget {
 
     );
   }
+}
+
+
+void carregarCervejas(){
+tableStateNotifier.value = [
+  {
+    "name": "La Fin Du Monde",
+    "style": "Bock",
+    "ibu": "65"
+  },
+  {
+    "name": "Sapporo Premiume",
+    "style": "Sour Ale",
+    "ibu": "54"
+  },
+  {
+    "name": "Duvel", 
+    "style": "Pilsner", 
+    "ibu": "82"
+  }
+];
 }
