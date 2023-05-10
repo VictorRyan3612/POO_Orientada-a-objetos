@@ -23,7 +23,6 @@ class MyHomeBottomAppBar extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("no build da classe Myhomebottomappbar");
     var state = useState(1);
     return BottomNavigationBar(
       

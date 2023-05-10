@@ -7,7 +7,6 @@ class NotePage extends HookWidget{
 
   @override
   Widget build(BuildContext context){
-    print("no build da classe notepage");
     return
    Scaffold(
       appBar: AppBar(

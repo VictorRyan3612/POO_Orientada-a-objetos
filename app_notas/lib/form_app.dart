@@ -12,7 +12,6 @@ class FormApp extends HookWidget{
 
   @override
   Widget build(BuildContext context) {
-    print("no build da classe formularios");
     const appTitle = 'Formulários';
 
     return MaterialApp(

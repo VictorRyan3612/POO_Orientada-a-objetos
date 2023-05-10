@@ -5,11 +5,10 @@ import 'package:app_notas/home_page.dart';
 
 
 class MyApp extends StatelessWidget{
-  MyApp();
+  const MyApp({super.key});
   
   @override
   Widget build(BuildContext context){
-    print("no build da classe MyApp");
     return MaterialApp(
       theme: ThemeData(
       fontFamily: 'Times new roman',

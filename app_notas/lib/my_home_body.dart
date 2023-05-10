@@ -15,7 +15,6 @@ class MyListaAfazeres extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-  print("no build da classe MylistaAfazeres");
     return ListView(
       children: objects.map(
         (obj) => Card(
