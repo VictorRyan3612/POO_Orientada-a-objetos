@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
+
+
+var estadoAplicativo = {
+  "objects": [],
+  "props": [],
+  "colunms": []
+};
+
 final dataService = DataService();
 class DataService{
 
   
-  final ValueNotifier<List> tableStateNotifier = ValueNotifier([]); 
+  final ValueNotifier<Map<String,dynamic>> tableStateNotifier = ValueNotifier(estadoAplicativo); 
 
   void carregar(index) {
     List<Function> funcoes = [
@@ -25,151 +33,171 @@ class DataService{
 
 
   void carregarCervejas(){
-    tableStateNotifier.value = [
+    tableStateNotifier.value = {
+      "objects": [
       {
-        "pro1": "La Fin Du Monde", 
-        "pro2": "Bock", 
-        "pro3": "65"
+        "name": "La Fin Du Monde", 
+        "style": "Bock", 
+        "ibu": "65"
       },
       {
-        "pro1": "Sapporo Premiume", 
-        "pro2": "Sour Ale", 
-        "pro3": "54"
+        "name": "Sapporo Premiume", 
+        "style": "Sour Ale", 
+        "ibu": "54"
       },
       {
-        "pro1": "Duvel",
-        "pro2": "Pilsner",
-        "pro3": "82"
-      },
-
-      {
-        "pro1": "La Fin Du Monde", 
-        "pro2": "Bock", 
-        "pro3": "65"
-      },
-      {
-        "pro1": "Sapporo Premiume", 
-        "pro2": "Sour Ale", 
-        "pro3": "54"
+        "name": "Duvel",
+        "style": "Pilsner",
+        "ibu": "82"
       },
 
       {
-        "pro1": "Duvel",
-        "pro2": "Pilsner",
-        "pro3": "82"
-      },    
-    ];
+        "name": "La Fin Du Monde", 
+        "style": "Bock", 
+        "ibu": "65"
+      },
+      {
+        "name": "Sapporo Premiume", 
+        "style": "Sour Ale", 
+        "ibu": "54"
+      },
+
+      {
+        "name": "Duvel",
+        "style": "Pilsner",
+        "ibu": "82"
+      }    
+      ],
+
+      "props": [
+        "name",
+        "style",
+        "ibu"
+      ]
+    };
   }
+
   void carregarNotas(){
-    tableStateNotifier.value = [
-       {
-        "pro1": "Salvar as notas em arquivos ou banco de dados",
-        "pro2": "vital",
-        "pro3": "media"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Mudar tema", 
-        "pro2": "opcional", 
-        "pro3": "baixa"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-      {
-        "pro1": "Fazer Calendário",
-        "pro2": "desejável",
-        "pro3": "alta"
-      },
-    ];
+    tableStateNotifier.value = {
+      "objects": [
+        {
+          "name": "Salvar as notas em arquivos ou banco de dados",
+          "importancia": "vital",
+          "dificuldade": "media"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Mudar tema", 
+          "importancia": "opcional", 
+          "dificuldade": "baixa"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+        {
+          "name": "Fazer Calendário",
+          "importancia": "desejável",
+          "dificuldade": "alta"
+        },
+      ],
+
+      "props":[
+        "name",
+        "importancia",
+        "dificuldade"
+      ]
+    };
   }
   
   void carregarTelefones(){
-    tableStateNotifier.value = [
-      {
-        "pro1": "Nome 1",
-        "pro2": "telefone 1",
-      },
+    tableStateNotifier.value = {
+      "objects": [
         {
-        "pro1": "Nome 2",
-        "pro2": "telefone 2",
-      },
-        {
-        "pro1": "Nome 3",
-        "pro2": "telefone 3",
-      },
-      
-    ];
+          "name": "name 1",
+          "telefone": "telefone 1",
+        },
+          {
+          "name": "name 2",
+          "telefone": "telefone 2",
+        },
+          {
+          "name": "name 3",
+          "telefone": "telefone 3",
+        },
+      ],
+
+      "props": [
+        "name",
+        "telefone",
+      ]
+    };
   }
-
-
-
 }
 
 

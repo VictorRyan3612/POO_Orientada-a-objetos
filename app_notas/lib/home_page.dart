@@ -91,8 +91,8 @@ class HomePage extends HookWidget{
           valueListenable: dataService.tableStateNotifier,
           builder:(_, value, __){
             return MyListaAfazeres(
-              objects: dataService.tableStateNotifier.value,
-                    propertyNames: const ["pro1","pro2","pro3"], 
+              objects: dataService.tableStateNotifier.value["objects"],
+                    propertyNames: dataService.tableStateNotifier.value["props"],
               );
 
         // body: MyListaTelefone(

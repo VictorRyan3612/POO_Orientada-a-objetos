@@ -19,8 +19,8 @@ class MyListaAfazeres extends StatelessWidget{
         (obj) => Card(
           child: ListTile(
             
-            title: Text("${obj[propertyNames[0]]}"),
-            subtitle: Text("${obj[propertyNames[1]]}\n${obj[propertyNames[2]]}"),
+            title: Text("${obj[propertyNames[0]]}",style: TextStyle(fontSize: 20),),
+            subtitle: Text("${obj[propertyNames[1]]}\n${propertyNames.length>=3 ? propertyNames[2] : ""}"),
             trailing: SizedBox(
               width: 100,
               child: Row(
