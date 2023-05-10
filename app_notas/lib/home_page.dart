@@ -98,7 +98,7 @@ class HomePageStates extends State<HomePage>{
           builder:(_, value, __){
             return MyListaAfazeres(
               objects: dataService.tableStateNotifier.value,
-                    propertyNames: ["name","style","ibu"], 
+                    propertyNames: ["pro1","pro2","pro3"], 
               );
 
         // body: MyListaTelefone(

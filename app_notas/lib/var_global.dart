@@ -16,125 +16,125 @@ class DataService{
   void carregarCervejas(){
     tableStateNotifier.value = [
       {
-        "name": "La Fin Du Monde", 
-        "style": "Bock", 
-        "ibu": "65"
+        "pro1": "La Fin Du Monde", 
+        "pro2": "Bock", 
+        "pro3": "65"
       },
       {
-        "name": "Sapporo Premiume", 
-        "style": "Sour Ale", 
-        "ibu": "54"
+        "pro1": "Sapporo Premiume", 
+        "pro2": "Sour Ale", 
+        "pro3": "54"
       },
       {
-        "name": "Duvel",
-        "style": "Pilsner",
-        "ibu": "82"
-      },
-
-      {
-        "name": "La Fin Du Monde", 
-        "style": "Bock", 
-        "ibu": "65"
-      },
-      {
-        "name": "Sapporo Premiume", 
-        "style": "Sour Ale", 
-        "ibu": "54"
+        "pro1": "Duvel",
+        "pro2": "Pilsner",
+        "pro3": "82"
       },
 
       {
-        "name": "Duvel",
-        "style": "Pilsner",
-        "ibu": "82"
+        "pro1": "La Fin Du Monde", 
+        "pro2": "Bock", 
+        "pro3": "65"
+      },
+      {
+        "pro1": "Sapporo Premiume", 
+        "pro2": "Sour Ale", 
+        "pro3": "54"
+      },
+
+      {
+        "pro1": "Duvel",
+        "pro2": "Pilsner",
+        "pro3": "82"
       },    
     ];
   }
   void carregarNotas(){
     tableStateNotifier.value = [
        {
-        "name": "Salvar as notas em arquivos ou banco de dados",
-        "importancy": "vital",
-        "difficulty": "media"
+        "pro1": "Salvar as notas em arquivos ou banco de dados",
+        "pro2": "vital",
+        "pro3": "media"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Mudar tema", 
-        "importancy": "opcional", 
-        "difficulty": "baixa"
+        "pro1": "Mudar tema", 
+        "pro2": "opcional", 
+        "pro3": "baixa"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
       {
-        "name": "Fazer Calendário",
-        "importancy": "desejável",
-        "difficulty": "alta"
+        "pro1": "Fazer Calendário",
+        "pro2": "desejável",
+        "pro3": "alta"
       },
     ];
   }
@@ -142,16 +142,16 @@ class DataService{
   void carregarTelefones(){
     tableStateNotifier.value = [
       {
-        "nome": "Nome 1",
-        "telefone": "telefone 1",
+        "pro1": "Nome 1",
+        "pro2": "telefone 1",
       },
         {
-        "nome": "Nome 2",
-        "telefone": "telefone 2",
+        "pro1": "Nome 2",
+        "pro2": "telefone 2",
       },
         {
-        "nome": "Nome 3",
-        "telefone": "telefone 3",
+        "pro1": "Nome 3",
+        "pro2": "telefone 3",
       },
       
     ];
