@@ -4,6 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 
 class NotePage extends HookWidget{
+  const NotePage({super.key});
+
 
   @override
   Widget build(BuildContext context){

@@ -11,13 +11,13 @@ import 'package:app_notas/form_app.dart';
 
 void _notepage(BuildContext context) {
   Navigator.of(context).push(
-    MaterialPageRoute(builder: (context) => NotePage()),
+    MaterialPageRoute(builder: (context) => const NotePage()),
   );
 }
 
 void _formAppPage(BuildContext context) {
   Navigator.of(context).push(
-    MaterialPageRoute(builder: (context) => FormApp()),
+    MaterialPageRoute(builder: (context) => const FormApp()),
   );
 }
 
@@ -82,7 +82,7 @@ class HomePageStates extends State<HomePage>{
 
 
       bottomNavigationBar: MyHomeBottomAppBar(
-        myIcones: [
+        myIcones: const [
           Icons.arrow_back,
           Icons.home,
           Icons.arrow_forward,
@@ -97,7 +97,7 @@ class HomePageStates extends State<HomePage>{
           builder:(_, value, __){
             return MyListaAfazeres(
               objects: dataService.tableStateNotifier.value,
-                    propertyNames: ["pro1","pro2","pro3"], 
+                    propertyNames: const ["pro1","pro2","pro3"], 
               );
 
         // body: MyListaTelefone(

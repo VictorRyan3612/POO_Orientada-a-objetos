@@ -4,7 +4,7 @@ final dataService = DataService();
 class DataService{
 
   
-  final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]); 
+  final ValueNotifier<List> tableStateNotifier = ValueNotifier([]); 
 
   void carregar(index) {
     List<Function> funcoes = [

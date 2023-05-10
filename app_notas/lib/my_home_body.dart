@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:app_notas/var_global.dart';
 
 
 

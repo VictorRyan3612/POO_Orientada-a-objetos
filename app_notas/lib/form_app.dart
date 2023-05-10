@@ -9,6 +9,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 
 class FormApp extends HookWidget{
+  const FormApp({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class FormApp extends HookWidget{
 
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.dark()
+        colorScheme: const ColorScheme.dark()
       ),
       
       title: appTitle,
@@ -26,7 +28,7 @@ class FormApp extends HookWidget{
         appBar: AppBar(
           title: const Text(appTitle),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.popUntil(context, ModalRoute.withName('/'));
               // Navigator.pop(context);
@@ -37,8 +39,8 @@ class FormApp extends HookWidget{
         body: Align(
         alignment: Alignment.center,
         child: Container(
-          constraints: BoxConstraints(maxWidth: 600),
-          child: MyCustomForm(),
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: const MyCustomForm(),
         ),
       ),
       )
@@ -68,13 +70,13 @@ class MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         children: [
           TextFormField(
-            decoration: InputDecoration(labelText: 'Nome'),            
+            decoration: const InputDecoration(labelText: 'Nome'),            
           ),
           TextFormField(
-            decoration: InputDecoration(labelText: 'Idade'),
+            decoration: const InputDecoration(labelText: 'Idade'),
           ),
           DropdownButtonFormField<String>(
-            decoration: InputDecoration(labelText: 'Função'),
+            decoration: const InputDecoration(labelText: 'Função'),
             value: _opcao,
             onChanged: (newValue) {
               setState(() {
