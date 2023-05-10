@@ -1,20 +1,19 @@
+import 'package:un2_receita6/my_app.dart';
 import 'package:flutter/material.dart';
 
+
+
+
 void main() {
-  runApp(const MainApp());
+  MyApp app = MyApp();
+
+  runApp(app);
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+/*
+Ao adicionar print("no build da classe X"); em cada build, é possivel ver que o flutter
+constroi esses widget pela primeira vez, como os formularios e a pagina notes são
+opcionais a serem executadas, então só são construidas quando necessárias
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
-}
+Clicando nos icones do myhomebottomappbar, apenas esse widget é refeito, os demais não.
+*/
