@@ -5,7 +5,7 @@ import 'package:app_notas/note_page.dart';
 import 'package:app_notas/var_global.dart';
 import 'package:app_notas/my_home_body.dart';
 import 'package:app_notas/form_app.dart';
-
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 
 
@@ -21,17 +21,12 @@ void _formAppPage(BuildContext context) {
   );
 }
 
-class HomePage extends StatefulWidget{
+
+
+
+class HomePage extends HookWidget{
   const HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => HomePageStates();
-}
-
-
-
-
-class HomePageStates extends State<HomePage>{
   @override
   Widget build(BuildContext context) {
     return
