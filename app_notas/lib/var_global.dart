@@ -6,12 +6,23 @@ class DataService{
   
   final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]); 
 
+  void carregar(index) {
+    List<Function> funcoes = [
+      carregarCervejas, 
+      carregarNotas, 
+      carregarTelefones
+    ];
 
-  void carregar(index){
-    if (index == 0) carregarCervejas();
-    if (index == 1) carregarNotas();
-    if (index == 2) carregarTelefones();
+    funcoes[index]();
   }
+
+
+  // void carregar(index){
+  //   if (index == 0) carregarCervejas();
+  //   if (index == 1) carregarNotas();
+  //   if (index == 2) carregarTelefones();
+  // }
+
 
   void carregarCervejas(){
     tableStateNotifier.value = [
