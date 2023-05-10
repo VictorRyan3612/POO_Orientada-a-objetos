@@ -89,15 +89,15 @@ class HomePageStates extends State<HomePage>{
           Icons.arrow_forward,
         ],
         nomesIcones: iconesnomesVar,
-        itemSelectedCallback: carregar
+        itemSelectedCallback: dataService.carregar
         
       ),
 
       body: ValueListenableBuilder(
-          valueListenable: tableStateNotifier,
+          valueListenable: dataService.tableStateNotifier,
           builder:(_, value, __){
             return MyListaAfazeres(
-              objects: tableStateNotifier.value,
+              objects: dataService.tableStateNotifier.value,
                     propertyNames: ["name","style","ibu"], 
               );
 

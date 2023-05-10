@@ -1,6 +1,39 @@
 import 'package:flutter/material.dart';
 
-final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]); 
+final dataService = DataService();
+class DataService{
+
+  
+  final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]); 
+
+
+  void carregar(index){
+    if (index == 1) carregarCervejas();
+
+  }
+
+  void carregarCervejas(){
+  tableStateNotifier.value = [
+    {
+      "name": "La Fin Du Monde",
+      "style": "Bock",
+      "ibu": "65"
+    },
+    {
+      "name": "Sapporo Premiume",
+      "style": "Sour Ale",
+      "ibu": "54"
+    },
+    {
+      "name": "Duvel", 
+      "style": "Pilsner", 
+      "ibu": "82"
+    }
+  ];
+  }
+}
+
+
 // var dataObjects = [
 //   {"name": "La Fin Du Monde", "style": "Bock", "ibu": "65"},
 //   {"name": "Sapporo Premiume", "style": "Sour Ale", "ibu": "54"},
