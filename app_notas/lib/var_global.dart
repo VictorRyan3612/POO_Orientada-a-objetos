@@ -174,8 +174,8 @@ class DataService{
 
 
 const iconesnomesVar = [
-  "Voltar",
-  "Inical",
-  "Avançar",
+  "Cervejas",
+  "Notas",
+  "Telefones",
 ];
 

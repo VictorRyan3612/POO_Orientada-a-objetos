@@ -78,9 +78,9 @@ class HomePage extends HookWidget{
 
       bottomNavigationBar: MyHomeBottomAppBar(
         myIcones: const [
-          Icons.arrow_back,
-          Icons.home,
-          Icons.arrow_forward,
+          Icons.local_drink_rounded,
+          Icons.task,
+          Icons.phone,
         ],
         nomesIcones: iconesnomesVar,
         itemSelectedCallback: dataService.carregar
