@@ -5,10 +5,13 @@ import 'package:app_notas/var_global.dart';
 
 // lista de afazeres
 class MyListaAfazeres extends StatelessWidget{
-  List<Map<String,dynamic>> objects;
+  // final List jsonObjects;
+  // List<Map<String,dynamic>> objects;
+  List<dynamic> objects;
   final List propertyNames;
 
-  MyListaAfazeres( {super.key, this.objects = const [], this.propertyNames = const []});
+  MyListaAfazeres( {super.key, this.objects = const [], this.propertyNames = const [],
+   });
 
   @override
   Widget build(BuildContext context) {

@@ -32,7 +32,6 @@ class HomePage extends StatefulWidget{
 
 
 class HomePageStates extends State<HomePage>{
- 
   @override
   Widget build(BuildContext context) {
     print("no build da classe HomepageStates");
@@ -73,18 +72,6 @@ class HomePageStates extends State<HomePage>{
 
 
       
-
-      body: MyListaAfazeres(
-        objects: dataListaNotas,
-        propertyNames: const ["name","importancy","difficulty"]
-        ),
-      // body: MyListaTelefone(
-      //   objects: listaPhoneListview,
-      //   propertyNames: const ["nome", "telefone"]
-      // ), //
-
-
-
       floatingActionButton: FloatingActionButton(
         onPressed:(){
           _notepage(context);
@@ -95,18 +82,36 @@ class HomePageStates extends State<HomePage>{
 
 
 
-      bottomNavigationBar: const MyHomeBottomAppBar(
+      bottomNavigationBar: MyHomeBottomAppBar(
         myIcones: [
           Icons.arrow_back,
           Icons.home,
           Icons.arrow_forward,
         ],
-        nomesIcones: iconesnomesVar
-      )
+        nomesIcones: iconesnomesVar,
+        itemSelectedCallback: dataService.carregar
+        
+      ),
+
+      body: ValueListenableBuilder(
+          valueListenable: dataService.tableStateNotifier,
+          builder:(_, value, __){
+            return MyListaAfazeres(
+              objects: dataService.tableStateNotifier.value,
+                    propertyNames: ["pro1","pro2","pro3"], 
+              );
+
+        // body: MyListaTelefone(
+        //   objects: listaPhoneListview,
+        //   propertyNames: const ["nome", "telefone"]
+        // ), //
+
+          },
 
 
 
-    );
+
+
+    ));
   }
-
 }
