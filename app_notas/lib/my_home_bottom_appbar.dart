@@ -14,7 +14,7 @@ class MyHomeBottomAppBar extends HookWidget {
 
 
   MyHomeBottomAppBar({super.key, required this.myIcones, required this.nomesIcones, this.itemSelectedCallback}){
-    itemSelectedCallback ??= (){};
+    itemSelectedCallback ??= (_){};
   }
 
   void botaoTocado(int index) {
@@ -29,7 +29,7 @@ class MyHomeBottomAppBar extends HookWidget {
       
       onTap: (index){
         state.value = index;
-        itemSelectedCallback();
+        itemSelectedCallback(index);
       },      
 
       currentIndex: state.value,
@@ -62,6 +62,10 @@ class MyHomeBottomAppBar extends HookWidget {
   }
 }
 
+
+void carregar(index){
+  if (index == 1) carregarCervejas();
+}
 
 void carregarCervejas(){
 tableStateNotifier.value = [

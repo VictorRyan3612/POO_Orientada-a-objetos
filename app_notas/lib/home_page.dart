@@ -89,7 +89,7 @@ class HomePageStates extends State<HomePage>{
           Icons.arrow_forward,
         ],
         nomesIcones: iconesnomesVar,
-        itemSelectedCallback: carregarCervejas
+        itemSelectedCallback: carregar
         
       ),
 
