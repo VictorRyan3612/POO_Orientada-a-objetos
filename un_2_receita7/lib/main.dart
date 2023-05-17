@@ -23,7 +23,19 @@ class DataService{
 
   }
 
+  Future<void> carregarCafes() async{
+    var cafesUri = Uri(
+      scheme: "https",
+      host: "rancom-data-api.com",
+      path: "api/coffee/random_coffee",
+      queryParameters: {'size': "5"}
+    );
 
+    var jsonString = await http.read(cafesUri);
+    var cafesJson = jsonDecode(jsonString);
+    
+    tableStateNotifier.value = cafesJson;
+  }
 
   Future<void> carregarCervejas() async{
 
