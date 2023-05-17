@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
-
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 
 class DataService{
@@ -12,51 +13,45 @@ class DataService{
 
   void carregar(index){
 
-    if (index == 1) carregarCervejas();
+    var res = null;
+
+    print('carregar #1 - antes de carregarCervejas');
+
+    if (index == 1) res = carregarCervejas();
+
+    print('carregar #2 - carregarCervejas retornou $res');
 
   }
 
 
 
-  void carregarCervejas(){
+  Future<void> carregarCervejas() async{
+
+    var beersUri = Uri(
+
+      scheme: 'https',
+
+      host: 'random-data-api.com',
+
+      path: 'api/beer/random_beer',
+
+      queryParameters: {'size': '5'});
 
 
 
+    print('carregarCervejas #1 - antes do await');
+
+    var jsonString = await http.read(beersUri);
+
+    print('carregarCervejas #2 - depois do await');
+
+    var beersJson = jsonDecode(jsonString);
 
 
-    tableStateNotifier.value = [{
 
-              "name": "La Fin Du Monde",
+    tableStateNotifier.value = beersJson;
 
-              "style": "Bock",
-
-              "ibu": "65"
-
-            },
-
-            {
-
-              "name": "Sapporo Premiume",
-
-              "style": "Sour Ale",
-
-              "ibu": "54"
-
-            },
-
-            {
-
-              "name": "Duvel", 
-
-              "style": "Pilsner", 
-
-              "ibu": "82"
-
-            }
-
-          ];
-
-    }
+  }
 
 }
 
