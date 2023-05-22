@@ -3,9 +3,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+var estadoAplicativo = {
+  "objects": [],
+  "props": [],
+};
+
 
 class DataService{
-  final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
+  final ValueNotifier<Map<String,dynamic>> tableStateNotifier= new ValueNotifier(estadoAplicativo);
 
 
   void carregar(index){
@@ -29,7 +34,7 @@ class DataService{
     var jsonString = await http.read(cafesUri);
     var cafesJson = jsonDecode(jsonString);
     
-    tableStateNotifier.value = cafesJson;
+    tableStateNotifier.value["objects"] = cafesJson;
   }
 
 
@@ -50,8 +55,14 @@ class DataService{
     var beersJson = jsonDecode(jsonString);
 
 
-    tableStateNotifier.value = beersJson;
+    tableStateNotifier.value["objects"] = beersJson;
+    tableStateNotifier.value["props"] = [
+        "name",
+        "style",
+        "ibu"
+      ];
 
+    
   }
 
 }
@@ -85,8 +96,9 @@ class MyApp extends StatelessWidget {
           builder:(_, value, __){
 
             return DataTableWidget(
-              jsonObjects:value, 
-              propertyNames: ["name","style","ibu"], 
+              objects: dataService.tableStateNotifier.value["objects"],
+              // jsonObjects:value["objects"], 
+              propertyNames: value["props"], 
               columnNames: ["Nome", "Estilo", "IBU"]
             );
           }
@@ -151,11 +163,12 @@ class NewNavBar extends HookWidget {
 
 
 class DataTableWidget extends StatelessWidget {
-  final List jsonObjects;
-  final List<String> columnNames;
-  final List<String> propertyNames;
+  // final List jsonObjects;
+  List<dynamic> objects;
+  final List<dynamic> columnNames;
+  final List propertyNames;
 
-  DataTableWidget( {this.jsonObjects = const [], this.columnNames = const [], this.propertyNames= const []});
+  DataTableWidget( {this.objects = const [], this.columnNames = const [], this.propertyNames= const []});
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +182,7 @@ class DataTableWidget extends StatelessWidget {
       ).toList(),
 
 
-      rows: jsonObjects.map( 
+      rows: objects.map( 
         (obj) => DataRow(
             cells: propertyNames.map(
               (propName) => DataCell(Text(obj[propName]))
