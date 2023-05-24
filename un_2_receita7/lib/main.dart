@@ -55,12 +55,15 @@ class DataService{
     var beersJson = jsonDecode(jsonString);
 
 
-    tableStateNotifier.value["objects"] = beersJson;
-    tableStateNotifier.value["props"] = [
+
+    tableStateNotifier.value = {
+      "objects": beersJson,
+      "props": [
         "name",
         "style",
         "ibu"
-      ];
+      ]
+    };
 
     
   }
