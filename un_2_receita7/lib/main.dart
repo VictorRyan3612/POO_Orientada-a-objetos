@@ -15,10 +15,12 @@ class DataService{
 
   void carregar(index){
     var res = null;
-    print('carregar #1 - antes de carregarCervejas');
+      print('carregar #1 - antes de carregarCervejas');
+    if (index == 0) res = carregarCafes();
     if (index == 1) res = carregarCervejas();
       print('carregar #2 - carregarCervejas retornou $res');
-    if (index == 0) res = carregarCafes();
+    if (index == 2) res = carregarNacoes();
+
   }
 
 
@@ -74,11 +76,33 @@ class DataService{
       ]
     };
 
-    
+  }
+    Future<void> carregarNacoes() async{
+
+    var nacoesUri = Uri(
+      scheme: 'https',
+      host: 'random-data-api.com',
+      path: 'api/nation/random_nation',
+      queryParameters: {'size': '5'}
+    );
+
+
+    var jsonString = await http.read(nacoesUri);
+    var nacoesJson = jsonDecode(jsonString);
+
+
+
+    tableStateNotifier.value = {
+      "objects": nacoesJson,
+      "props": [
+        "nationality",
+        "language",
+        "capital"
+      ]
+    };
   }
 
 }
-
 final dataService = DataService();
 
 
