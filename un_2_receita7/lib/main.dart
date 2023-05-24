@@ -16,6 +16,7 @@ var estadoAplicativo = {
 
 class DataService{
   final ValueNotifier<Map<String,dynamic>> tableStateNotifier= new ValueNotifier(estadoAplicativo);
+  int querySize = 5;
 
 
   void carregar(index){
@@ -28,6 +29,9 @@ class DataService{
 
   }
 
+  void setQuerySize(int newSize) {
+    querySize = newSize = 5;
+  }
 
 
   Future<void> carregarCafes() async{
@@ -35,7 +39,7 @@ class DataService{
       scheme: "https",
       host: "random-data-api.com",
       path: "api/coffee/random_coffee",
-      queryParameters: {'size': "5"}
+      queryParameters: {'size': '$querySize'}
     );
 
     var jsonString = await http.read(cafesUri);
@@ -66,7 +70,7 @@ class DataService{
       scheme: 'https',
       host: 'random-data-api.com',
       path: 'api/beer/random_beer',
-      queryParameters: {'size': '5'}
+      queryParameters: {'size': '$querySize'}
     );
 
     print('carregarCervejas #1 - antes do await');
@@ -98,7 +102,7 @@ class DataService{
       scheme: 'https',
       host: 'random-data-api.com',
       path: 'api/nation/random_nation',
-      queryParameters: {'size': '5'}
+      queryParameters: {'size': '$querySize'}
     );
 
 
@@ -135,6 +139,8 @@ void main() {
 
 
 class MyApp extends StatelessWidget {
+
+  
   @override
 
   Widget build(BuildContext context) {
@@ -159,27 +165,30 @@ class MyApp extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Container(
                   constraints: const BoxConstraints(maxWidth: 600),
-                  child: const MyCustomForm(),
+                  child: MyCustomForm(callback: dataService.setQuerySize,),
                   ),
               ),
 
-
+    
               ValueListenableBuilder(
                 valueListenable: dataService.tableStateNotifier,
                 builder:(_, value, __){
                 
                   return Center(
-                    child: DataTableWidget(
-                      objects: dataService.tableStateNotifier.value["objects"],
-                      // jsonObjects:value["objects"], 
-                      propertyNames: value["props"], 
-                      columnNames: value["columnsNames"]
+                    
+                    child:  (
+                      DataTableWidget(
+                        objects: dataService.tableStateNotifier.value["objects"],
+                        // jsonObjects:value["objects"], 
+                        propertyNames: value["props"], 
+                        columnNames: value["columnsNames"]
+                      )
                     )
                   );
                 }
               ),
             ],
-          ),
+            ),
         ),
         
         
@@ -194,6 +203,7 @@ class MyApp extends StatelessWidget {
 
 
 class NewNavBar extends HookWidget {
+  
   final _itemSelectedCallback;
 
   NewNavBar({itemSelectedCallback}):
@@ -202,6 +212,7 @@ class NewNavBar extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     var state = useState(1);
 
     return BottomNavigationBar(
@@ -243,6 +254,7 @@ class NewNavBar extends HookWidget {
 
 
 class DataTableWidget extends StatelessWidget {
+  
   // final List jsonObjects;
   List<dynamic> objects;
   final List columnNames;
@@ -274,44 +286,55 @@ class DataTableWidget extends StatelessWidget {
 
 }
 
-class MyCustomForm extends StatefulWidget {
-  const MyCustomForm({super.key});
+// class MyCustomForm extends StatefulWidget {
+//   const MyCustomForm({super.key});
 
-  @override
-  MyCustomFormState createState() {
-    return MyCustomFormState();
-  }
-}
+//   @override
+//   MyCustomFormState createState() {
+//     return MyCustomFormState();
+//   }
+// }
 
-class MyCustomFormState extends State<MyCustomForm> {
-
-  var _opcao;
+class MyCustomForm extends HookWidget {
+  dynamic callback; 
+  // var _opcao;
   final _formKey = GlobalKey<FormState>();
+
+  MyCustomForm({super.key, this.callback});
+  
+  // int get newSize => 5;
+
+
 
   @override
   Widget build(BuildContext context) {
+    var state = useState(5);
     return Form(
       child: Column(
         children: [
-          DropdownButtonFormField<String>(
+          DropdownButtonFormField<int>(
             decoration: const InputDecoration(labelText: 'Quantidade de itens'),
-            value: _opcao,
+            value: state.value,
             onChanged: (newValue) {
-              setState(() {
-                _opcao = newValue;
-              });
+              state.value = newValue ?? 5;
+              callback(state.value);
+
+              // setState(() {
+              //   _opcao = dataService.querySize;
+              // }
+              // );
             },
             items: const [
-              DropdownMenuItem(
-                value: '5',
+              DropdownMenuItem<int>(
+                value: 5,
                 child: Text('5 Itens'),
               ),
-              DropdownMenuItem(
-                value: '10',
+              DropdownMenuItem<int>(
+                value: 10,
                 child: Text('10 Itens'),
               ),
-              DropdownMenuItem(
-                value: '15',
+              DropdownMenuItem<int>(
+                value: 15,
                 child: Text('15 Itens'),
               ),
             ],
@@ -321,6 +344,8 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: ElevatedButton(
               onPressed: () {
+                  dataService.setQuerySize(state.value);
+                  dataService.querySize = state.value;
                 if (_formKey.currentState != null && _formKey.currentState!.validate()) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Processando')),
