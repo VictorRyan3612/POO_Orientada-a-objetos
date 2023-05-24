@@ -6,6 +6,11 @@ import 'dart:convert';
 var estadoAplicativo = {
   "objects": [],
   "props": [],
+  "columnsNames": [
+    "Propriedade 1", 
+    "Propriedade 2", 
+    "Propriedade 3"
+  ]
 };
 
 
@@ -15,10 +20,10 @@ class DataService{
 
   void carregar(index){
     var res = null;
-      print('carregar #1 - antes de carregarCervejas');
+    print('carregar #1 - antes de carregarCervejas');
     if (index == 0) res = carregarCafes();
     if (index == 1) res = carregarCervejas();
-      print('carregar #2 - carregarCervejas retornou $res');
+    print('carregar #2 - carregarCervejas retornou $res');
     if (index == 2) res = carregarNacoes();
 
   }
@@ -42,6 +47,11 @@ class DataService{
         "blend_name",
         "origin",
         "variety"
+      ],
+      "columnsNames": [
+        "Nomes",
+        "Origem",
+        "Variedade"
       ]
     };
   }
@@ -73,6 +83,11 @@ class DataService{
         "name",
         "style",
         "ibu"
+      ],
+      "columnsNames": [
+        "Nomes",
+        "Estilo",
+        "IBU"
       ]
     };
 
@@ -98,6 +113,11 @@ class DataService{
         "nationality",
         "language",
         "capital"
+      ],
+      "columnsNames": [
+        "Nacionalidade",
+        "Linguagem",
+        "Capital"
       ]
     };
   }
@@ -135,7 +155,7 @@ class MyApp extends StatelessWidget {
               objects: dataService.tableStateNotifier.value["objects"],
               // jsonObjects:value["objects"], 
               propertyNames: value["props"], 
-              columnNames: ["Nome", "Estilo", "IBU"]
+              columnNames: value["columnsNames"]
             );
           }
         ),
@@ -201,7 +221,7 @@ class NewNavBar extends HookWidget {
 class DataTableWidget extends StatelessWidget {
   // final List jsonObjects;
   List<dynamic> objects;
-  final List<dynamic> columnNames;
+  final List columnNames;
   final List propertyNames;
 
   DataTableWidget( {this.objects = const [], this.columnNames = const [], this.propertyNames= const []});
@@ -209,10 +229,11 @@ class DataTableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DataTable(
+
       columns: columnNames.map( 
         (name) => DataColumn(
           label: Expanded(
-            child: Text(name, style: TextStyle(fontStyle: FontStyle.italic))
+            child: Text(name, style: TextStyle(fontWeight: FontWeight.bold))
           )
         )
       ).toList(),
