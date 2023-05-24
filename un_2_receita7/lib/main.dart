@@ -34,9 +34,18 @@ class DataService{
     var jsonString = await http.read(cafesUri);
     var cafesJson = jsonDecode(jsonString);
     
-    tableStateNotifier.value["objects"] = cafesJson;
+    tableStateNotifier.value = {
+      "objects": cafesJson,
+      "props": [
+        "blend_name",
+        "origin",
+        "variety"
+      ]
+    };
   }
 
+
+  
 
 
   Future<void> carregarCervejas() async{
