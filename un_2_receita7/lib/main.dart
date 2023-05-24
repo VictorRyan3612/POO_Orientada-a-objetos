@@ -160,36 +160,35 @@ class MyApp extends StatelessWidget {
         body: Container(
           child: Column(
             children: [
-
               Align(
                 alignment: Alignment.center,
                 child: Container(
                   constraints: const BoxConstraints(maxWidth: 600),
-                  child: MyCustomForm(callback: dataService.setQuerySize,),
-                  ),
+                  child: MyCustomForm(callback: dataService.setQuerySize),
+                ),
               ),
-
-    
-              ValueListenableBuilder(
-                valueListenable: dataService.tableStateNotifier,
-                builder:(_, value, __){
-                
-                  return Center(
-                    
-                    child:  (
-                      DataTableWidget(
-                        objects: dataService.tableStateNotifier.value["objects"],
-                        // jsonObjects:value["objects"], 
-                        propertyNames: value["props"], 
-                        columnNames: value["columnsNames"]
-                      )
-                    )
-                  );
-                }
+              Expanded(
+                child: SingleChildScrollView(
+                  child:
+                    ValueListenableBuilder(
+                    valueListenable: dataService.tableStateNotifier,
+                    builder: (_, value, __) {
+                      return Center(
+                        child: DataTableWidget(
+                          objects: dataService.tableStateNotifier.value["objects"],
+                          propertyNames: value["props"],
+                          columnNames: value["columnsNames"],
+                        ),
+                      );
+                    },
+                  ),
+                  
+                ),
               ),
             ],
-            ),
+          ),
         ),
+
         
         
         bottomNavigationBar: NewNavBar(itemSelectedCallback: dataService.carregar),
