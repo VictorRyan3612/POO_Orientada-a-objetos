@@ -139,7 +139,11 @@ class MyApp extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+        colorScheme: const ColorScheme.dark(),
+      ),
+      
       debugShowCheckedModeBanner:false,
 
       home: Scaffold(
@@ -147,18 +151,29 @@ class MyApp extends StatelessWidget {
           title: const Text("Dicas"),
           ),
 
-        body: ValueListenableBuilder(
-          valueListenable: dataService.tableStateNotifier,
-          builder:(_, value, __){
-
-            return DataTableWidget(
-              objects: dataService.tableStateNotifier.value["objects"],
-              // jsonObjects:value["objects"], 
-              propertyNames: value["props"], 
-              columnNames: value["columnsNames"]
-            );
-          }
+        body: Container(
+          child: Column(
+            children: [
+              
+              ValueListenableBuilder(
+                valueListenable: dataService.tableStateNotifier,
+                builder:(_, value, __){
+                
+                  return Center(
+                    child: DataTableWidget(
+                      objects: dataService.tableStateNotifier.value["objects"],
+                      // jsonObjects:value["objects"], 
+                      propertyNames: value["props"], 
+                      columnNames: value["columnsNames"]
+                    )
+                  );
+                }
+              ),
+            ],
+          ),
         ),
+        
+        
         bottomNavigationBar: NewNavBar(itemSelectedCallback: dataService.carregar),
       ));
   }
