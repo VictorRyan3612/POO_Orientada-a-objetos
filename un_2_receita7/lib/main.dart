@@ -154,7 +154,7 @@ class MyApp extends StatelessWidget {
         body: Container(
           child: Column(
             children: [
-              
+
               Align(
                 alignment: Alignment.center,
                 child: Container(
@@ -293,14 +293,8 @@ class MyCustomFormState extends State<MyCustomForm> {
     return Form(
       child: Column(
         children: [
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'Nome'),            
-          ),
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'Idade'),
-          ),
           DropdownButtonFormField<String>(
-            decoration: const InputDecoration(labelText: 'Função'),
+            decoration: const InputDecoration(labelText: 'Quantidade de itens'),
             value: _opcao,
             onChanged: (newValue) {
               setState(() {
@@ -309,12 +303,16 @@ class MyCustomFormState extends State<MyCustomForm> {
             },
             items: const [
               DropdownMenuItem(
-                value: 'Aluno',
-                child: Text('Aluno'),
+                value: '5',
+                child: Text('5 Itens'),
               ),
               DropdownMenuItem(
-                value: 'Professor',
-                child: Text('Professor'),
+                value: '10',
+                child: Text('10 Itens'),
+              ),
+              DropdownMenuItem(
+                value: '15',
+                child: Text('15 Itens'),
               ),
             ],
           ),
@@ -323,13 +321,13 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: ElevatedButton(
               onPressed: () {
-                if (_formKey.currentState!.validate()) {
+                if (_formKey.currentState != null && _formKey.currentState!.validate()) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Processing Data')),
+                    const SnackBar(content: Text('Processando')),
                   );
                 }
               },
-              child: const Text('Submit'),
+              child: const Text('Atribuir'),
             ),
           ),
         ],
