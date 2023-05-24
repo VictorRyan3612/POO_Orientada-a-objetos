@@ -62,7 +62,7 @@ class HomePage extends HookWidget{
             
           ],
         ),
-      ),  // Populate the Drawer in the next step.
+      ),
 
 
       
@@ -72,7 +72,7 @@ class HomePage extends HookWidget{
         },
         tooltip: "Nova anotação",
         child: const Icon(Icons.add),
-       ),
+      ),
 
 
 
@@ -88,17 +88,13 @@ class HomePage extends HookWidget{
       ),
 
       body: ValueListenableBuilder(
-          valueListenable: dataService.tableStateNotifier,
-          builder:(_, value, __){
-            return MyListaAfazeres(
-              objects: dataService.tableStateNotifier.value["objects"],
-                    propertyNames: dataService.tableStateNotifier.value["props"],
-              );
+        valueListenable: dataService.tableStateNotifier,
+        builder:(_, value, __){
+          return MyListaAfazeres(
+            objects: dataService.tableStateNotifier.value["objects"],
+            propertyNames: dataService.tableStateNotifier.value["props"],
+          );
 
-        // body: MyListaTelefone(
-        //   objects: listaPhoneListview,
-        //   propertyNames: const ["nome", "telefone"]
-        // ), //
 
           },
 

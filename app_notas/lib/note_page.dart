@@ -10,16 +10,17 @@ class NotePage extends HookWidget{
   @override
   Widget build(BuildContext context){
     return
-   Scaffold(
+    Scaffold(
       appBar: AppBar(
         title: const
           Center(child: 
-            Text("Teste de nova Página",
-                style: TextStyle(fontSize: 25)
+            Text(
+              "Teste de nova Página",
+              style: TextStyle(fontSize: 25)
             )
           )
         ),
       
-   );
+    );
   }
 }

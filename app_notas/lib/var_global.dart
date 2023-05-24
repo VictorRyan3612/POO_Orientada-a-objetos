@@ -25,12 +25,6 @@ class DataService{
   }
 
 
-  // void carregar(index){
-  //   if (index == 0) carregarCervejas();
-  //   if (index == 1) carregarNotas();
-  //   if (index == 2) carregarTelefones();
-  // }
-
 
   void carregarCervejas(){
     tableStateNotifier.value = {
