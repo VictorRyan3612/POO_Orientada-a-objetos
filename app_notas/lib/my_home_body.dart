@@ -22,7 +22,7 @@ class MyListaAfazeres extends StatelessWidget{
             
             title: Text(
               "${obj[propertyNames[0]]}",
-              style: TextStyle(fontSize: 20)
+              style: const TextStyle(fontSize: 20)
             ),
 
             subtitle: Text(
