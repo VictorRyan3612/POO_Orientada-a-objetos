@@ -25,6 +25,23 @@ class Temas extends HookWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Mudança de Tema'),
+          actions: [
+            PopupMenuButton<Brightness>(
+              onSelected: (Brightness brightness) {
+                _currentBrightness.value = brightness;
+              },
+              itemBuilder: (BuildContext context) => [
+                PopupMenuItem<Brightness>(
+                  value: Brightness.light,
+                  child: Text('Tema Claro'),
+                ),
+                PopupMenuItem<Brightness>(
+                  value: Brightness.dark,
+                  child: Text('Tema Escuro'),
+                ),
+              ],
+            ),
+          ],
         ),
         body: Center(
           child: ElevatedButton(
