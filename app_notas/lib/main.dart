@@ -35,6 +35,7 @@ class HomePageApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: MyAppBar(_currentBrightness),
       body: Center(
         child: ElevatedButton(
           onPressed: _toggleTheme,
@@ -44,6 +45,43 @@ class HomePageApp extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+}
+
+
+
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget{
+  final ValueNotifier<Brightness> _currentBrightness;
+
+  MyAppBar(this._currentBrightness);
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Text('Mudança de Tema'),
+      actions: [
+        PopupMenuButton<Brightness>(
+          onSelected: (Brightness brightness) {
+            _currentBrightness.value = brightness;
+          },
+          itemBuilder: (BuildContext context) => [
+            PopupMenuItem<Brightness>(
+              value: Brightness.light,
+              child: Text('Tema Claro'),
+            ),
+            PopupMenuItem<Brightness>(
+              value: Brightness.dark,
+              child: Text('Tema Escuro'),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
