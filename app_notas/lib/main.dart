@@ -4,7 +4,8 @@ import 'home_page.dart';
 
 
 void main() {
-  runApp(MyApp());
+  MyApp app = MyApp();
+  runApp(app);
 }
 
 class MyApp extends HookWidget {

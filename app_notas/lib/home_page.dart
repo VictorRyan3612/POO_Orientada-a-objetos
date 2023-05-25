@@ -101,10 +101,7 @@ class HomePageApp extends HookWidget{
 
           },
 
-
-
-
-
-    ));
+      )
+    );
   }
 }

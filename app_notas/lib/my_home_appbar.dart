@@ -24,11 +24,11 @@ class MyHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             _currentBrightness.value = brightness;
           },
           itemBuilder: (BuildContext context) => [
-            PopupMenuItem<Brightness>(
+            const PopupMenuItem<Brightness>(
               value: Brightness.light,
               child: Text('Tema Claro'),
             ),
-            PopupMenuItem<Brightness>(
+            const PopupMenuItem<Brightness>(
               value: Brightness.dark,
               child: Text('Tema Escuro'),
             ),
