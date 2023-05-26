@@ -78,39 +78,8 @@ class DataService{
       queryParameters: {'size': '$querySize'}
     );
 
-    fetchData(beersUri);
-  }
-
-  void fetchData(Uri uri) async {
-    try {
-      var jsonString = await http.read(uri);
-      var uriJson = jsonDecode(jsonString);
-      tableStateNotifier.value = {
-        'status': TableStatus.ready,
-        "objects": uriJson,
-        "props": [
-          "name",
-          "style",
-          "ibu"
-        ],
-        "columnsNames": [
-          "Nomes",
-          "Estilo",
-          "IBU"
-        ]
-      };
-    }
+    fetchData(beersUri, carregarCervejas);
     
-    catch (error) {
-      if (error.runtimeType.toString() == '_ClientSocketException') {
-        tableStateNotifier.value={
-          'status':TableStatus.error
-          };
-        print('Erro de conexão: Verifique sua conexão com a internet.');
-      } else {
-        print('Erro desconhecido: $error');
-      }
-    }
   }
 
 
@@ -144,6 +113,42 @@ class DataService{
         "Capital"
       ]
     };
+  }
+
+
+
+  void fetchData(Uri uri, Function function) async {
+    try {
+      var jsonString = await http.read(uri);
+      var uriJson = jsonDecode(jsonString);
+      if (function == carregarCervejas){
+        tableStateNotifier.value = {
+          'status': TableStatus.ready,
+          "objects": uriJson,
+          "props": [
+            "name",
+            "style",
+            "ibu"
+          ],
+          "columnsNames": [
+            "Nomes",
+            "Estilo",
+            "IBU"
+          ]
+        };
+      }
+    }
+    
+    catch (error) {
+      if (error.runtimeType.toString() == '_ClientSocketException') {
+        tableStateNotifier.value={
+          'status':TableStatus.error
+          };
+        print('Erro de conexão: Verifique sua conexão com a internet.');
+      } else {
+        print('Erro desconhecido: $error');
+      }
+    }
   }
 
 }
