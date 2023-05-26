@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
+enum TableStatus{idle,loading,ready,error}
 var estadoAplicativo = {
+  'status':TableStatus.idle,
   "objects": [],
   "props": [],
   "columnsNames": [
@@ -13,6 +14,7 @@ var estadoAplicativo = {
   ]
 };
 
+
 class DataService{
   final ValueNotifier<Map<String,dynamic>> tableStateNotifier= new ValueNotifier(estadoAplicativo);
   int querySize = 5;
@@ -20,6 +22,16 @@ class DataService{
 
   void carregar(index){
     final funcoes = [carregarCafes, carregarCervejas, carregarNacoes];
+    tableStateNotifier.value = {
+      'status': TableStatus.loading,
+      "objects": [],
+      "props": [],
+      "columnsNames": [
+        "Propriedade 1", 
+        "Propriedade 2", 
+        "Propriedade 3"
+      ]
+    };
     funcoes[index]();
   }
 
@@ -71,6 +83,7 @@ class DataService{
     http.read(beersUri).then( (jsonString){
       var beersJson = jsonDecode(jsonString);
       tableStateNotifier.value = {
+        'status': TableStatus.ready,
         "objects": beersJson,
         "props": [
           "name",
