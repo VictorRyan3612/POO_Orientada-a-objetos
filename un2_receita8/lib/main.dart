@@ -67,9 +67,12 @@ class MyApp extends StatelessWidget {
                               ),
                             );
                           case TableStatus.error: 
-                            return Text("Lascou");
+                            return Padding (
+                                padding: EdgeInsets.all(30.0),
+                                child: Text("Erro de conexão: Verifique sua conexão com a internet.")
+                              );
                         }
-                        return Text("..."); 
+                        return Text("Erro desconhecido"); 
                     }
                 ),
                   
