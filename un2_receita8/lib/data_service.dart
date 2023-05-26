@@ -69,11 +69,8 @@ class DataService{
   }
 
 
-  
 
-
-  void carregarCervejas(){
-
+  void carregarCervejas() {
     var beersUri = Uri(
       scheme: 'https',
       host: 'random-data-api.com',
@@ -81,8 +78,12 @@ class DataService{
       queryParameters: {'size': '$querySize'}
     );
 
+    fetchData(beersUri); // Chama a função fetchData com a URI das cervejas
+  }
 
-    http.read(beersUri).then( (jsonString){
+  void fetchData(Uri beersUri) async {
+    try {
+      var jsonString = await http.read(beersUri);
       var beersJson = jsonDecode(jsonString);
       tableStateNotifier.value = {
         'status': TableStatus.ready,
@@ -98,11 +99,22 @@ class DataService{
           "IBU"
         ]
       };
-    });
-
-
-
+    }
+    
+    catch (error) {
+      if (error.runtimeType.toString() == '_ClientSocketException') {
+        tableStateNotifier.value={
+          'status':TableStatus.error
+          };
+        print('Erro de conexão: Verifique sua conexão com a internet.');
+      } else {
+        print('Erro desconhecido: $error');
+      }
+    }
   }
+
+
+
     Future<void> carregarNacoes() async{
 
     var nacoesUri = Uri(
