@@ -101,12 +101,6 @@ class DataService{
     });
 
 
-    // print('carregarCervejas #1 - antes do await');
-
-
-    // print('carregarCervejas #2 - depois do await');
-
-
 
   }
     Future<void> carregarNacoes() async{
@@ -125,6 +119,7 @@ class DataService{
 
 
     tableStateNotifier.value = {
+      'status': TableStatus.ready,
       "objects": nacoesJson,
       "props": [
         "nationality",
