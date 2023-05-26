@@ -119,23 +119,26 @@ class DataService{
 
   void fetchData(Uri uri, Function function) async {
     try {
-      var jsonString = await http.read(uri);
-      var uriJson = jsonDecode(jsonString);
-      if (function == carregarCervejas){
-        tableStateNotifier.value = {
-          'status': TableStatus.ready,
-          "objects": uriJson,
-          "props": [
-            "name",
-            "style",
-            "ibu"
-          ],
-          "columnsNames": [
-            "Nomes",
-            "Estilo",
-            "IBU"
-          ]
-        };
+      if ((function == carregarCervejas) || (function == carregarNacoes)){
+        var jsonString = await http.read(uri);
+        var uriJson = jsonDecode(jsonString);
+
+        if (function == carregarCervejas){
+          tableStateNotifier.value = {
+            'status': TableStatus.ready,
+            "objects": uriJson,
+            "props": [
+              "name",
+              "style",
+              "ibu"
+            ],
+            "columnsNames": [
+              "Nomes",
+              "Estilo",
+              "IBU"
+            ]
+          };
+        }
       }
     }
     
