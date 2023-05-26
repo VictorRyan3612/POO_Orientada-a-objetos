@@ -21,7 +21,7 @@ class DataService{
 
 
   void carregar(index){
-    final funcoes = [carregarCafes, carregarCervejas, carregarNacoes];
+    final funcoes = [carregarCafes, carregarCervejas, carregarNacoes, carregarSangues];
     tableStateNotifier.value = {
       'status': TableStatus.loading,
       "objects": [],
@@ -79,6 +79,18 @@ class DataService{
   }
 
 
+  Future<void> carregarSangues() async{
+
+    var SanguesUri = Uri(
+      scheme: 'https',
+      host: 'random-data-api.com',
+      path: 'api/v2/blood_types',
+      queryParameters: {'size': '$querySize'}
+    );
+    fetchData(SanguesUri, carregarSangues);
+    
+  }
+
 
   void fetchData(Uri uri, Function function) async {
     try {
@@ -133,6 +145,22 @@ class DataService{
           ]
         };
       };
+      if (function == carregarSangues){
+        tableStateNotifier.value = {
+          'status': TableStatus.ready,
+          "objects": uriJson,
+          "props": [
+            "type",
+            "rh_factor",
+            "group"
+          ],
+          "columnsNames": [
+            "Tipo",
+            "Fator RH",
+            "Grupo"
+          ]
+        };
+      }
     }
     
     catch (error) {

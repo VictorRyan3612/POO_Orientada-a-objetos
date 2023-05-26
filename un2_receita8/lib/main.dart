@@ -105,6 +105,7 @@ class NewNavBar extends HookWidget {
     var state = useState(1);
 
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
       onTap: (index){
         state.value = index;
         _itemSelectedCallback(index);                
@@ -127,6 +128,10 @@ class NewNavBar extends HookWidget {
         BottomNavigationBarItem(
           label: "Nações", 
           icon: Icon(Icons.flag_outlined)
+        ),
+        BottomNavigationBarItem(
+          label: "Tipos Sanguineos", 
+          icon: Icon(Icons.bloodtype)
         )
       ]
 
