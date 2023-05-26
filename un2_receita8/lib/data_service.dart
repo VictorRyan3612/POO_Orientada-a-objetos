@@ -40,7 +40,7 @@ class DataService{
   }
 
 
-  void carregarCafes() {
+  Future<void> carregarCafes() async{
     var cafesUri = Uri(
       scheme: "https",
       host: "random-data-api.com",
@@ -82,62 +82,57 @@ class DataService{
 
   void fetchData(Uri uri, Function function) async {
     try {
-      if ((function == carregarCervejas) || (function == carregarNacoes) || (function == carregarCafes)){
-        var jsonString = await http.read(uri);
-        var uriJson = jsonDecode(jsonString);
+      var jsonString = await http.read(uri);
+      var uriJson = jsonDecode(jsonString);
 
-        if (function == carregarCervejas){
-          tableStateNotifier.value = {
-            'status': TableStatus.ready,
-            "objects": uriJson,
-            "props": [
-              "name",
-              "style",
-              "ibu"
-            ],
-            "columnsNames": [
-              "Nomes",
-              "Estilo",
-              "IBU"
-            ]
-          };
-        }
-        else if (function == carregarNacoes){
-          tableStateNotifier.value = {
-            'status': TableStatus.ready,
-            "objects": uriJson,
-            "props": [
-              "nationality",
-              "language",
-              "capital"
-            ],
-            "columnsNames": [
-              "Nacionalidade",
-              "Linguagem",
-              "Capital"
-            ]
-          };
-        }
-        else if (function == carregarCafes){
-          http.read(uri).then((jsonString){
-            var cafesJson = jsonDecode(jsonString);
-            tableStateNotifier.value = {
-              'status': TableStatus.ready,
-              "objects": cafesJson,
-              "props": [
-                "blend_name",
-                "origin",
-                "variety"
-              ],
-              "columnsNames": [
-                "Nomes",
-                "Origem",
-                "Variedade"
-              ]
-            };
-          });
-        }
+      if (function == carregarCervejas){
+        tableStateNotifier.value = {
+          'status': TableStatus.ready,
+          "objects": uriJson,
+          "props": [
+            "name",
+            "style",
+            "ibu"
+          ],
+          "columnsNames": [
+            "Nomes",
+            "Estilo",
+            "IBU"
+          ]
+        };
       }
+      else if (function == carregarNacoes){
+        tableStateNotifier.value = {
+          'status': TableStatus.ready,
+          "objects": uriJson,
+          "props": [
+            "nationality",
+            "language",
+            "capital"
+          ],
+          "columnsNames": [
+            "Nacionalidade",
+            "Linguagem",
+            "Capital"
+          ]
+        };
+      }
+      else if (function == carregarCafes){
+        tableStateNotifier.value = {
+          'status': TableStatus.ready,
+          "objects": uriJson,
+          "props": [
+            "blend_name",
+            "origin",
+            "variety"
+          ],
+          "columnsNames": [
+            "Nomes",
+            "Origem",
+            "Variedade"
+          ]
+        };
+      };
     }
     
     catch (error) {
