@@ -22,7 +22,7 @@ class DataService{
     var res = null;
     print('carregar #1 - antes de carregarCervejas');
     if (index == 0) res = carregarCafes();
-    if (index == 1) res = carregarCervejas();
+    if (index == 1) carregarCervejas();
     print('carregar #2 - carregarCervejas retornou $res');
     if (index == 2) res = carregarNacoes();
 
@@ -63,7 +63,7 @@ class DataService{
   
 
 
-  Future<void> carregarCervejas() async{
+  void carregarCervejas(){
 
     var beersUri = Uri(
       scheme: 'https',
@@ -72,27 +72,31 @@ class DataService{
       queryParameters: {'size': '$querySize'}
     );
 
-    print('carregarCervejas #1 - antes do await');
-    var jsonString = await http.read(beersUri);
 
-    print('carregarCervejas #2 - depois do await');
-    var beersJson = jsonDecode(jsonString);
+    http.read(beersUri).then( (jsonString){
+      var beersJson = jsonDecode(jsonString);
+      tableStateNotifier.value = {
+        "objects": beersJson,
+        "props": [
+          "name",
+          "style",
+          "ibu"
+        ],
+        "columnsNames": [
+          "Nomes",
+          "Estilo",
+          "IBU"
+        ]
+      };
+    });
 
 
+    // print('carregarCervejas #1 - antes do await');
 
-    tableStateNotifier.value = {
-      "objects": beersJson,
-      "props": [
-        "name",
-        "style",
-        "ibu"
-      ],
-      "columnsNames": [
-        "Nomes",
-        "Estilo",
-        "IBU"
-      ]
-    };
+
+    // print('carregarCervejas #2 - depois do await');
+
+
 
   }
     Future<void> carregarNacoes() async{
