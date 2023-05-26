@@ -92,27 +92,8 @@ class DataService{
       path: 'api/nation/random_nation',
       queryParameters: {'size': '$querySize'}
     );
-
-
-    var jsonString = await http.read(nacoesUri);
-    var nacoesJson = jsonDecode(jsonString);
-
-
-
-    tableStateNotifier.value = {
-      'status': TableStatus.ready,
-      "objects": nacoesJson,
-      "props": [
-        "nationality",
-        "language",
-        "capital"
-      ],
-      "columnsNames": [
-        "Nacionalidade",
-        "Linguagem",
-        "Capital"
-      ]
-    };
+    fetchData(nacoesUri, carregarNacoes);
+    
   }
 
 
@@ -136,6 +117,22 @@ class DataService{
               "Nomes",
               "Estilo",
               "IBU"
+            ]
+          };
+        }
+        else if (function == carregarNacoes){
+          tableStateNotifier.value = {
+            'status': TableStatus.ready,
+            "objects": uriJson,
+            "props": [
+              "nationality",
+              "language",
+              "capital"
+            ],
+            "columnsNames": [
+              "Nacionalidade",
+              "Linguagem",
+              "Capital"
             ]
           };
         }
