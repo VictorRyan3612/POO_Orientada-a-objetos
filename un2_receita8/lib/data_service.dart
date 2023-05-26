@@ -19,13 +19,8 @@ class DataService{
 
 
   void carregar(index){
-    var res = null;
-    print('carregar #1 - antes de carregarCervejas');
-    if (index == 0) res = carregarCafes();
-    if (index == 1) carregarCervejas();
-    print('carregar #2 - carregarCervejas retornou $res');
-    if (index == 2) res = carregarNacoes();
-
+    final funcoes = [carregarCafes, carregarCervejas, carregarNacoes];
+    funcoes[index]();
   }
 
   void setQuerySize(int newSize) {
