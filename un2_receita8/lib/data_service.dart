@@ -40,7 +40,7 @@ class DataService{
   }
 
 
-  Future<void> carregarCafes() async{
+  void carregarCafes() {
     var cafesUri = Uri(
       scheme: "https",
       host: "random-data-api.com",
@@ -48,22 +48,24 @@ class DataService{
       queryParameters: {'size': '$querySize'}
     );
 
-    var jsonString = await http.read(cafesUri);
-    var cafesJson = jsonDecode(jsonString);
+    http.read(cafesUri).then((jsonString){
+      var cafesJson = jsonDecode(jsonString);
+      tableStateNotifier.value = {
+        'status': TableStatus.ready,
+        "objects": cafesJson,
+        "props": [
+          "blend_name",
+          "origin",
+          "variety"
+        ],
+        "columnsNames": [
+          "Nomes",
+          "Origem",
+          "Variedade"
+        ]
+      };
+    });
     
-    tableStateNotifier.value = {
-      "objects": cafesJson,
-      "props": [
-        "blend_name",
-        "origin",
-        "variety"
-      ],
-      "columnsNames": [
-        "Nomes",
-        "Origem",
-        "Variedade"
-      ]
-    };
   }
 
 
