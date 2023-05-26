@@ -47,15 +47,25 @@ class MyApp extends StatelessWidget {
                     ValueListenableBuilder(
                     valueListenable: dataService.tableStateNotifier,
                     builder: (_, value, __) {
-                      return Center(
-                        child: DataTableWidget(
-                          objects: value["objects"],
-                          propertyNames: value["props"],
-                          columnNames: value["columnsNames"],
-                        ),
-                      );
-                    },
-                  ),
+                      switch (value['status']){
+                          case TableStatus.idle: 
+                            return Text("Toque algum botão");
+                          case TableStatus.loading:
+                            return CircularProgressIndicator();
+                          case TableStatus.ready: 
+                            return Center(
+                              child: DataTableWidget(
+                                objects: value["objects"],
+                                propertyNames: value["props"],
+                                columnNames: value["columnsNames"],
+                              ),
+                            );
+                          case TableStatus.error: 
+                            return Text("Lascou");
+                        }
+                        return Text("..."); 
+                    }
+                ),
                   
                 ),
               ),
