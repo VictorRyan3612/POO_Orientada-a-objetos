@@ -47,30 +47,12 @@ class DataService{
       path: "api/coffee/random_coffee",
       queryParameters: {'size': '$querySize'}
     );
-
-    http.read(cafesUri).then((jsonString){
-      var cafesJson = jsonDecode(jsonString);
-      tableStateNotifier.value = {
-        'status': TableStatus.ready,
-        "objects": cafesJson,
-        "props": [
-          "blend_name",
-          "origin",
-          "variety"
-        ],
-        "columnsNames": [
-          "Nomes",
-          "Origem",
-          "Variedade"
-        ]
-      };
-    });
-    
+    fetchData(cafesUri, carregarCafes);
   }
 
 
 
-  void carregarCervejas() {
+  Future<void> carregarCervejas() async {
     var beersUri = Uri(
       scheme: 'https',
       host: 'random-data-api.com',
@@ -100,7 +82,7 @@ class DataService{
 
   void fetchData(Uri uri, Function function) async {
     try {
-      if ((function == carregarCervejas) || (function == carregarNacoes)){
+      if ((function == carregarCervejas) || (function == carregarNacoes) || (function == carregarCafes)){
         var jsonString = await http.read(uri);
         var uriJson = jsonDecode(jsonString);
 
@@ -135,6 +117,25 @@ class DataService{
               "Capital"
             ]
           };
+        }
+        else if (function == carregarCafes){
+          http.read(uri).then((jsonString){
+            var cafesJson = jsonDecode(jsonString);
+            tableStateNotifier.value = {
+              'status': TableStatus.ready,
+              "objects": cafesJson,
+              "props": [
+                "blend_name",
+                "origin",
+                "variety"
+              ],
+              "columnsNames": [
+                "Nomes",
+                "Origem",
+                "Variedade"
+              ]
+            };
+          });
         }
       }
     }
