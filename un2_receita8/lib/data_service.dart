@@ -78,16 +78,16 @@ class DataService{
       queryParameters: {'size': '$querySize'}
     );
 
-    fetchData(beersUri); // Chama a função fetchData com a URI das cervejas
+    fetchData(beersUri);
   }
 
-  void fetchData(Uri beersUri) async {
+  void fetchData(Uri uri) async {
     try {
-      var jsonString = await http.read(beersUri);
-      var beersJson = jsonDecode(jsonString);
+      var jsonString = await http.read(uri);
+      var uriJson = jsonDecode(jsonString);
       tableStateNotifier.value = {
         'status': TableStatus.ready,
-        "objects": beersJson,
+        "objects": uriJson,
         "props": [
           "name",
           "style",
