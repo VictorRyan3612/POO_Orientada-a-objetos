@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
                     builder: (_, value, __) {
                       return Center(
                         child: DataTableWidget(
-                          objects: dataService.tableStateNotifier.value["objects"],
+                          objects: value["objects"],
                           propertyNames: value["props"],
                           columnNames: value["columnsNames"],
                         ),
