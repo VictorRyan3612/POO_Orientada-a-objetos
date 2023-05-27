@@ -7,7 +7,7 @@ class DataTableWidget extends StatelessWidget {
   final List columnNames;
   final List propertyNames;
 
-  DataTableWidget({
+  DataTableWidget({super.key, 
     this.objects = const [],
     this.columnNames = const [], 
     this.propertyNames= const []}
@@ -19,7 +19,7 @@ class DataTableWidget extends StatelessWidget {
       columns: columnNames.map( 
         (name) => DataColumn(
           label: Expanded(
-            child: Text(name, style: TextStyle(fontWeight: FontWeight.bold))
+            child: Text(name, style: const TextStyle(fontWeight: FontWeight.bold))
           )
         )
       ).toList(),

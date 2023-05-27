@@ -6,10 +6,11 @@ import 'data_service.dart';
 
 final dataService = DataService();
 
+
+@immutable
 class MyCustomForm extends HookWidget {
   dynamic callback; 
 
-  final _formKey = GlobalKey<FormState>();
 
   MyCustomForm({super.key, this.callback});
   

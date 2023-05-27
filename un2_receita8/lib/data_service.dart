@@ -16,7 +16,7 @@ var estadoAplicativo = {
 
 
 class DataService{
-  final ValueNotifier<Map<String,dynamic>> tableStateNotifier= new ValueNotifier(estadoAplicativo);
+  final ValueNotifier<Map<String,dynamic>> tableStateNotifier = ValueNotifier(estadoAplicativo);
   int querySize = 5;
 
 
@@ -81,13 +81,13 @@ class DataService{
 
   Future<void> carregarSangues() async{
 
-    var SanguesUri = Uri(
+    var sanguesUri = Uri(
       scheme: 'https',
       host: 'random-data-api.com',
       path: 'api/v2/blood_types',
       queryParameters: {'size': '$querySize'}
     );
-    fetchData(SanguesUri, carregarSangues);
+    fetchData(sanguesUri, carregarSangues);
     
   }
 
@@ -129,6 +129,8 @@ class DataService{
           ]
         };
       }
+
+
       else if (function == carregarCafes){
         tableStateNotifier.value = {
           'status': TableStatus.ready,
@@ -144,7 +146,9 @@ class DataService{
             "Variedade"
           ]
         };
-      };
+      }
+      
+
       if (function == carregarSangues){
         tableStateNotifier.value = {
           'status': TableStatus.ready,
@@ -163,14 +167,12 @@ class DataService{
       }
     }
     
+    
     catch (error) {
       if (error.runtimeType.toString() == '_ClientSocketException') {
         tableStateNotifier.value={
           'status':TableStatus.error
-          };
-        print('Erro de conexão: Verifique sua conexão com a internet.');
-      } else {
-        print('Erro desconhecido: $error');
+        };
       }
     }
   }
