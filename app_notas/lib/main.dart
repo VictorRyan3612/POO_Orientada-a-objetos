@@ -3,6 +3,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'home_page.dart';
 
 
+// Implementar dashboard ui
+// tela de configurações
+
 void main() {
   MyApp app = MyApp();
   runApp(app);
