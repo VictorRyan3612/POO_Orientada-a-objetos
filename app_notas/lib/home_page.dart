@@ -25,16 +25,16 @@ void _formAppPage(BuildContext context) {
 
 
 class HomePageApp extends HookWidget{
-  final ValueNotifier<Brightness> _currentBrightness;
+  final ValueNotifier<Brightness> currentBrightness;
 
-  const HomePageApp(this._currentBrightness, {super.key});
+  const HomePageApp(this.currentBrightness, {super.key});
 
 
   @override
   Widget build(BuildContext context) {
     return
     Scaffold(
-      appBar:  MyHomeAppBar(_currentBrightness),
+      appBar:  MyHomeAppBar(currentBrightness),
 
 
       // Adaptado de https://docs.flutter.dev/cookbook/design/drawer

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MyHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final ValueNotifier<Brightness> _currentBrightness;
+  final ValueNotifier<Brightness> currentBrightness;
 
-  const MyHomeAppBar(this._currentBrightness, {super.key});
+  const MyHomeAppBar(this.currentBrightness, {super.key});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -21,7 +21,7 @@ class MyHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         PopupMenuButton<Brightness>(
           icon: const Icon(Icons.more_vert),
           onSelected: (Brightness brightness) {
-            _currentBrightness.value = brightness;
+            currentBrightness.value = brightness;
           },
           itemBuilder: (BuildContext context) => [
             const PopupMenuItem<Brightness>(

@@ -14,15 +14,17 @@ void main() {
 class MyApp extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final _currentBrightness = useState(Brightness.dark);
+    final currentBrightness = useState(Brightness.dark);
 
     return MaterialApp(
+      debugShowCheckedModeBanner:false,
+      
       title: 'Mudança de Tema',
       theme: ThemeData(
-        brightness: _currentBrightness.value,
+        brightness: currentBrightness.value,
         primarySwatch: Colors.blue,
       ),
-      home: HomePageApp(_currentBrightness)
+      home: HomePageApp(currentBrightness)
       );
     
   }
