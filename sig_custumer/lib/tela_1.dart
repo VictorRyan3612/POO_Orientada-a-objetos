@@ -12,7 +12,14 @@ class FirstScreen extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) {
+                return SecondScreen();
+              }),
+            );
+          },
           child: const Text('ir para tela 2'),
         ),
       ),
