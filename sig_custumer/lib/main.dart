@@ -15,9 +15,9 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => const Tela0(),
-        '/primeira': (context) => const FirstScreen(),
-        '/segunda': (context) => const SecondScreen()
+        '/': (context) => const TelaMenu(),
+        '/primeira': (context) => const ModuloUsuario(),
+        '/segunda': (context) => const ModuloRedes()
       },
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Tela0 extends StatelessWidget {
-  const Tela0({super.key});
+class TelaMenu extends StatelessWidget {
+  const TelaMenu({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sig_custumer/modulo_redes.dart';
 
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({super.key});
+class ModuloUsuario extends StatelessWidget {
+  const ModuloUsuario({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class FirstScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) {
-                return SecondScreen();
+                return ModuloRedes();
               }),
             );
           },
