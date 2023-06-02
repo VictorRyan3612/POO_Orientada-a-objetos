@@ -17,14 +17,18 @@ class Tela0 extends StatelessWidget {
                 backgroundColor: Colors.orange,
               ),
               child: Text('Ir para a tela 1'),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/primeira');
+              },
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal,
               ),
               child: Text('Ir para a tela 2'),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/segunda');
+              },
             ),
           ],
         ),
