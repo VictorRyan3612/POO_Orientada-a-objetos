@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sig_custumer/modulo_midias.dart';
 import 'package:sig_custumer/tela_menu.dart';
 import 'package:sig_custumer/modulo_usuario.dart';
 import 'package:sig_custumer/modulo_redes.dart';
@@ -17,7 +18,8 @@ class MainApp extends StatelessWidget {
       routes: {
         '/': (context) => const TelaMenu(),
         '/primeira': (context) => const ModuloUsuario(),
-        '/segunda': (context) => const ModuloRedes()
+        '/segunda': (context) => const ModuloRedes(),
+        '/terceira':(context) => const ModuloMidia()
       },
     );
   }

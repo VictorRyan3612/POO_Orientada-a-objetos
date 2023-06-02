@@ -30,6 +30,15 @@ class TelaMenu extends StatelessWidget {
                 Navigator.pushNamed(context, '/segunda');
               },
             ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple,
+              ),
+              child: Text('Ir para a tela 3'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/terceira');
+              },
+            ),
           ],
         ),
       ),
