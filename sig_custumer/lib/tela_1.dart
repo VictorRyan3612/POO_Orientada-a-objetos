@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:sig_custumer/tela_2.dart';
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({super.key});
