@@ -18,7 +18,7 @@ class TelaMenu extends StatelessWidget {
               ),
               child: Text('Ir para a tela 1'),
               onPressed: () {
-                Navigator.pushNamed(context, '/primeira');
+                Navigator.pushNamed(context, '/ModUser');
               },
             ),
             ElevatedButton(
@@ -27,7 +27,7 @@ class TelaMenu extends StatelessWidget {
               ),
               child: Text('Ir para a tela 2'),
               onPressed: () {
-                Navigator.pushNamed(context, '/segunda');
+                Navigator.pushNamed(context, '/ModRed');
               },
             ),
             ElevatedButton(
@@ -36,7 +36,7 @@ class TelaMenu extends StatelessWidget {
               ),
               child: Text('Ir para a tela 3'),
               onPressed: () {
-                Navigator.pushNamed(context, '/terceira');
+                Navigator.pushNamed(context, '/ModMid');
               },
             ),
           ],

@@ -17,9 +17,9 @@ class MainApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const TelaMenu(),
-        '/primeira': (context) => const ModuloUsuario(),
-        '/segunda': (context) => const ModuloRedes(),
-        '/terceira':(context) => const ModuloMidia()
+        '/ModUser': (context) => const ModuloUsuario(),
+        '/ModRed': (context) => const ModuloRedes(),
+        '/ModMid':(context) => const ModuloMidia()
       },
     );
   }
