@@ -16,7 +16,15 @@ class MainApp extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentBrightness = useState(Brightness.dark);
+
     return MaterialApp(
+      debugShowCheckedModeBanner:false,
+      theme: ThemeData(
+        brightness: currentBrightness.value,
+        primarySwatch: Colors.blue
+      ),
+      
       initialRoute: '/',
       routes: {
         '/': (context) => const TelaMenu(),
