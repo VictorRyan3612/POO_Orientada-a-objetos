@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sig_custumer/tela_0.dart';
-import 'package:sig_custumer/tela_1.dart';
-import 'package:sig_custumer/tela_2.dart';
+import 'package:sig_custumer/modulo_usuario.dart';
+import 'package:sig_custumer/modulo_redes.dart';
 
 void main() {
   runApp(const MainApp());

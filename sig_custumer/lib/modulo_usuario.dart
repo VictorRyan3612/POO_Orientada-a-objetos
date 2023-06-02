@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sig_custumer/tela_2.dart';
+import 'package:sig_custumer/modulo_redes.dart';
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({super.key});
