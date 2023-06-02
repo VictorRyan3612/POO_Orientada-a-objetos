@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sig_custumer/modulo_usuario.dart';
+
 
 class ModuloRedes extends StatelessWidget {
   const ModuloRedes({super.key});
