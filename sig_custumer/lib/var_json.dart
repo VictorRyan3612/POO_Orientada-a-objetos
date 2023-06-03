@@ -2,6 +2,8 @@ final List<Map<String, dynamic>> menuItens = [
   {
     'title': 'Todo List',
     'count': '2 Items',
+    'color':  '',
+    'rota': '/ModUser'
   },
   {
     'title': 'Notes',

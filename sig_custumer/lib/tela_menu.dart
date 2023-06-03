@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:sig_custumer/var_json.dart';
 
 
 class TelaMenu extends StatelessWidget {
@@ -20,62 +21,14 @@ class TelaMenu extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Center(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange,
-                            ),
-                            child: Text('Ir para a tela 1'),
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/ModUser');
-                            },
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.teal,
-                            ),
-                            child: Text('Ir para a tela 2'),
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/ModRed');
-                            },
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.deepPurple,
-                            ),
-                            child: Text('Ir para a tela 3'),
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/ModMid');
-                            },
-                          ),
-                        ),
-
-
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.red,
-                            ),
-                            child: Text('Configurações'),
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/Configs');
-                            },
-                          ),
-                        ),
-
-                      ],
+                    child: Wrap(
+                      spacing: 20,
+                      runSpacing: 20,
+                      children: menuItens.map((item) {
+                        return CustomCard(
+                          title: item['title'],
+                        );
+                      }).toList(),
                     ),
                   ),
                 )
@@ -134,3 +87,59 @@ class CustomCard extends StatelessWidget {
   }
 }
 
+
+
+/*
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.orange,
+                            ),
+                            child: Text('Ir para a tela 1'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/ModUser');
+                            },
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.teal,
+                            ),
+                            child: Text('Ir para a tela 2'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/ModRed');
+                            },
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.deepPurple,
+                            ),
+                            child: Text('Ir para a tela 3'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/ModMid');
+                            },
+                          ),
+                        ),
+
+
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red,
+                            ),
+                            child: Text('Configurações'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/Configs');
+                            },
+                          ),
+                        ),
+*/
