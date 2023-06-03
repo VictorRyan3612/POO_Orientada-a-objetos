@@ -19,52 +19,66 @@ class TelaMenu extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(12.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.orange,
+                            ),
+                            child: Text('Ir para a tela 1'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/ModUser');
+                            },
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.teal,
+                            ),
+                            child: Text('Ir para a tela 2'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/ModRed');
+                            },
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.deepPurple,
+                            ),
+                            child: Text('Ir para a tela 3'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/ModMid');
+                            },
+                          ),
+                        ),
+
+
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red,
+                            ),
+                            child: Text('Configurações'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/Configs');
+                            },
+                          ),
+                        ),
+
+                      ],
                     ),
-                    child: Text('Ir para a tela 1'),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/ModUser');
-                    },
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                    ),
-                    child: Text('Ir para a tela 2'),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/ModRed');
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple,
-                    ),
-                    child: Text('Ir para a tela 3'),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/ModMid');
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 202, 16, 16),
-                    ),
-                    child: Text('Configurações'),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/Configs');
-                    },
-                  ),
-                ),
+                )
               ],
             ),
           ),
@@ -73,3 +87,5 @@ class TelaMenu extends StatelessWidget {
     );
   }
 }
+
+
