@@ -38,7 +38,7 @@ class MainApp extends HookWidget {
       
       initialRoute: '/',
       routes: {
-        '/': (context) => const TelaMenu(),
+        '/': (context) => const DashboardMenu(),
         '/ModUser': (context) => const ModuloUsuario(),
         '/ModRed': (context) => const ModuloRedes(),
         '/ModMid':(context) => const ModuloMidia(),

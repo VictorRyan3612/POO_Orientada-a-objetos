@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sig_custumer/var_json.dart';
 
 
-class TelaMenu extends StatelessWidget {
-  const TelaMenu({super.key});
+class DashboardMenu extends StatelessWidget {
+  const DashboardMenu({super.key});
   
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class CustomCard extends StatelessWidget {
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
+                    fontSize: 16.0,
                   ),
                 ),
               ],

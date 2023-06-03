@@ -16,47 +16,47 @@ class TelaConfigs extends HookWidget implements PreferredSizeWidget{
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tela de configurações'),
-
       ),
 
 
       body: SafeArea(
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: Container(
-            constraints: const BoxConstraints(maxWidth: 600),
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child:CardSettings.sectioned(
-                children: [
-                  CardSettingsSection(
-                    header: CardSettingsHeader(
-                      label: 'Geral',
-                    ),
-                    children: [
-                      CardSettingsSwitch(
-                        trueLabel: '', 
-                        falseLabel: '',
-                        label: 'Modo noturno',
-                        initialValue: true,
-                        onChanged: (value) {
-                          if (currentBrightness.value == Brightness.dark) {
-                            currentBrightness.value = Brightness.light;
-                          } 
-                          else {
-                            currentBrightness.value = Brightness.dark;
-                          }
-                        },
+        child: SingleChildScrollView(
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 600),
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child:CardSettings.sectioned(
+                  children: [
+                    CardSettingsSection(
+                      header: CardSettingsHeader(
+                        label: 'Geral',
                       ),
-                    ],
-                  ),
-                ],
-              ),
-            )
+                      children: [
+                        CardSettingsSwitch(
+                          trueLabel: '', 
+                          falseLabel: '',
+                          label: 'Modo noturno',
+                          initialValue: true,
+                          onChanged: (value) {
+                            if (currentBrightness.value == Brightness.dark) {
+                              currentBrightness.value = Brightness.light;
+                            } 
+                            else {
+                              currentBrightness.value = Brightness.dark;
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ),
           ),
         ),
       ),
-
     );
   }
 }
