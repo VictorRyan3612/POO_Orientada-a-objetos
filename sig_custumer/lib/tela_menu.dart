@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:sig_custumer/var_json.dart';
 
 
@@ -10,7 +9,7 @@ class TelaMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tela 0'),
+        title: const Text('Tela 0'),
       ),
       body: SafeArea(
         child: Center(
@@ -61,8 +60,8 @@ class CustomCard extends StatelessWidget {
       height: 160.0,
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(Color.fromARGB(255, 35, 35, 35)),
-          elevation: MaterialStatePropertyAll(2),
+          backgroundColor: const MaterialStatePropertyAll(Color.fromARGB(255, 35, 35, 35)),
+          elevation: const MaterialStatePropertyAll(2),
           shape: MaterialStatePropertyAll(RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0)
           ))
@@ -75,12 +74,12 @@ class CustomCard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0,

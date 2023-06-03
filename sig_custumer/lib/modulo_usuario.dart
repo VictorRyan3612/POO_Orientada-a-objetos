@@ -16,7 +16,7 @@ class ModuloUsuario extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) {
-                return ModuloRedes();
+                return const ModuloRedes();
               }),
             );
           },

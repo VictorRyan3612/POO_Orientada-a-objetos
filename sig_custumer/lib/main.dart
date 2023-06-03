@@ -22,12 +22,12 @@ class MainApp extends HookWidget {
     
     final darkTheme = ThemeData(
       brightness: Brightness.dark,
-      scaffoldBackgroundColor: Color.fromARGB(255, 0, 0, 0)
+      scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0)
     );
     final lightTheme = ThemeData(
       brightness: Brightness.light,
       primarySwatch: Colors.blue,
-      scaffoldBackgroundColor: Color.fromARGB(255, 175, 175, 175)
+      scaffoldBackgroundColor: const Color.fromARGB(255, 175, 175, 175)
     );
 
     return MaterialApp(
