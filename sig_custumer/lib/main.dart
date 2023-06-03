@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'modulo_midias.dart';
-import 'tela_menu.dart';
+import 'dashboard_menu.dart';
 import 'modulo_usuario.dart';
 import 'modulo_redes.dart';
 import 'tela_config.dart';
@@ -22,7 +22,7 @@ class MainApp extends HookWidget {
     
     final darkTheme = ThemeData(
       brightness: Brightness.dark,
-      scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0)
+      scaffoldBackgroundColor: const Color.fromARGB(255, 27, 27, 27)
     );
     final lightTheme = ThemeData(
       brightness: Brightness.light,

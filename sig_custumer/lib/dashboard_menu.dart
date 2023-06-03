@@ -60,7 +60,7 @@ class CustomCard extends StatelessWidget {
       height: 160.0,
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: const MaterialStatePropertyAll(Color.fromARGB(255, 35, 35, 35)),
+          backgroundColor: const MaterialStatePropertyAll(Color.fromARGB(255, 63, 63, 63)),
           elevation: const MaterialStatePropertyAll(2),
           shape: MaterialStatePropertyAll(RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0)
