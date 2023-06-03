@@ -8,7 +8,7 @@ class ModuloMidia extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Third Screen'),
+        title: const Text('Módulo Midias'),
       ),
       body: Center(
         child: ElevatedButton(

@@ -9,7 +9,7 @@ class TelaMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tela 0'),
+        title: const Text('Menu Principal'),
       ),
       body: SafeArea(
         child: Center(

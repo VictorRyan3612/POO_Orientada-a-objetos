@@ -8,7 +8,7 @@ class ModuloUsuario extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('First Screen'),
+        title: const Text('Módulo Usuário'),
       ),
       body: Center(
         child: ElevatedButton(
