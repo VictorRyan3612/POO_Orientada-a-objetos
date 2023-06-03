@@ -8,7 +8,7 @@ class ModuloUsuario extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('First Screen'),
+        title: const Text('Módulo Usuário'),
       ),
       body: Center(
         child: ElevatedButton(
@@ -16,7 +16,7 @@ class ModuloUsuario extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) {
-                return ModuloRedes();
+                return const ModuloRedes();
               }),
             );
           },
