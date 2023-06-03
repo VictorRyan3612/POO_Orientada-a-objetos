@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-
+import 'package:settings_ui/settings_ui.dart';
 
 class TelaConfigs extends HookWidget implements PreferredSizeWidget{
   final ValueNotifier<Brightness> currentBrightness;
@@ -39,14 +39,30 @@ class TelaConfigs extends HookWidget implements PreferredSizeWidget{
       ),
 
 
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Voltar!'),
+      body:
+        SettingsList(
+          sections: [
+            SettingsSection(
+              title: Text('Tema'),
+              tiles: [
+                SettingsTile(
+                  title: Text('Tema Escuro'),
+                  leading: Icon(Icons.dark_mode),
+                  onPressed: (BuildContext context) {
+                    currentBrightness.value = Brightness.dark;
+                  },
+                ),
+                SettingsTile(
+                  title: Text('Tema Claro'),
+                  leading: Icon(Icons.light_mode),
+                  onPressed: (BuildContext context) {
+                    currentBrightness.value = Brightness.light;
+                  },
+                ),
+              ],
+            ),
+          ],
         ),
-      ),
-    );
+      );
   }
 }
