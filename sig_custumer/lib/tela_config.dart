@@ -17,25 +17,6 @@ class TelaConfigs extends HookWidget implements PreferredSizeWidget{
       appBar: AppBar(
         title: const Text('Tela de configurações'),
 
-      actions: [
-        PopupMenuButton<Brightness>(
-          icon: const Icon(Icons.more_vert),
-          onSelected: (Brightness brightness) {
-            currentBrightness.value = brightness;
-          },
-          itemBuilder: (BuildContext context) => [
-            const PopupMenuItem<Brightness>(
-              value: Brightness.light,
-              child: Text('Tema Claro'),
-            ),
-            const PopupMenuItem<Brightness>(
-              value: Brightness.dark,
-              child: Text('Tema Escuro'),
-            ),
-          ],
-        ),
-      ]
-
       ),
 
 
@@ -43,20 +24,17 @@ class TelaConfigs extends HookWidget implements PreferredSizeWidget{
         SettingsList(
           sections: [
             SettingsSection(
-              title: Text('Tema'),
               tiles: [
                 SettingsTile(
-                  title: Text('Tema Escuro'),
-                  leading: Icon(Icons.dark_mode),
+                  title: const Text('Alternar tema'),
+                  leading: const Icon(Icons.dark_mode),
                   onPressed: (BuildContext context) {
-                    currentBrightness.value = Brightness.dark;
-                  },
-                ),
-                SettingsTile(
-                  title: Text('Tema Claro'),
-                  leading: Icon(Icons.light_mode),
-                  onPressed: (BuildContext context) {
-                    currentBrightness.value = Brightness.light;
+                    if (currentBrightness.value == Brightness.dark){
+                      currentBrightness.value = Brightness.light;
+                    }
+                    else{
+                      currentBrightness.value = Brightness.dark;
+                    }
                   },
                 ),
               ],
