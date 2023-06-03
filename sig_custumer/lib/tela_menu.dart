@@ -60,36 +60,36 @@ class CustomCard extends StatelessWidget {
       width: 160.0,
       height: 160.0,
       child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll(Color.fromARGB(255, 35, 35, 35)),
+          elevation: MaterialStatePropertyAll(2),
+          shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0)
+          ))
+        ),
         onPressed: (){
           // Navigator.pushNamed(context, menuItens['rota']);
         }, 
-        child: Card(
-          color: const Color.fromARGB(255, 21, 21, 21),
-          elevation: 2.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 10.0,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 10.0,
+                ),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
                   ),
-                  Text(
-                    title,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ),
+        ) 
       ),
     );
   }
