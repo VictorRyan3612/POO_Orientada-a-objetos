@@ -27,7 +27,7 @@ class TelaMenu extends StatelessWidget {
                       children: menuItens.map((item) {
                         return CustomCard(
                           title: item['title'],
-                          rota: item['rota'],
+                          // rota: item['rota'],
                         );
                       }).toList(),
                     ),
@@ -46,11 +46,11 @@ class TelaMenu extends StatelessWidget {
 
 class CustomCard extends StatelessWidget {
   final String title;
-  final String rota;
+  // final List<Map<String,dynamic>> rota;
 
   const CustomCard({
     required this.title,
-    required this.rota,
+    // required this.rota,
     Key? key,
   }) : super(key: key);
 
@@ -59,29 +59,34 @@ class CustomCard extends StatelessWidget {
     return SizedBox(
       width: 160.0,
       height: 160.0,
-      child: Card(
-        color: const Color.fromARGB(255, 21, 21, 21),
-        elevation: 2.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
+      child: ElevatedButton(
+        onPressed: (){
+          // Navigator.pushNamed(context, menuItens['rota']);
+        }, 
+        child: Card(
+          color: const Color.fromARGB(255, 21, 21, 21),
+          elevation: 2.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10.0,
                   ),
-                ),
-              ],
+                  Text(
+                    title,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
