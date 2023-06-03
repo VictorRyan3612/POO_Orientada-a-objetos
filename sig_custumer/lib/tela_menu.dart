@@ -89,3 +89,48 @@ class TelaMenu extends StatelessWidget {
 }
 
 
+
+class CustomCard extends StatelessWidget {
+  final String title;
+
+  const CustomCard({
+    required this.title,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 160.0,
+      height: 160.0,
+      child: Card(
+        color: const Color.fromARGB(255, 21, 21, 21),
+        elevation: 2.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 10.0,
+                ),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
