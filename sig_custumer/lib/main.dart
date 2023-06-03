@@ -17,13 +17,22 @@ class MainApp extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final currentBrightness = useState(Brightness.dark);
+    
+    final darkTheme = ThemeData(
+      brightness: Brightness.dark,
+      scaffoldBackgroundColor: Color.fromARGB(255, 0, 0, 0)
+    );
+    final lightTheme = ThemeData(
+      brightness: Brightness.light,
+      primarySwatch: Colors.blue,
+      scaffoldBackgroundColor: Color.fromARGB(255, 175, 175, 175)
+    );
 
     return MaterialApp(
       debugShowCheckedModeBanner:false,
-      theme: ThemeData(
-        brightness: currentBrightness.value,
-        primarySwatch: Colors.blue
-      ),
+      
+      theme: currentBrightness.value == Brightness.dark ? darkTheme : lightTheme,
+
       
       initialRoute: '/',
       routes: {
