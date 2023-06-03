@@ -27,6 +27,7 @@ class TelaMenu extends StatelessWidget {
                       children: menuItens.map((item) {
                         return CustomCard(
                           title: item['title'],
+                          rota: item['rota'],
                         );
                       }).toList(),
                     ),
@@ -45,9 +46,11 @@ class TelaMenu extends StatelessWidget {
 
 class CustomCard extends StatelessWidget {
   final String title;
+  final String rota;
 
   const CustomCard({
     required this.title,
+    required this.rota,
     Key? key,
   }) : super(key: key);
 
