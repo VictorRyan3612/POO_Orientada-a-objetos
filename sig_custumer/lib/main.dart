@@ -42,7 +42,7 @@ class MainApp extends HookWidget {
         '/ModUser': (context) => const ModuloUsuario(),
         '/ModRed': (context) => const ModuloRedes(),
         '/ModMid':(context) => const ModuloMidia(),
-        '/Configs':(context) => const TelaConfigs(),
+        '/Configs':(context) => TelaConfigs(currentBrightness: currentBrightness),
       },
     );
   }
