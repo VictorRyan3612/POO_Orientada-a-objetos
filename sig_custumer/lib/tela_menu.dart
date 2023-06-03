@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class TelaMenu extends StatelessWidget {
   const TelaMenu({super.key});
   @override
@@ -36,6 +37,15 @@ class TelaMenu extends StatelessWidget {
               child: Text('Ir para a tela 3'),
               onPressed: () {
                 Navigator.pushNamed(context, '/ModMid');
+              },
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 202, 16, 16),
+              ),
+              child: Text('Configurações'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Configs');
               },
             ),
           ],

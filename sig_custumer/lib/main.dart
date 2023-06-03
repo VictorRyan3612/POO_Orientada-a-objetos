@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'package:sig_custumer/modulo_midias.dart';
-import 'package:sig_custumer/tela_menu.dart';
-import 'package:sig_custumer/modulo_usuario.dart';
-import 'package:sig_custumer/modulo_redes.dart';
+import 'modulo_midias.dart';
+import 'tela_menu.dart';
+import 'modulo_usuario.dart';
+import 'modulo_redes.dart';
+import 'tela_config.dart';
+
 
 
 void main() {
@@ -39,7 +41,8 @@ class MainApp extends HookWidget {
         '/': (context) => const TelaMenu(),
         '/ModUser': (context) => const ModuloUsuario(),
         '/ModRed': (context) => const ModuloRedes(),
-        '/ModMid':(context) => const ModuloMidia()
+        '/ModMid':(context) => const ModuloMidia(),
+        '/Configs':(context) => const TelaConfigs(),
       },
     );
   }
