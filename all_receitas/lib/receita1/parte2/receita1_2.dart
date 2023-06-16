@@ -5,19 +5,27 @@ class Receita1Parte2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.popUntil(context, ModalRoute.withName('/'));
-              // Navigator.pop(context);
-            },
-          ),
-          title: Text("Cervejas")),
-        body: 
-        MyStatelessWidget()
-        
-      );
+      bottomSheet: TextButton(
+        child: Text('Voltar'),
+        onPressed: () {
+          Navigator.popUntil(context, ModalRoute.withName('/'));
+        }
+      ), 
+
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.popUntil(context, ModalRoute.withName('/'));
+            // Navigator.pop(context);
+          },
+        ),
+        title: Text("Cervejas")
+      ),
+
+      body: MyStatelessWidget()
+      
+    );
   }
 }
 

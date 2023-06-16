@@ -18,6 +18,13 @@ class Receita1Parte1States extends State<Receita1Parte1>{
   Widget build(BuildContext context) {
     return
     Scaffold(
+      bottomSheet: TextButton(
+        child: Text('Voltar'),
+        onPressed: () {
+          Navigator.popUntil(context, ModalRoute.withName('/'));
+        }
+      ), 
+      
       appBar: AppBar(
         title: const
           Center(child: 

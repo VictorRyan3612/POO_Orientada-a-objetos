@@ -14,6 +14,13 @@ class Receita8 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomSheet: TextButton(
+        child: Text('Voltar'),
+        onPressed: () {
+          Navigator.popUntil(context, ModalRoute.withName('/'));
+        }
+      ),
+      
       appBar: AppBar( 
         title: const Text("Dicas"),
         ),
