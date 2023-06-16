@@ -23,4 +23,8 @@ final List<Map<String, dynamic>> menuItens = [
     'title': 'Receita 6',
     'rota': '/re6'
   },
+  {
+    'title': 'Receita 7',
+    'rota': '/re7'
+  },
 ];

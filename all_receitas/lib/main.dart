@@ -7,6 +7,8 @@ import '/receita2/home_page.dart' as rec2;
 import '/receita3/home_page.dart' as rec3;
 import '/receita4/home_page.dart' as rec4;
 import '/receita6/form_app.dart' as rec6;
+import '/receita7/main.dart' as rec7;
+
 
 void main() {
   runApp(const MainApp());
@@ -42,6 +44,7 @@ class MainApp extends HookWidget {
         '/re3':(context) => rec3.Receita3(),
         '/re4':(context) => rec4.Receita4(),
         '/re6':(context) => rec6.Receita6(),
+        '/re7':(context) => rec7.Receita7(),
       }
     );
   }
