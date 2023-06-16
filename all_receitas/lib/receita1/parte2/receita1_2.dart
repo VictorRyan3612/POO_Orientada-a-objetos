@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 class Receita1Parte2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      home: Scaffold(
-
+    return Scaffold(
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -20,8 +17,7 @@ class Receita1Parte2 extends StatelessWidget {
         body: 
         MyStatelessWidget()
         
-      )
-    );
+      );
   }
 }
 
