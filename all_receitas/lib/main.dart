@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'menu_principal.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'receita1/parte2/receita1_2.dart' as rec1_2;
-
+import 'receita1/parte1/receita1_1.dart' as rec1_1;
 
 
 void main() {
@@ -33,7 +33,7 @@ class MainApp extends HookWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const MenuPrincipal(),
-        // '/re1_1': (context) => const Receita1Parte1(),
+        '/re1_1': (context) => rec1_1.Receita1Parte1(),
         '/re1_2': (context) => rec1_2.Receita1Parte2(),
         // '/re2': (context) => const Receita2(),
         // '/re3':(context) => const Receita3(),
