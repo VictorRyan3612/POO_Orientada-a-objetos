@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'var_json.dart';
 
-import 'receita1/parte2/receita1_2.dart' as rec1_2;
-
 
 
 class MenuPrincipal extends StatelessWidget {
