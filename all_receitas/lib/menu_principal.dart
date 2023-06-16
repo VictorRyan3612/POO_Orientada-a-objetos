@@ -21,15 +21,36 @@ class MenuPrincipal extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Center(
-                    child: Wrap(
-                      spacing: 20,
-                      runSpacing: 20,
-                      children: menuItens.map((item) {
-                        return CustomCard(
-                          title: item['title'],
-                          rota: item['rota'],
-                        );
-                      }).toList(),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Wrap(
+                            spacing: 20,
+                            runSpacing: 20,
+                            children: menuItens1.map((item) {
+                              return CustomCard(
+                                title: item['title'],
+                                rota: item['rota'],
+                              );
+                            }).toList()
+                          )
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Wrap(
+                            spacing: 20,
+                            runSpacing: 20,
+                            children: menuItens2.map((item) {
+                              return CustomCard(
+                                title: item['title'],
+                                rota: item['rota'],
+                              );
+                            }).toList()
+                          )
+                        )
+                        
+                      ],
                     ),
                   ),
                 )
