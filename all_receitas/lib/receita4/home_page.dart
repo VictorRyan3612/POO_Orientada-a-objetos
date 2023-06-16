@@ -30,7 +30,13 @@ class Receita4States extends State<Receita4>{
     return
     Scaffold(
       appBar: const MyHomeAppBar(),
-
+      
+      bottomSheet: TextButton(
+        child: Text('Voltar'),
+        onPressed: () {
+          Navigator.popUntil(context, ModalRoute.withName('/'));
+        }
+      ), 
 
       // Adaptado de https://docs.flutter.dev/cookbook/design/drawer
       drawer: Drawer(
