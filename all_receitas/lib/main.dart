@@ -4,9 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'receita1/parte1/receita1_1.dart' as rec1_1;
 // import 'receita1/parte2/receita1_2.dart' as rec1_2;
 
-import 'home.dart';
-
-
 
 
 
@@ -43,7 +40,7 @@ class MainApp extends HookWidget {
       //   // '/re2': (context) => const Receita2(),
       //   // '/re3':(context) => const Receita3(),
       // }
-      home: Home()
+      home: MenuPrincipal()
     );
   }
 }
