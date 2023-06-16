@@ -1,7 +1,11 @@
 final List<Map<String, dynamic>> menuItens = [
   {
-    'title': 'Receita 1',
-    'rota': '/re1'
+    'title': 'Receita 1 (1 a 9)',
+    'rota': '/re1_1'
+  },
+  {
+    'title': 'Receita 1 (10 e 11)',
+    'rota': '/re1_2'
   },
   {
     'title': 'Receita 2',
