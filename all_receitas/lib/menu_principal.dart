@@ -26,7 +26,7 @@ class MenuPrincipal extends StatelessWidget {
                       children: menuItens.map((item) {
                         return CustomCard(
                           title: item['title'],
-                          // rota: item['rota'],
+                          rota: item['rota'],
                         );
                       }).toList(),
                     ),
@@ -45,11 +45,11 @@ class MenuPrincipal extends StatelessWidget {
 
 class CustomCard extends StatelessWidget {
   final String title;
-  // final String rota;
+  final String rota;
 
   const CustomCard({
     required this.title,
-    // required this.rota,
+    required this.rota,
     Key? key,
   }) : super(key: key);
 
@@ -68,7 +68,7 @@ class CustomCard extends StatelessWidget {
         ),
 
         onPressed: (){
-          // Navigator.pushNamed(context, rota);
+          Navigator.pushNamed(context, rota);
         }, 
         
         child: Center(
