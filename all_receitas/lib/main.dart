@@ -22,20 +22,33 @@ class MainApp extends HookWidget {
   Widget build(BuildContext context) {
     final currentBrightness = useState(Brightness.dark);
     
-    final darkTheme = ThemeData(
-      brightness: Brightness.dark,
-      scaffoldBackgroundColor: const Color.fromARGB(255, 27, 27, 27)
-    );
+    final darkTheme = [
+      ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 27, 27, 27)
+      ),
+      ThemeData(
+      fontFamily: 'Times new roman',
+      primarySwatch: Colors.deepPurple,
+      colorScheme: const ColorScheme.dark())
+    ];
     final lightTheme = ThemeData(
       brightness: Brightness.light,
       primarySwatch: Colors.blue,
       scaffoldBackgroundColor: const Color.fromARGB(255, 175, 175, 175)
     );
 
+    ThemeData tema;
+    if (currentBrightness.value == Brightness.dark) {
+      tema = darkTheme[0];
+    } else {
+      tema = lightTheme;
+    }
+    
     return MaterialApp(
       debugShowCheckedModeBanner:false,
-      
-      theme: currentBrightness.value == Brightness.dark ? darkTheme : lightTheme,
+    
+      theme: tema,
       initialRoute: '/',
       routes: {
         '/': (context) => const MenuPrincipal(),
