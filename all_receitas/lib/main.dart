@@ -47,7 +47,7 @@ class MainApp extends HookWidget {
         '/re6':(context) => rec6.Receita6(),
         '/re7':(context) => rec7.Receita7(),
         '/re8':(context) => rec8.Receita8(),
-        '/config':(context) => Config(),
+        '/config':(context) => TelaConfigs(currentBrightness: currentBrightness),
       }
     );
   }
