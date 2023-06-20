@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 
 class TelaConfigs extends HookWidget implements PreferredSizeWidget{
-  final ValueNotifier<Brightness> currentBrightness;
+  final ValueNotifier<Brightness?> currentBrightness;
 
   const TelaConfigs({required this.currentBrightness, super.key});
 
@@ -27,7 +27,23 @@ class TelaConfigs extends HookWidget implements PreferredSizeWidget{
               constraints: const BoxConstraints(maxWidth: 600),
               child: Padding(
                 padding: const EdgeInsets.all(12),
-                child: Text("Fazendo tela de configurações")
+                child: DropdownButton<Brightness>(
+                  value: currentBrightness.value,
+                  hint: const Text('Select an option'),
+                  items:const <DropdownMenuItem<Brightness>>[
+                    DropdownMenuItem<Brightness>(
+                      value: Brightness.light,
+                      child: Text('Tema claro'),
+                    ),
+                    DropdownMenuItem<Brightness>(
+                      value: Brightness.dark,
+                      child: Text('Tema escuro'),
+                    ),
+                  ],
+                  onChanged: (newValue) {
+                    currentBrightness.value = newValue;
+                  },
+                )
               ),
             )
           ),
