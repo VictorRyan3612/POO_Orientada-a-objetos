@@ -20,18 +20,19 @@ class MainApp extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentBrightness = useState(Brightness.dark);
+    final currentBrightness = useState(CustomBrightness.dark);
     
-    final darkTheme = [
-      ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color.fromARGB(255, 27, 27, 27)
-      ),
-      ThemeData(
+    final darkTheme1 = ThemeData(
+      brightness: Brightness.dark,
+      scaffoldBackgroundColor: const Color.fromARGB(255, 27, 27, 27)
+    );
+    
+    final darkTheme2 = ThemeData(
       fontFamily: 'Times new roman',
       primarySwatch: Colors.deepPurple,
-      colorScheme: const ColorScheme.dark())
-    ];
+      colorScheme: const ColorScheme.dark()
+    );
+
     final lightTheme = ThemeData(
       brightness: Brightness.light,
       primarySwatch: Colors.blue,
@@ -39,9 +40,14 @@ class MainApp extends HookWidget {
     );
 
     ThemeData tema;
-    if (currentBrightness.value == Brightness.dark) {
-      tema = darkTheme[0];
-    } else {
+    
+    if (currentBrightness.value == CustomBrightness.dark) {
+      tema = darkTheme1;
+    }
+    else if (currentBrightness.value == CustomBrightness.dark2){
+      tema = darkTheme2;
+    }
+    else {
       tema = lightTheme;
     }
     
