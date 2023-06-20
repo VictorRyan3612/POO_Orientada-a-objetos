@@ -15,14 +15,16 @@ final List<Map<String, dynamic>> menuItens1 = [
     'title': 'Receita 3',
     'rota': '/re3'
   },
-
-
-];
-final List<Map<String, dynamic>> menuItens2 = [ 
   {
     'title': 'Receita 4',
     'rota': '/re4'
   },
+
+];
+
+
+final List<Map<String, dynamic>> menuItens2 = [ 
+  
   {
     'title': 'Receita 6',
     'rota': '/re6'
@@ -35,4 +37,8 @@ final List<Map<String, dynamic>> menuItens2 = [
     'title': 'Receita 8',
     'rota': '/re8'
   },
+  {
+    'title': 'Configurações',
+    'rota': '/config'
+  }
 ];
