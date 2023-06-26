@@ -139,17 +139,17 @@ class DataService{
   void fetchData(Uri uri, Function function) async {
     try {
       var jsonString = await http.read(uri);
-      var uriJson = jsonDecode(jsonString);
+      var listJson = jsonDecode(jsonString);
 
       if (tableStateNotifier.value['status'] != TableStatus.loading)
-        uriJson = [...tableStateNotifier.value['dataObjects'], ...uriJson];  
+        listJson = [...tableStateNotifier.value['dataObjects'], ...listJson];  
       
 
       if (function == carregarCervejas){
         tableStateNotifier.value = {
         'itemType': ItemType.beer,
         'status': TableStatus.ready,
-          "dataObjects": uriJson,
+          "dataObjects": listJson,
           "props": [
             "name",
             "style",
@@ -166,7 +166,7 @@ class DataService{
         tableStateNotifier.value = {
           'itemType': ItemType.nation,
           'status': TableStatus.ready,
-          "dataObjects": uriJson,
+          "dataObjects": listJson,
           "props": [
             "nationality",
             "language",
@@ -185,7 +185,7 @@ class DataService{
         tableStateNotifier.value = {
           'itemType': ItemType.coffee,
           'status': TableStatus.ready,
-          "dataObjects": uriJson,
+          "dataObjects": listJson,
           "props": [
             "blend_name",
             "origin",
@@ -204,7 +204,7 @@ class DataService{
         tableStateNotifier.value = {
           'itemType': ItemType.blood,
           'status': TableStatus.ready,
-          "dataObjects": uriJson,
+          "dataObjects": listJson,
           "props": [
             "type",
             "rh_factor",
