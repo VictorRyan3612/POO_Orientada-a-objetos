@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
                         case TableStatus.ready: 
                           return Center(
                             child: DataTableWidget(
-                              objects: value["objects"],
+                              objects: value["dataObjects"],
                               propertyNames: value["props"],
                               columnNames: value["columnsNames"],
                             ),

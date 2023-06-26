@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+
+
 enum TableStatus{idle,loading,ready,error}
+enum ItemType{coffee, beer, nation, blood, none}
+
+
 var estadoAplicativo = {
   'status':TableStatus.idle,
-  "objects": [],
+  "dataObjects": [],
   "props": [],
   "columnsNames": [
     "Propriedade 1", 
     "Propriedade 2", 
     "Propriedade 3"
-  ]
+  ],
+  'itemType': ItemType.none
 };
 
 
@@ -23,14 +29,15 @@ class DataService{
   void carregar(index){
     final funcoes = [carregarCafes, carregarCervejas, carregarNacoes, carregarSangues];
     tableStateNotifier.value = {
-      'status': TableStatus.loading,
-      "objects": [],
+      'status': TableStatus.idle,
+      "dataObjects": [],
       "props": [],
       "columnsNames": [
         "Propriedade 1", 
         "Propriedade 2", 
         "Propriedade 3"
-      ]
+      ], 
+      'itemType': ItemType.none
     };
     funcoes[index]();
   }
@@ -40,19 +47,40 @@ class DataService{
   }
 
 
-  Future<void> carregarCafes() async{
+  void carregarCafes() async{
+    if (tableStateNotifier.value['status'] == TableStatus.loading) return;
+
+    if (tableStateNotifier.value['itemType'] != ItemType.coffee){
+      tableStateNotifier.value = {
+        'status': TableStatus.loading,
+        'dataObjects': [],
+        'itemType': ItemType.coffee
+      };
+    }
+
     var cafesUri = Uri(
       scheme: "https",
       host: "random-data-api.com",
       path: "api/coffee/random_coffee",
       queryParameters: {'size': '$querySize'}
     );
+
     fetchData(cafesUri, carregarCafes);
   }
 
 
 
-  Future<void> carregarCervejas() async {
+  void carregarCervejas() async {
+    if (tableStateNotifier.value['status'] == TableStatus.loading) return;
+    
+    if (tableStateNotifier.value['itemType'] != ItemType.beer){
+      tableStateNotifier.value = {
+        'status': TableStatus.loading,
+        'dataObjects': [],
+        'itemType': ItemType.beer
+      };
+    }
+
     var beersUri = Uri(
       scheme: 'https',
       host: 'random-data-api.com',
@@ -61,25 +89,41 @@ class DataService{
     );
 
     fetchData(beersUri, carregarCervejas);
-    
   }
 
 
+    void carregarNacoes() async{
+      if (tableStateNotifier.value['status'] == TableStatus.loading) return;
 
-    Future<void> carregarNacoes() async{
+      if (tableStateNotifier.value['itemType'] != ItemType.nation){
+        tableStateNotifier.value = {
+          'status': TableStatus.loading,
+          'dataObjects': [],
+          'itemType': ItemType.nation
+        };
+      }
 
-    var nacoesUri = Uri(
-      scheme: 'https',
-      host: 'random-data-api.com',
-      path: 'api/nation/random_nation',
-      queryParameters: {'size': '$querySize'}
-    );
-    fetchData(nacoesUri, carregarNacoes);
-    
-  }
+      var nacoesUri = Uri(
+        scheme: 'https',
+        host: 'random-data-api.com',
+        path: 'api/nation/random_nation',
+        queryParameters: {'size': '$querySize'}
+      );
+
+      fetchData(nacoesUri, carregarNacoes);
+    }
 
 
-  Future<void> carregarSangues() async{
+  void carregarSangues() async{
+    if (tableStateNotifier.value['status'] == TableStatus.loading) return;
+
+    if (tableStateNotifier.value['itemType'] != ItemType.blood){
+      tableStateNotifier.value = {
+        'status': TableStatus.loading,
+        'dataObjects': [],
+        'itemType': ItemType.blood
+      };
+    }
 
     var sanguesUri = Uri(
       scheme: 'https',
@@ -87,8 +131,8 @@ class DataService{
       path: 'api/v2/blood_types',
       queryParameters: {'size': '$querySize'}
     );
+
     fetchData(sanguesUri, carregarSangues);
-    
   }
 
 
@@ -97,10 +141,15 @@ class DataService{
       var jsonString = await http.read(uri);
       var uriJson = jsonDecode(jsonString);
 
+      if (tableStateNotifier.value['status'] != TableStatus.loading)
+        uriJson = [...tableStateNotifier.value['dataObjects'], ...uriJson];  
+      
+
       if (function == carregarCervejas){
         tableStateNotifier.value = {
-          'status': TableStatus.ready,
-          "objects": uriJson,
+        'itemType': ItemType.beer,
+        'status': TableStatus.ready,
+          "dataObjects": uriJson,
           "props": [
             "name",
             "style",
@@ -115,8 +164,9 @@ class DataService{
       }
       else if (function == carregarNacoes){
         tableStateNotifier.value = {
+          'itemType': ItemType.nation,
           'status': TableStatus.ready,
-          "objects": uriJson,
+          "dataObjects": uriJson,
           "props": [
             "nationality",
             "language",
@@ -133,8 +183,9 @@ class DataService{
 
       else if (function == carregarCafes){
         tableStateNotifier.value = {
+          'itemType': ItemType.coffee,
           'status': TableStatus.ready,
-          "objects": uriJson,
+          "dataObjects": uriJson,
           "props": [
             "blend_name",
             "origin",
@@ -151,8 +202,9 @@ class DataService{
 
       if (function == carregarSangues){
         tableStateNotifier.value = {
+          'itemType': ItemType.blood,
           'status': TableStatus.ready,
-          "objects": uriJson,
+          "dataObjects": uriJson,
           "props": [
             "type",
             "rh_factor",
