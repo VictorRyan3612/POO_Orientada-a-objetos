@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'data_service.dart';
-import 'form.dart';
-import 'datatable.dart';
+import 'data/data_service.dart';
+import 'view/form.dart';
+import 'view/datatable.dart';
 
 
 final dataService = DataService();
