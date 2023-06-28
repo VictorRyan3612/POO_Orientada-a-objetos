@@ -22,13 +22,19 @@ var estadoAplicativo = {
 
 
 class DataService{
+  final ValueNotifier<Map<String,dynamic>> tableStateNotifier = ValueNotifier(estadoAplicativo);
+
   static const maxItems = 15;
   static const minItems = 5;
   static const defautItems = 10;
 
   int _querySize = defautItems;
 
-  final ValueNotifier<Map<String,dynamic>> tableStateNotifier = ValueNotifier(estadoAplicativo);
+  void setQuerySize(int newSize) {
+    _querySize = newSize <= 0 ? 5: newSize> 15? 15: newSize;
+  }
+  
+  int get querySize => _querySize;
 
 
   void carregar(index){
@@ -47,9 +53,6 @@ class DataService{
     funcoes[index]();
   }
 
-  void setQuerySize(int newSize) {
-    _querySize = newSize <= 0 ? 5: newSize> 15? 15: newSize;
-  }
 
 
   void carregarCafes() async{
