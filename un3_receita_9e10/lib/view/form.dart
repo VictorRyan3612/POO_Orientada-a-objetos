@@ -19,7 +19,7 @@ class MyCustomForm extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var state = useState(5);
+    var state = useState(10);
     return Form(
       child: Column(
         children: [
@@ -27,7 +27,7 @@ class MyCustomForm extends HookWidget {
             decoration: const InputDecoration(labelText: 'Quantidade de itens'),
             value: state.value,
             onChanged: (newValue) {
-              state.value = newValue ?? 5;
+              state.value = newValue ?? 10;
               callback(state.value);
             },
             

@@ -22,8 +22,13 @@ var estadoAplicativo = {
 
 
 class DataService{
+  static const maxItems = 15;
+  static const minItems = 5;
+  static const defautItems = 10;
+
+  int _querySize = defautItems;
+
   final ValueNotifier<Map<String,dynamic>> tableStateNotifier = ValueNotifier(estadoAplicativo);
-  int querySize = 5;
 
 
   void carregar(index){
@@ -43,7 +48,7 @@ class DataService{
   }
 
   void setQuerySize(int newSize) {
-    querySize = newSize;
+    _querySize = newSize <= 0 ? 5: newSize> 15? 15: newSize;
   }
 
 
@@ -62,7 +67,7 @@ class DataService{
       scheme: "https",
       host: "random-data-api.com",
       path: "api/coffee/random_coffee",
-      queryParameters: {'size': '$querySize'}
+      queryParameters: {'size': '$_querySize'}
     );
 
     fetchData(cafesUri, carregarCafes);
@@ -85,7 +90,7 @@ class DataService{
       scheme: 'https',
       host: 'random-data-api.com',
       path: 'api/beer/random_beer',
-      queryParameters: {'size': '$querySize'}
+      queryParameters: {'size': '$_querySize'}
     );
 
     fetchData(beersUri, carregarCervejas);
@@ -107,7 +112,7 @@ class DataService{
         scheme: 'https',
         host: 'random-data-api.com',
         path: 'api/nation/random_nation',
-        queryParameters: {'size': '$querySize'}
+        queryParameters: {'size': '$_querySize'}
       );
 
       fetchData(nacoesUri, carregarNacoes);
@@ -129,7 +134,7 @@ class DataService{
       scheme: 'https',
       host: 'random-data-api.com',
       path: 'api/v2/blood_types',
-      queryParameters: {'size': '$querySize'}
+      queryParameters: {'size': '$_querySize'}
     );
 
     fetchData(sanguesUri, carregarSangues);
