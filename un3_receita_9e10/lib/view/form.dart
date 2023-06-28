@@ -19,7 +19,7 @@ class MyCustomForm extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var state = useState(10);
+    var state = useState(DataService.defautItems);
     return Form(
       child: Column(
         children: [
@@ -33,15 +33,15 @@ class MyCustomForm extends HookWidget {
             
             items: const [
               DropdownMenuItem<int>(
-                value: 5,
+                value: DataService.minItems,
                 child: Text('5 Itens'),
               ),
               DropdownMenuItem<int>(
-                value: 10,
+                value: DataService.defautItems,
                 child: Text('10 Itens'),
               ),
               DropdownMenuItem<int>(
-                value: 15,
+                value: DataService.maxItems,
                 child: Text('15 Itens'),
               ),
             ],
