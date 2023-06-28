@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class DataTableWidget extends StatelessWidget {
   
   // final List jsonObjects;
-  List<dynamic> objects;
+  final List<dynamic> objects;
   final List columnNames;
   final List propertyNames;
 
-  DataTableWidget({super.key, 
+  const DataTableWidget({super.key, 
     this.objects = const [],
     this.columnNames = const [], 
     this.propertyNames= const []}

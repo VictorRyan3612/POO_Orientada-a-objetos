@@ -39,17 +39,6 @@ class DataService{
 
   void carregar(index){
     final funcoes = [carregarCafes, carregarCervejas, carregarNacoes, carregarSangues];
-    tableStateNotifier.value = {
-      'status': TableStatus.idle,
-      "dataObjects": [],
-      "props": [],
-      "columnsNames": [
-        "Propriedade 1", 
-        "Propriedade 2", 
-        "Propriedade 3"
-      ], 
-      'itemType': ItemType.none
-    };
     funcoes[index]();
   }
 
@@ -149,8 +138,9 @@ class DataService{
       var jsonString = await http.read(uri);
       var listJson = jsonDecode(jsonString);
 
-      if (tableStateNotifier.value['status'] != TableStatus.loading)
-        listJson = [...tableStateNotifier.value['dataObjects'], ...listJson];  
+      if (tableStateNotifier.value['status'] != TableStatus.loading) {
+        listJson = [...tableStateNotifier.value['dataObjects'], ...listJson];
+      }  
       
 
       if (function == carregarCervejas){

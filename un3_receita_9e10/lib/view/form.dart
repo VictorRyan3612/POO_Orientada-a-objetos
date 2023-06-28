@@ -9,10 +9,10 @@ final dataService = DataService();
 
 @immutable
 class MyCustomForm extends HookWidget {
-  dynamic callback; 
+  final dynamic callback; 
 
 
-  MyCustomForm({super.key, this.callback});
+  const MyCustomForm({super.key, this.callback});
   
 
 
@@ -27,7 +27,7 @@ class MyCustomForm extends HookWidget {
             decoration: const InputDecoration(labelText: 'Quantidade de itens'),
             value: state.value,
             onChanged: (newValue) {
-              state.value = newValue ?? 10;
+              state.value = newValue ?? DataService.defautItems;
               callback(state.value);
             },
             
