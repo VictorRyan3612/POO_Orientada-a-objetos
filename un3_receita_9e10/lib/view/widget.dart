@@ -35,48 +35,54 @@ class MyApp extends StatelessWidget {
             ),
             Expanded(
               child: SingleChildScrollView(
-                child:
-                  ValueListenableBuilder(
-                  valueListenable: dataService.tableStateNotifier,
-                  builder: (_, value, __) {
-                    switch (value['status']){
-                        case TableStatus.idle: 
-                          return const Padding (
-                              padding: EdgeInsets.all(30.0),
-                              child: Text("Toque algum botão")
+                scrollDirection: Axis.vertical,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+
+                  child: ValueListenableBuilder(
+                    valueListenable: dataService.tableStateNotifier,
+                    builder: (_, value, __) {
+                      switch (value['status']){
+
+                          case TableStatus.idle: 
+                            return const Padding (
+                                padding: EdgeInsets.all(30.0),
+                                child: Text("Toque algum botão")
+                              );
+
+                          case TableStatus.loading:
+                            return const Padding (
+                                padding: EdgeInsets.all(200.0),
+                                child: CircularProgressIndicator()
+                              );
+
+                          case TableStatus.ready: 
+                            return Center(
+                              child: DataTableWidget(
+                                objects: value["dataObjects"],
+                                propertyNames: value["props"],
+                                columnNames: value["columnsNames"],
+                              ),
                             );
-                        case TableStatus.loading:
-                          return const Padding (
-                              padding: EdgeInsets.all(200.0),
-                              child: CircularProgressIndicator()
-                            );
-                        case TableStatus.ready: 
-                          return Center(
-                            child: DataTableWidget(
-                              objects: value["dataObjects"],
-                              propertyNames: value["props"],
-                              columnNames: value["columnsNames"],
-                            ),
-                          );
-                        case TableStatus.error: 
-                          return const Padding (
-                              padding: EdgeInsets.all(30.0),
-                              child: Text("Erro de conexão: Verifique sua conexão com a internet.")
-                            );
-                      }
-                      return const Text("Erro desconhecido"); 
-                  }
-              ),
-                
+
+                          case TableStatus.error: 
+                            return const Padding (
+                                padding: EdgeInsets.all(30.0),
+                                child: Text("Erro de conexão: Verifique sua conexão com a internet.")
+                              );
+                        }
+                        return const Text("Erro desconhecido"); 
+                    }
+                  ),
+                ),
               ),
             ),
           ],
         ),
 
-        
-        
         bottomNavigationBar: NewNavBar(itemSelectedCallback: dataService.carregar),
-      ));
+      )
+    );
   }
 
 }
