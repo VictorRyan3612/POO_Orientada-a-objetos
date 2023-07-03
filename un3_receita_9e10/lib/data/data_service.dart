@@ -4,6 +4,7 @@ import 'dart:convert';
 import '../util/ordenador.dart';
 
 
+
 enum TableStatus{idle,loading,ready,error}
 
 enum ItemType{
@@ -136,3 +137,5 @@ class DataService{
   }
 
 }
+
+final dataService = DataService();

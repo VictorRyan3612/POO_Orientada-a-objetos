@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../data/data_service.dart';
+
 
 class DataTableWidget extends StatelessWidget {
   
@@ -18,6 +20,9 @@ class DataTableWidget extends StatelessWidget {
     return DataTable(
       columns: columnNames.map( 
         (name) => DataColumn(
+          onSort: (columnIndex, ascending) => 
+            dataService.ordenarEstadoAtual(propertyNames[columnIndex]
+          ),
           label: Expanded(
             child: Text(name, style: const TextStyle(fontWeight: FontWeight.bold))
           )
