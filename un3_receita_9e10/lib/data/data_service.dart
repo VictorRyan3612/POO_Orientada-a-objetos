@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import '../util/ordenador.dart';
 
 
 enum TableStatus{idle,loading,ready,error}
@@ -51,6 +51,28 @@ class DataService{
   }
   
   int get querySize => _querySize;
+
+
+  void ordenarEstadoAtual(String propriedade){
+    List objetos =  tableStateNotifier.value['dataObjects'] ?? [];
+    if (objetos == []) return;
+      Ordenador ord = Ordenador();
+    var objetosOrdenados = [];
+    final type = tableStateNotifier.value['itemType'];
+    if (type == ItemType.beer && propriedade == "name"){
+        objetosOrdenados = ord.ordenarCervejasPorNomeCrescente(objetos);
+    }
+    emitirEstadoOrdenado(objetosOrdenados, propriedade);
+  }
+
+
+  void emitirEstadoOrdenado(List objetosOrdenados, String propriedade){
+    var estado = tableStateNotifier.value;
+    estado['dataObjects'] = objetosOrdenados;
+    estado['sortCriteria'] = propriedade;
+    estado['ascending'] = true;
+    tableStateNotifier.value = estado;
+  }
 
 
   void carregar(index){
