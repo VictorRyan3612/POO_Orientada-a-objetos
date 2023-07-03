@@ -62,6 +62,8 @@ class DataService{
     final type = tableStateNotifier.value['itemType'];
     if (type == ItemType.beer && propriedade == "name"){
         objetosOrdenados = ord.ordenarCervejasPorNomeCrescente(objetos);
+    }else if (type == ItemType.beer && propriedade == "style"){
+      objetosOrdenados = ord.ordenarCervejasPorEstiloCrescente(objetos);
     }
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
