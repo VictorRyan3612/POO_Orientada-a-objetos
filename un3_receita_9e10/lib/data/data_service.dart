@@ -70,7 +70,7 @@ class DataService{
 
 
   void emitirEstadoOrdenado(List objetosOrdenados, String propriedade){
-    var estado = tableStateNotifier.value;
+    Map<String,dynamic> estado = {...tableStateNotifier.value};
     estado['dataObjects'] = objetosOrdenados;
     estado['sortCriteria'] = propriedade;
     estado['ascending'] = true;
