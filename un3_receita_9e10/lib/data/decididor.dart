@@ -18,36 +18,12 @@ class DecididorGeralCrescente extends Decididor{
 }
 
 
-class DecididorCervejaNomeCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["name"].compareTo(proximo["name"]) > 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
-}
 
 class DecididorCervejaNomeDecrescente extends Decididor{
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
     try{
       return atual["name"].compareTo(proximo["name"]) < 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
-
-}
-
-class DecididorCervejaEstiloCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["style"].compareTo(proximo["style"]) > 0;
     }
     catch (error){
       return false;
@@ -71,18 +47,7 @@ class DecididorCervejaEstiloDecrescente extends Decididor{
 
 }
 
-class DecididorCervejaIbuCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["ibu"].compareTo(proximo["ibu"]) > 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
 
-}
 class DecididorCervejaIbuDecrescente extends Decididor{
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
@@ -98,18 +63,7 @@ class DecididorCervejaIbuDecrescente extends Decididor{
 
 
 
-class DecididorCafeNameCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["blend_name"].compareTo(proximo["blend_name"]) > 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
 
-}
 class DecididorCafeNameDecrescente extends Decididor{
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
@@ -124,18 +78,7 @@ class DecididorCafeNameDecrescente extends Decididor{
 }
 
 
-class DecididorCafeOrigemCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["origin"].compareTo(proximo["origin"]) > 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
 
-}
 class DecididorCafeOrigemDecrescente extends Decididor{
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
@@ -149,18 +92,7 @@ class DecididorCafeOrigemDecrescente extends Decididor{
 
 }
 
-class DecididorCafeVariedadeCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["variety"].compareTo(proximo["variety"]) > 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
 
-}
 class DecididorCafeVariedadeDecrescente extends Decididor{
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
@@ -176,18 +108,7 @@ class DecididorCafeVariedadeDecrescente extends Decididor{
 
 
 
-class DecididorNacoesNacionalidadeCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["nationality"].compareTo(proximo["nationality"]) > 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
 
-}
 class DecididorNacoesNacionalidadeDecrescente extends Decididor{
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
@@ -202,18 +123,7 @@ class DecididorNacoesNacionalidadeDecrescente extends Decididor{
 }
 
 
-class DecididorNacoesLanguageCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["language"].compareTo(proximo["language"]) > 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
 
-}
 class DecididorNacoesLanguageDecrescente extends Decididor{
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
@@ -227,18 +137,7 @@ class DecididorNacoesLanguageDecrescente extends Decididor{
 
 }
 
-class DecididorNacoesCapitalCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["capital"].compareTo(proximo["capital"]) > 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
 
-}
 class DecididorNacoesCapitalDecrescente extends Decididor{
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
@@ -254,18 +153,7 @@ class DecididorNacoesCapitalDecrescente extends Decididor{
 
 
 
-class DecididorSangueTipoCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["type"].compareTo(proximo["type"]) > 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
 
-}
 class DecididorSangueTipoDecrescente extends Decididor{
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
@@ -280,18 +168,7 @@ class DecididorSangueTipoDecrescente extends Decididor{
 }
 
 
-class DecididorSangueRhCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["rh_factor"].compareTo(proximo["rh_factor"]) > 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
 
-}
 class DecididorSangueRhDecrescente extends Decididor{
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
@@ -305,18 +182,7 @@ class DecididorSangueRhDecrescente extends Decididor{
 
 }
 
-class DecididorSangueGrupoCrescente extends Decididor{
-  @override
-  bool precisaTrocarAtualPeloProximo(atual, proximo) {
-    try{
-      return atual["group"].compareTo(proximo["group"]) > 0;
-    }
-    catch (error){
-      return false;
-    }    
-  }
 
-}
 class DecididorSangueGrupoDecrescente extends Decididor{
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
