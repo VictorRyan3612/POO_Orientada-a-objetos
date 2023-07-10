@@ -65,6 +65,9 @@ class DataService{
     }else if (type == ItemType.beer && propriedade == "style"){
       objetosOrdenados = ord.ordenarCervejasPorEstiloCrescente(objetos);
     }
+    else if (type == ItemType.beer && propriedade == "ibu"){
+      objetosOrdenados = ord.ordenarCervejasPorIbuCrescente(objetos);
+    }
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
 
