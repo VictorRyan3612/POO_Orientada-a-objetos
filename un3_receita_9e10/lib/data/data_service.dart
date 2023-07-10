@@ -78,6 +78,15 @@ class DataService{
     else if (type == ItemType.coffee && propriedade == "variety"){
       objetosOrdenados = ordenarFuderoso(objetos, DecididorCafeVariedadeCrescente());
     }
+    if (type == ItemType.nation && propriedade == "nationality"){
+        objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesNacionalidadeCrescente());
+    }
+    else if (type == ItemType.nation && propriedade == "language"){
+      objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesLanguageCrescente());
+    }
+    else if (type == ItemType.nation && propriedade == "capital"){
+      objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesCapitalCrescente());
+    }
 
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
