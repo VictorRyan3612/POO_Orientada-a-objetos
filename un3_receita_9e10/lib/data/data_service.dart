@@ -60,48 +60,57 @@ class DataService{
     var objetosOrdenados = [];
     final type = tableStateNotifier.value['itemType'];
 
-    if (type == ItemType.beer && propriedade == "name"){
+    if (type == ItemType.beer){
+      if (propriedade == "name"){
         objetosOrdenados = ordenarFuderoso(objetos, DecididorCervejaNomeCrescente());
+      }
+      else if (propriedade == "style"){
+        objetosOrdenados = ordenarFuderoso(objetos, DecididorCervejaEstiloCrescente());
+      }
+      else if (propriedade == "ibu"){
+        objetosOrdenados = ordenarFuderoso(objetos, DecididorCervejaIbuCrescente());
+      }
     }
-    else if (type == ItemType.beer && propriedade == "style"){
-      objetosOrdenados = ordenarFuderoso(objetos, DecididorCervejaEstiloCrescente());
-    }
-    else if (type == ItemType.beer && propriedade == "ibu"){
-      objetosOrdenados = ordenarFuderoso(objetos, DecididorCervejaIbuCrescente());
-    }
-    if (type == ItemType.coffee && propriedade == "blend_name"){
+    else if (type == ItemType.coffee){
+      if (propriedade == "blend_name"){
         objetosOrdenados = ordenarFuderoso(objetos, DecididorCafeNameCrescente());
-    }
-    else if (type == ItemType.coffee && propriedade == "origin"){
-      objetosOrdenados = ordenarFuderoso(objetos, DecididorCafeOrigemCrescente());
-    }
-    else if (type == ItemType.coffee && propriedade == "variety"){
-      objetosOrdenados = ordenarFuderoso(objetos, DecididorCafeVariedadeCrescente());
+      }
+      else if (propriedade == "origin"){
+        objetosOrdenados = ordenarFuderoso(objetos, DecididorCafeOrigemCrescente());
+      }
+      else if (propriedade == "variety"){
+        objetosOrdenados = ordenarFuderoso(objetos, DecididorCafeVariedadeCrescente());
+      }
     }
 
-    if (type == ItemType.nation && propriedade == "nationality"){
+    
+    else if (type == ItemType.nation){
+      if (propriedade == "nationality"){
         objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesNacionalidadeCrescente());
+      }
+      else if (propriedade == "language"){
+        objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesLanguageCrescente());
+      }
+      else if (propriedade == "capital"){
+        objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesCapitalCrescente());
+      }
     }
-    else if (type == ItemType.nation && propriedade == "language"){
-      objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesLanguageCrescente());
-    }
-    else if (type == ItemType.nation && propriedade == "capital"){
-      objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesCapitalCrescente());
-    }
-
-    if (type == ItemType.blood && propriedade == "type"){
+    else if (type == ItemType.blood) {
+      if (propriedade == "type"){
         objetosOrdenados = ordenarFuderoso(objetos, DecididorSangueTipoCrescente());
+      }
+      else if (propriedade == "rh_factor"){
+        objetosOrdenados = ordenarFuderoso(objetos, DecididorSangueRhCrescente());
+      }
+      else if (propriedade == "group"){
+        objetosOrdenados = ordenarFuderoso(objetos, DecididorSangueGrupoCrescente());
+      }
     }
-    else if (type == ItemType.blood && propriedade == "rh_factor"){
-      objetosOrdenados = ordenarFuderoso(objetos, DecididorSangueRhCrescente());
-    }
-    else if (type == ItemType.blood && propriedade == "group"){
-      objetosOrdenados = ordenarFuderoso(objetos, DecididorSangueGrupoCrescente());
-    }
+    
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
 
- 
+
 
   void emitirEstadoOrdenado(List objetosOrdenados, String propriedade){
     Map<String,dynamic> estado = {...tableStateNotifier.value};
