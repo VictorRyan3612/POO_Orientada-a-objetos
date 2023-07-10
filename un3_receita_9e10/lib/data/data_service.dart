@@ -89,6 +89,15 @@ class DataService{
       objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesCapitalCrescente());
     }
 
+    if (type == ItemType.blood && propriedade == "type"){
+        objetosOrdenados = ordenarFuderoso(objetos, DecididorSangueTipoCrescente());
+    }
+    else if (type == ItemType.blood && propriedade == "rh_factor"){
+      objetosOrdenados = ordenarFuderoso(objetos, DecididorSangueRhCrescente());
+    }
+    else if (type == ItemType.blood && propriedade == "group"){
+      objetosOrdenados = ordenarFuderoso(objetos, DecididorSangueGrupoCrescente());
+    }
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
 
@@ -403,11 +412,6 @@ class DecididorNacoesCapitalDecrescente extends Decididor{
 
 }
 
-
-      // this == coffee? ["blend_name","origin","variety"] :
-      // this == beer? ["name","style","ibu"]:
-      // this == nation? ["nationality","language", "capital"]:
-      // this == blood? ["type","rh_factor", "group"]:
 
 
 class DecididorSangueTipoCrescente extends Decididor{
