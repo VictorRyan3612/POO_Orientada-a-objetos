@@ -108,7 +108,7 @@ class Ordenador{
     
     return cervejasOrdenadas;
   }
-   List ordenarCervejasPorIbuDecrescente(List cervejas){
+  List ordenarCervejasPorIbuDecrescente(List cervejas){
     List cervejasOrdenadas = List.of(cervejas);
     bool trocouAoMenosUm;
 
