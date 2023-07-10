@@ -60,52 +60,7 @@ class DataService{
     var objetosOrdenados = [];
     final type = tableStateNotifier.value['itemType'];
 
-    if (type == ItemType.beer){
-      if (propriedade == "name"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorCervejaNomeCrescente());
-      }
-      else if (propriedade == "style"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorCervejaEstiloCrescente());
-      }
-      else if (propriedade == "ibu"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorCervejaIbuCrescente());
-      }
-    }
-    else if (type == ItemType.coffee){
-      if (propriedade == "blend_name"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorCafeNameCrescente());
-      }
-      else if (propriedade == "origin"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorCafeOrigemCrescente());
-      }
-      else if (propriedade == "variety"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorCafeVariedadeCrescente());
-      }
-    }
-
-    
-    else if (type == ItemType.nation){
-      if (propriedade == "nationality"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesNacionalidadeCrescente());
-      }
-      else if (propriedade == "language"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesLanguageCrescente());
-      }
-      else if (propriedade == "capital"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesCapitalCrescente());
-      }
-    }
-    else if (type == ItemType.blood) {
-      if (propriedade == "type"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorSangueTipoCrescente());
-      }
-      else if (propriedade == "rh_factor"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorSangueRhCrescente());
-      }
-      else if (propriedade == "group"){
-        objetosOrdenados = ordenarFuderoso(objetos, DecididorSangueGrupoCrescente());
-      }
-    }
+    objetosOrdenados = ordenarFuderoso(objetos, DecididorGeralCrescente(prop: propriedade));
     
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
