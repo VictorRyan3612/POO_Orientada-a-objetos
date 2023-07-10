@@ -59,16 +59,8 @@ class DataService{
     if (objetos == []) return;
     var objetosOrdenados = [];
     
-    if (ordCres == false) {
-      objetosOrdenados = ordenarFuderoso(objetos, DecididorGeralCrescente(prop: propriedade));
-      ordCres = true;
-    }
-
-    else {
-      objetosOrdenados = ordenarFuderoso(objetos, DecididorGeralDecrescente(prop: propriedade));
-      ordCres = false;
-    }
-    
+    objetosOrdenados = ordenarFuderoso(objetos, DecididorGeral(prop: propriedade, ordenadoCrescente: ordCres));
+    ordCres ? ordCres = false : ordCres = true;
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
 
