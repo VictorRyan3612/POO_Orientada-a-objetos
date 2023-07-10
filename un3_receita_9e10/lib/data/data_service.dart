@@ -40,7 +40,7 @@ class DataService{
     }
   );
 
-
+  bool ordCres = false;
   static const maxItems = 15;
   static const minItems = 5;
   static const defautItems = 10;
@@ -58,8 +58,16 @@ class DataService{
     List objetos =  tableStateNotifier.value['dataObjects'] ?? [];
     if (objetos == []) return;
     var objetosOrdenados = [];
+    
+    if (ordCres == false) {
+      objetosOrdenados = ordenarFuderoso(objetos, DecididorGeralCrescente(prop: propriedade));
+      ordCres = true;
+    }
 
-    objetosOrdenados = ordenarFuderoso(objetos, DecididorGeralCrescente(prop: propriedade));
+    else {
+      objetosOrdenados = ordenarFuderoso(objetos, DecididorGeralDecrescente(prop: propriedade));
+      ordCres = false;
+    }
     
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
