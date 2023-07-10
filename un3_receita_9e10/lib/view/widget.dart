@@ -65,8 +65,8 @@ class MyApp extends StatelessWidget {
                               return Center(
                                 child: DataTableWidget(
                                   objects: value["dataObjects"],
-                                  propertyNames: value["props"],
-                                  columnNames: value["columnsNames"],
+                                  propertyNames: value["propertyNames"],
+                                  columnNames: value["columnNames"], // Fix the typo here
                                 ),
                               );
               

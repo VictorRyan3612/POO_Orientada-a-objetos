@@ -4,7 +4,7 @@ import '../data/data_service.dart';
 
 
 
-final dataService = DataService();
+
 
 
 @immutable

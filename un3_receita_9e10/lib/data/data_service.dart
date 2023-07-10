@@ -1,28 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../util/ordenador.dart';
 
 
 
 enum TableStatus{idle,loading,ready,error}
-enum ItemType{coffee, beer, nation, blood, none}
+
+enum ItemType{
+  beer, coffee, nation, blood, none;
+  String get asString => '$name';
+
+  List<String> get columns => this == coffee? ["Nome", "Origem", "Tipo"] :
+                              this == beer? ["Nome", "Estilo", "IBU"]:
+                              this == nation? ["Nacionalidade", "Linguagem", "Capital"]:
+                              this == blood? ["Tipo", "Fator RH", "Grupo"]:
+                              [] ;
+
+  List<String> get properties => this == coffee? ["blend_name","origin","variety"] :
+                              this == beer? ["name","style","ibu"]:
+                              this == nation? ["nationality","language", "capital"]:
+                              this == blood? ["type","rh_factor", "group"]:
+                              [] ;
+
+}
 
 
 var estadoAplicativo = {
   'status':TableStatus.idle,
   "dataObjects": [],
-  "props": [],
-  "columnsNames": [
-    "Propriedade 1", 
-    "Propriedade 2", 
-    "Propriedade 3"
-  ],
   'itemType': ItemType.none
 };
 
 
 class DataService{
-  final ValueNotifier<Map<String,dynamic>> tableStateNotifier = ValueNotifier(estadoAplicativo);
+  final ValueNotifier<Map<String,dynamic>> tableStateNotifier = ValueNotifier({
+                              'status':TableStatus.idle,
+                              'dataObjects':[],
+                              'itemType': ItemType.none
+                            });
+
 
   static const maxItems = 15;
   static const minItems = 5;
@@ -31,200 +48,99 @@ class DataService{
   int _querySize = defautItems;
 
   void setQuerySize(int newSize) {
-    _querySize = newSize <= 0 ? 5: newSize> 15? 15: newSize;
+    _querySize = newSize <= 0 ? minItems: newSize >= maxItems? maxItems: newSize;
   }
   
   int get querySize => _querySize;
 
 
+  void ordenarEstadoAtual(String propriedade){
+    List objetos =  tableStateNotifier.value['dataObjects'] ?? [];
+    if (objetos == []) return;
+      Ordenador ord = Ordenador();
+    var objetosOrdenados = [];
+    final type = tableStateNotifier.value['itemType'];
+    if (type == ItemType.beer && propriedade == "name"){
+        objetosOrdenados = ord.ordenarCervejasPorNomeCrescente(objetos);
+    }else if (type == ItemType.beer && propriedade == "style"){
+      objetosOrdenados = ord.ordenarCervejasPorEstiloCrescente(objetos);
+    }
+    else if (type == ItemType.beer && propriedade == "ibu"){
+      objetosOrdenados = ord.ordenarCervejasPorIbuCrescente(objetos);
+    }
+    emitirEstadoOrdenado(objetosOrdenados, propriedade);
+  }
+
+
+  void emitirEstadoOrdenado(List objetosOrdenados, String propriedade){
+    Map<String,dynamic> estado = {...tableStateNotifier.value};
+    estado['dataObjects'] = objetosOrdenados;
+    estado['sortCriteria'] = propriedade;
+    estado['ascending'] = true;
+    tableStateNotifier.value = estado;
+  }
+
+
   void carregar(index){
-    final funcoes = [carregarCafes, carregarCervejas, carregarNacoes, carregarSangues];
-    funcoes[index]();
+    final params = [ItemType.coffee, ItemType.beer, ItemType.nation, ItemType.blood];
+    carregarPorTipo(params[index]);
   }
 
 
-
-  void carregarCafes() async{
-    if (tableStateNotifier.value['status'] == TableStatus.loading) return;
-
-    if (tableStateNotifier.value['itemType'] != ItemType.coffee){
-      tableStateNotifier.value = {
-        'status': TableStatus.loading,
-        'dataObjects': [],
-        'itemType': ItemType.coffee
-      };
-    }
-
-    var cafesUri = Uri(
-      scheme: "https",
-      host: "random-data-api.com",
-      path: "api/coffee/random_coffee",
-      queryParameters: {'size': '$_querySize'}
-    );
-
-    fetchData(cafesUri, carregarCafes);
-  }
-
-
-
-  void carregarCervejas() async {
-    if (tableStateNotifier.value['status'] == TableStatus.loading) return;
-    
-    if (tableStateNotifier.value['itemType'] != ItemType.beer){
-      tableStateNotifier.value = {
-        'status': TableStatus.loading,
-        'dataObjects': [],
-        'itemType': ItemType.beer
-      };
-    }
-
-    var beersUri = Uri(
+  Uri montarUri(ItemType type){
+    return Uri(
       scheme: 'https',
       host: 'random-data-api.com',
-      path: 'api/beer/random_beer',
+      path: 'api/${type.asString}/random_${type.asString}',
       queryParameters: {'size': '$_querySize'}
     );
-
-    fetchData(beersUri, carregarCervejas);
   }
 
 
-    void carregarNacoes() async{
-      if (tableStateNotifier.value['status'] == TableStatus.loading) return;
+  Future<List<dynamic>> acessarApi(Uri uri) async{
+    var jsonString = await http.read(uri);
+    var json = jsonDecode(jsonString);
+    json = [...tableStateNotifier.value['dataObjects'], ...json];
+    return json;
+  }
 
-      if (tableStateNotifier.value['itemType'] != ItemType.nation){
-        tableStateNotifier.value = {
-          'status': TableStatus.loading,
-          'dataObjects': [],
-          'itemType': ItemType.nation
-        };
-      }
-
-      var nacoesUri = Uri(
-        scheme: 'https',
-        host: 'random-data-api.com',
-        path: 'api/nation/random_nation',
-        queryParameters: {'size': '$_querySize'}
-      );
-
-      fetchData(nacoesUri, carregarNacoes);
-    }
-
-
-  void carregarSangues() async{
-    if (tableStateNotifier.value['status'] == TableStatus.loading) return;
-
-    if (tableStateNotifier.value['itemType'] != ItemType.blood){
-      tableStateNotifier.value = {
-        'status': TableStatus.loading,
-        'dataObjects': [],
-        'itemType': ItemType.blood
-      };
-    }
-
-    var sanguesUri = Uri(
-      scheme: 'https',
-      host: 'random-data-api.com',
-      path: 'api/v2/blood_types',
-      queryParameters: {'size': '$_querySize'}
-    );
-
-    fetchData(sanguesUri, carregarSangues);
+  void emitirEstadoCarregando(ItemType type){
+    tableStateNotifier.value = {
+      'status': TableStatus.loading,
+      'dataObjects': [],
+      'propertyNames': type.properties,
+      'itemType': type
+    };
   }
 
 
-  void fetchData(Uri uri, Function function) async {
-    try {
-      var jsonString = await http.read(uri);
-      var listJson = jsonDecode(jsonString);
-
-      if (tableStateNotifier.value['status'] != TableStatus.loading) {
-        listJson = [...tableStateNotifier.value['dataObjects'], ...listJson];
-      }  
-      
-
-      if (function == carregarCervejas){
-        tableStateNotifier.value = {
-        'itemType': ItemType.beer,
-        'status': TableStatus.ready,
-          "dataObjects": listJson,
-          "props": [
-            "name",
-            "style",
-            "ibu"
-          ],
-          "columnsNames": [
-            "Nomes",
-            "Estilo",
-            "IBU"
-          ]
-        };
-      }
-      else if (function == carregarNacoes){
-        tableStateNotifier.value = {
-          'itemType': ItemType.nation,
-          'status': TableStatus.ready,
-          "dataObjects": listJson,
-          "props": [
-            "nationality",
-            "language",
-            "capital"
-          ],
-          "columnsNames": [
-            "Nacionalidade",
-            "Linguagem",
-            "Capital"
-          ]
-        };
-      }
+  void emitirEstadoPronto(ItemType type, var json){
+    tableStateNotifier.value = {
+      'itemType': type,
+      'status': TableStatus.ready,
+      'dataObjects': json,
+      'propertyNames': type.properties, // Update the key to 'propertyNames'
+      'columnNames': type.columns
+    };
+  }
 
 
-      else if (function == carregarCafes){
-        tableStateNotifier.value = {
-          'itemType': ItemType.coffee,
-          'status': TableStatus.ready,
-          "dataObjects": listJson,
-          "props": [
-            "blend_name",
-            "origin",
-            "variety"
-          ],
-          "columnsNames": [
-            "Nomes",
-            "Origem",
-            "Variedade"
-          ]
-        };
-      }
-      
+  bool temRequisicaoEmCurso() => tableStateNotifier.value['status'] == TableStatus.loading;
+  bool mudouTipoDeItemRequisitado(ItemType type) => tableStateNotifier.value['itemType'] != type;
 
-      if (function == carregarSangues){
-        tableStateNotifier.value = {
-          'itemType': ItemType.blood,
-          'status': TableStatus.ready,
-          "dataObjects": listJson,
-          "props": [
-            "type",
-            "rh_factor",
-            "group"
-          ],
-          "columnsNames": [
-            "Tipo",
-            "Fator RH",
-            "Grupo"
-          ]
-        };
-      }
+
+  void carregarPorTipo(ItemType type) async{
+    //ignorar solicitação se uma requisição já estiver em curso
+    if (temRequisicaoEmCurso()) return;
+    if (mudouTipoDeItemRequisitado(type)){
+      emitirEstadoCarregando(type);
     }
-    
-    
-    catch (error) {
-      if (error.runtimeType.toString() == '_ClientSocketException') {
-        tableStateNotifier.value={
-          'status':TableStatus.error
-        };
-      }
-    }
+
+    var uri = montarUri(type);
+    var json = await acessarApi(uri);
+    emitirEstadoPronto(type, json);
   }
 
 }
+
+final dataService = DataService();
