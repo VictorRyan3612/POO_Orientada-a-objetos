@@ -58,7 +58,6 @@ class DataService{
     List objetos =  tableStateNotifier.value['dataObjects'] ?? [];
     if (objetos == []) return;
     var objetosOrdenados = [];
-    final type = tableStateNotifier.value['itemType'];
 
     objetosOrdenados = ordenarFuderoso(objetos, DecididorGeralCrescente(prop: propriedade));
     
