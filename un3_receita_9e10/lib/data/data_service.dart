@@ -227,3 +227,85 @@ class DecididorCervejaIbuDecrescente extends Decididor{
   }
 
 }
+
+      // this == coffee? ["blend_name","origin","variety"] :
+      // this == beer? ["name","style","ibu"]:
+      // this == nation? ["nationality","language", "capital"]:
+      // this == blood? ["type","rh_factor", "group"]:
+
+class DecididorCafeNameCrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["blend_name"].compareTo(proximo["blend_name"]) > 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+class DecididorCafeNameDecrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["blend_name"].compareTo(proximo["blend_name"]) < 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+
+
+class DecididorCafeOrigemCrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["origin"].compareTo(proximo["origin"]) > 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+class DecididorCafeOrigemDecrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["origin"].compareTo(proximo["origin"]) < 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+
+class DecididorCafeVariedadeCrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["variety"].compareTo(proximo["variety"]) > 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+class DecididorCafeVariedadeDecrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["variety"].compareTo(proximo["variety"]) < 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+
