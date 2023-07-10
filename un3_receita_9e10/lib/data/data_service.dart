@@ -78,6 +78,7 @@ class DataService{
     else if (type == ItemType.coffee && propriedade == "variety"){
       objetosOrdenados = ordenarFuderoso(objetos, DecididorCafeVariedadeCrescente());
     }
+
     if (type == ItemType.nation && propriedade == "nationality"){
         objetosOrdenados = ordenarFuderoso(objetos, DecididorNacoesNacionalidadeCrescente());
     }
@@ -325,11 +326,6 @@ class DecididorCafeVariedadeDecrescente extends Decididor{
 }
 
 
-      // this == coffee? ["blend_name","origin","variety"] :
-      // this == beer? ["name","style","ibu"]:
-      // this == nation? ["nationality","language", "capital"]:
-      // this == blood? ["type","rh_factor", "group"]:
-
 
 class DecididorNacoesNacionalidadeCrescente extends Decididor{
   @override
@@ -399,6 +395,89 @@ class DecididorNacoesCapitalDecrescente extends Decididor{
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
     try{
       return atual["capital"].compareTo(proximo["capital"]) < 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+
+
+      // this == coffee? ["blend_name","origin","variety"] :
+      // this == beer? ["name","style","ibu"]:
+      // this == nation? ["nationality","language", "capital"]:
+      // this == blood? ["type","rh_factor", "group"]:
+
+
+class DecididorSangueTipoCrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["type"].compareTo(proximo["type"]) > 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+class DecididorSangueTipoDecrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["type"].compareTo(proximo["type"]) < 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+
+
+class DecididorSangueRhCrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["rh_factor"].compareTo(proximo["rh_factor"]) > 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+class DecididorSangueRhDecrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["rh_factor"].compareTo(proximo["rh_factor"]) < 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+
+class DecididorSangueGrupoCrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["group"].compareTo(proximo["group"]) > 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+class DecididorSangueGrupoDecrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["group"].compareTo(proximo["group"]) < 0;
     }
     catch (error){
       return false;
