@@ -237,10 +237,7 @@ class DecididorCervejaIbuDecrescente extends Decididor{
 
 }
 
-      // this == coffee? ["blend_name","origin","variety"] :
-      // this == beer? ["name","style","ibu"]:
-      // this == nation? ["nationality","language", "capital"]:
-      // this == blood? ["type","rh_factor", "group"]:
+
 
 class DecididorCafeNameCrescente extends Decididor{
   @override
@@ -318,3 +315,85 @@ class DecididorCafeVariedadeDecrescente extends Decididor{
 
 }
 
+
+      // this == coffee? ["blend_name","origin","variety"] :
+      // this == beer? ["name","style","ibu"]:
+      // this == nation? ["nationality","language", "capital"]:
+      // this == blood? ["type","rh_factor", "group"]:
+
+
+class DecididorNacoesNacionalidadeCrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["nationality"].compareTo(proximo["nationality"]) > 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+class DecididorNacoesNacionalidadeDecrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["nationality"].compareTo(proximo["nationality"]) < 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+
+
+class DecididorNacoesLanguageCrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["language"].compareTo(proximo["language"]) > 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+class DecididorNacoesLanguageDecrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["language"].compareTo(proximo["language"]) < 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+
+class DecididorNacoesCapitalCrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["capital"].compareTo(proximo["capital"]) > 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
+class DecididorNacoesCapitalDecrescente extends Decididor{
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      return atual["capital"].compareTo(proximo["capital"]) < 0;
+    }
+    catch (error){
+      return false;
+    }    
+  }
+
+}
