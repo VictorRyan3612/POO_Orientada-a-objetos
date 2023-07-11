@@ -11,36 +11,36 @@ enum ItemType{
   beer, coffee, nation, blood, none;
   String get asString => '$name';
 
-  List<String> get columns => this == coffee? ["Nome", "Origem", "Tipo"] :
-                              this == beer? ["Nome", "Estilo", "IBU"]:
-                              this == nation? ["Nacionalidade", "Linguagem", "Capital"]:
-                              this == blood? ["Tipo", "Fator RH", "Grupo"]:
-                              [] ;
+  List<String> get columns {
+    return
+      this == coffee? ["Nome", "Origem", "Tipo"] :
+      this == beer? ["Nome", "Estilo", "IBU"]:
+      this == nation? ["Nacionalidade", "Linguagem", "Capital"]:
+      this == blood? ["Tipo", "Fator RH", "Grupo"]:
+      [] ;
+  } 
 
-  List<String> get properties => this == coffee? ["blend_name","origin","variety"] :
-                              this == beer? ["name","style","ibu"]:
-                              this == nation? ["nationality","language", "capital"]:
-                              this == blood? ["type","rh_factor", "group"]:
-                              [] ;
-
+  List<String> get properties {
+    return 
+      this == coffee? ["blend_name","origin","variety"] :
+      this == beer? ["name","style","ibu"]:
+      this == nation? ["nationality","language", "capital"]:
+      this == blood? ["type","rh_factor", "group"]:
+      [];
+  }
 }
 
 
-var estadoAplicativo = {
-  'status':TableStatus.idle,
-  "dataObjects": [],
-  'itemType': ItemType.none
-};
-
-
 class DataService{
-  final ValueNotifier<Map<String,dynamic>> tableStateNotifier = ValueNotifier({
-                              'status':TableStatus.idle,
-                              'dataObjects':[],
-                              'itemType': ItemType.none
-                            });
+  final ValueNotifier<Map<String,dynamic>> tableStateNotifier = 
+    ValueNotifier({
+      'status':TableStatus.idle,
+      'dataObjects':[],
+      'itemType': ItemType.none
+    }
+  );
 
-
+  bool ordCres = false;
   static const maxItems = 15;
   static const minItems = 5;
   static const defautItems = 10;
@@ -57,19 +57,13 @@ class DataService{
   void ordenarEstadoAtual(String propriedade){
     List objetos =  tableStateNotifier.value['dataObjects'] ?? [];
     if (objetos == []) return;
-      Ordenador ord = Ordenador();
     var objetosOrdenados = [];
-    final type = tableStateNotifier.value['itemType'];
-    if (type == ItemType.beer && propriedade == "name"){
-        objetosOrdenados = ord.ordenarCervejasPorNomeCrescente(objetos);
-    }else if (type == ItemType.beer && propriedade == "style"){
-      objetosOrdenados = ord.ordenarCervejasPorEstiloCrescente(objetos);
-    }
-    else if (type == ItemType.beer && propriedade == "ibu"){
-      objetosOrdenados = ord.ordenarCervejasPorIbuCrescente(objetos);
-    }
+    
+    objetosOrdenados = ordenarFuderoso(objetos, DecididorGeral(prop: propriedade, ordenadoCrescente: ordCres));
+    ordCres ? ordCres = false : ordCres = true;
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
+
 
 
   void emitirEstadoOrdenado(List objetosOrdenados, String propriedade){
@@ -141,6 +135,29 @@ class DataService{
     emitirEstadoPronto(type, json);
   }
 
+
 }
 
 final dataService = DataService();
+
+
+class DecididorGeral extends Decididor{
+  String prop; 
+  bool ordenadoCrescente;
+  DecididorGeral({required this.prop, required this.ordenadoCrescente});
+
+  @override
+  bool precisaTrocarAtualPeloProximo(atual, proximo) {
+    try{
+      if (ordenadoCrescente == false) {
+        return atual[prop].compareTo(proximo[prop]) > 0;
+      } 
+      else {
+        return atual[prop].compareTo(proximo[prop]) < 0;
+      }
+    }
+    catch (error){
+      return false;
+    }    
+  }
+}
