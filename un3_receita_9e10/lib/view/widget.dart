@@ -140,6 +140,10 @@ class NewNavBar extends HookWidget {
         BottomNavigationBarItem(
           label: "Tipos Sanguineos", 
           icon: Icon(Icons.bloodtype)
+        ),
+        BottomNavigationBarItem(
+          label: "Dispositivos", 
+          icon: Icon(Icons.phone_android)
         )
       ]
 
