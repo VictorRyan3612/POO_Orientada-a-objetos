@@ -59,7 +59,7 @@ class DataService{
     if (objetos == []) return;
     var objetosOrdenados = [];
     
-    objetosOrdenados = ordenarFuderoso(objetos, DecididorGeral(prop: propriedade, ordenadoCrescente: ordCres));
+    objetosOrdenados = ordenarFuderoso(objetos, DecididorGeral(propriedade,  ordCres));
     ordCres ? ordCres = false : ordCres = true;
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
@@ -144,7 +144,7 @@ final dataService = DataService();
 class DecididorGeral extends Decididor{
   String prop; 
   bool ordenadoCrescente;
-  DecididorGeral({required this.prop, required this.ordenadoCrescente});
+  DecididorGeral(this.prop, [this.ordenadoCrescente = true]);
 
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
