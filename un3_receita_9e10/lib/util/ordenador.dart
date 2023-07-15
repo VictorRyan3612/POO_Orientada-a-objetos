@@ -1,4 +1,4 @@
-List ordenarFuderoso(List objetos,Decididor decididor){
+List ordenargeral(List objetos,Decididor decididor){
   List objetosOrdenados = List.of(objetos);
   bool trocouAoMenosUm;
   do{
