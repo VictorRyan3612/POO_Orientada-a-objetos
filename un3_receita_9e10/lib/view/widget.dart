@@ -66,7 +66,8 @@ class MyApp extends StatelessWidget {
                                 child: DataTableWidget(
                                   objects: value["dataObjects"],
                                   propertyNames: value["propertyNames"],
-                                  columnNames: value["columnNames"], // Fix the typo here
+                                  columnNames: value["columnNames"],
+                                  sortCallback: dataService.ordenarEstadoAtual,
                                 ),
                               );
               

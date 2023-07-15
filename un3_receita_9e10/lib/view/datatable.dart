@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
-import '../data/data_service.dart';
 
+void _empty(String,bool){}
 
 class DataTableWidget extends StatelessWidget {
-  
-  // final List jsonObjects;
-  final List<dynamic> objects;
+  final _sortCallback;
+  final List objects;
   final List columnNames;
   final List propertyNames;
 
   const DataTableWidget({super.key, 
     this.objects = const [],
     this.columnNames = const [], 
-    this.propertyNames= const []}
-  );
+    this.propertyNames= const [],
+    sortCallback
+    }):
+    _sortCallback = sortCallback ?? _empty ;
 
   @override
   Widget build(BuildContext context) {
     return DataTable(
       columns: columnNames.map( 
         (name) => DataColumn(
-          onSort: (columnIndex, ascending) => 
-            dataService.ordenarEstadoAtual(propertyNames[columnIndex]
-          ),
+          onSort: (columnIndex, ascending) =>
+            _sortCallback(propertyNames[columnIndex]), 
           label: Expanded(
-            child: Text(name, style: const TextStyle(fontWeight: FontWeight.bold))
+            child: Text(name,
+              style: const TextStyle(
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold
+              )
+            )
           )
         )
       ).toList(),
