@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../util/ordenador.dart';
-
+import 'models.dart';
 
 
 enum TableStatus{idle,loading,ready,error}
@@ -64,6 +64,35 @@ class DataService{
   }
   
   int get querySize => _querySize;
+
+
+
+// Helper method to parse JSON data into List<Beer>
+  List<Beer> parseBeerList(List<dynamic> jsonData) {
+    return jsonData.map((json) => Beer.fromJson(json)).toList();
+  }
+
+  // Helper method to parse JSON data into List<Coffee>
+  List<Coffee> parseCoffeeList(List<dynamic> jsonData) {
+    return jsonData.map((json) => Coffee.fromJson(json)).toList();
+  }
+
+  // Helper method to parse JSON data into List<Nation>
+  List<Nation> parseNationList(List<dynamic> jsonData) {
+    return jsonData.map((json) => Nation.fromJson(json)).toList();
+  }
+
+  // Helper method to parse JSON data into List<Blood>
+  List<Blood> parseBloodList(List<dynamic> jsonData) {
+    return jsonData.map((json) => Blood.fromJson(json)).toList();
+  }
+
+  // Helper method to parse JSON data into List<Device>
+  List<Device> parseDeviceList(List<dynamic> jsonData) {
+    return jsonData.map((json) => Device.fromJson(json)).toList();
+  }
+
+
 
 
 
