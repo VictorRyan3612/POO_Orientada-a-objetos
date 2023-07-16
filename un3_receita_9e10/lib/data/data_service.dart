@@ -100,7 +100,7 @@ arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita
 
 
   void emitirEstadoOrdenado(List objetosOrdenados, String propriedade){
-    Map<String,dynamic> estado = {...tableStateNotifier.value};
+    var estado = Map<String, dynamic>.from(tableStateNotifier.value);
     estado['dataObjects'] = objetosOrdenados;
     estado['sortCriteria'] = propriedade;
     estado['ascending'] = true;
@@ -116,7 +116,6 @@ arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita
 
 void filtrarEstadoAtual(String filtrar) {
     List objetos = objetoOriginal;
-
     if (objetos.isEmpty) return;
 
     List objetosFiltrados = [];
@@ -132,7 +131,6 @@ void filtrarEstadoAtual(String filtrar) {
     else {
       objetosFiltrados = objetoOriginal;
     }
-
     emitirEstadoFiltrado(objetosFiltrados);
   }
 
@@ -176,11 +174,12 @@ void filtrarEstadoAtual(String filtrar) {
       'itemType': type,
       'status': TableStatus.ready,
       'dataObjects': json,
-      'propertyNames': type.properties, // Update the key to 'propertyNames'
+      'propertyNames': type.properties,
       'columnNames': type.columns
     };
+    objetoOriginal = json;
   }
-  
+
 /*
 Adaptado de Dayanne Xavier, perfil github: https://github.com/DayXL
 Repositório: https://github.com/DayXL/Atividades-de-POO-1

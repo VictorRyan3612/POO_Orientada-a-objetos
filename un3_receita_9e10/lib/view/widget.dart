@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner:false,
 
       home: Scaffold(
-        appBar: MyAppBar(),
+        appBar: MyAppBar(callback: dataService.filtrarEstadoAtual),
 
         body: Column(
           children: [
@@ -94,10 +94,10 @@ class MyApp extends StatelessWidget {
 
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final callback;
+  final _callback;
 
   MyAppBar({super.key, callback}):
-    callback = callback ?? (int){}
+    _callback = callback ?? (int){}
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -114,6 +114,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: TextField(
+                onChanged: (value) => _callback(value),
                 decoration: const InputDecoration(
                   hintText: 'Digite algo...',
                 ),
