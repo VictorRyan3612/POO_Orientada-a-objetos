@@ -22,6 +22,34 @@
     return objetosOrdenados;
   }  
   
+/*
+Adaptado de Dayanne Xavier, perfil github: https://github.com/DayXL
+Repositório: https://github.com/DayXL/Atividades-de-POO-1
+arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita9-10ab/lib/util/ordenador.dart
+*/
+
+
+  List ordenarItem2(List item, Function funcaoCall){
+    List itemOrdenadas = List.of(item);
+    bool trocouAoMenosUm;
+    final funcao = funcaoCall;
+    do{
+      trocouAoMenosUm = false;
+      for (int i=0; i<itemOrdenadas.length-1; i++){
+        var atual = itemOrdenadas[i];
+        var proximo = itemOrdenadas[i+1];
+        if (funcao(atual,proximo)){
+          var aux = itemOrdenadas[i];
+          itemOrdenadas[i] = itemOrdenadas[i+1];
+          itemOrdenadas[i+1] = aux;
+          trocouAoMenosUm = true;
+        }
+      }
+    }while(trocouAoMenosUm);
+    return itemOrdenadas;
+  }
+
+
 }
 
 abstract class Decididor{
