@@ -20,9 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner:false,
 
       home: Scaffold(
-        appBar: AppBar( 
-          title: const Text("Dicas"),
-          ),
+        appBar: MyAppBar(callback: dataService.filtrarEstadoAtual),
 
         body: Column(
           children: [
@@ -66,7 +64,8 @@ class MyApp extends StatelessWidget {
                                 child: DataTableWidget(
                                   objects: value["dataObjects"],
                                   propertyNames: value["propertyNames"],
-                                  columnNames: value["columnNames"], // Fix the typo here
+                                  columnNames: value["columnNames"],
+                                  sortCallback: dataService.ordenarEstadoAtual2,
                                 ),
                               );
               
@@ -86,7 +85,18 @@ class MyApp extends StatelessWidget {
           ],
         ),
 
-        bottomNavigationBar: NewNavBar(itemSelectedCallback: dataService.carregar),
+        bottomNavigationBar: NewNavBar(
+          itemSelectedCallback: dataService.carregar,
+          myIcones: const [
+            Icons.coffee_outlined,
+            Icons.local_drink_outlined,
+            Icons.flag_outlined,
+            Icons.bloodtype,
+            Icons.phone_android
+          ],
+          
+          nomesIcones: ItemType.values.map((itemType) => itemType.tipoNomes).toList(),
+        )
       )
     );
   }
@@ -94,16 +104,56 @@ class MyApp extends StatelessWidget {
 }
 
 
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final _callback;
+
+  MyAppBar({super.key, callback}):
+    _callback = callback ?? (int){}
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Row(
+        children: [
+          const Expanded(
+            child: Text("Lista API's"),
+          ),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: TextField(
+                onChanged: (value) => _callback(value),
+                decoration: const InputDecoration(
+                  hintText: 'Digite algo...',
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 
 
 
 class NewNavBar extends HookWidget {
   
-  // ignore: prefer_typing_uninitialized_variables
   final _itemSelectedCallback;
+  final List<IconData> myIcones;
+  final List<String> nomesIcones;
 
-  const NewNavBar({super.key, itemSelectedCallback}):
-    _itemSelectedCallback = itemSelectedCallback ?? (int);
+
+  const NewNavBar({
+    super.key,
+    required this.myIcones,
+    required this.nomesIcones,
+    itemSelectedCallback,
+  }) : _itemSelectedCallback = itemSelectedCallback ?? (int);
 
 
   @override
@@ -120,27 +170,12 @@ class NewNavBar extends HookWidget {
 
       currentIndex: state.value,
 
-
-      items: const [
+      items: myIcones.asMap().keys.map( (i) =>
         BottomNavigationBarItem(
-          label: "Cafés",
-          icon: Icon(Icons.coffee_outlined),
-        ),
-
-        BottomNavigationBarItem(
-          label: "Cervejas", 
-          icon: Icon(Icons.local_drink_outlined)
-        ),
-
-        BottomNavigationBarItem(
-          label: "Nações", 
-          icon: Icon(Icons.flag_outlined)
-        ),
-        BottomNavigationBarItem(
-          label: "Tipos Sanguineos", 
-          icon: Icon(Icons.bloodtype)
-        )
-      ]
+          icon: Icon(myIcones[i]),
+          label: nomesIcones[i],
+          )
+        ).toList()
 
 
     );

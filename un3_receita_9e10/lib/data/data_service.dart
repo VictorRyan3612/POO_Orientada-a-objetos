@@ -8,15 +8,25 @@ import '../util/ordenador.dart';
 enum TableStatus{idle,loading,ready,error}
 
 enum ItemType{
-  beer, coffee, nation, blood, none;
+  coffee, beer, nation, blood, device, none;
   String get asString => '$name';
 
+  String get tipoNomes{
+    return
+      this == coffee? "Cafés":
+      this == beer? "Cervejas":
+      this == nation? "Nações":
+      this == blood? "Tipos Sanguineos":
+      this == device? "Dispositivos":
+      '';
+  }
   List<String> get columns {
     return
       this == coffee? ["Nome", "Origem", "Tipo"] :
       this == beer? ["Nome", "Estilo", "IBU"]:
       this == nation? ["Nacionalidade", "Linguagem", "Capital"]:
       this == blood? ["Tipo", "Fator RH", "Grupo"]:
+      this == device? ["Marca", "Modelo", "Plataforma"]:
       [] ;
   } 
 
@@ -26,6 +36,7 @@ enum ItemType{
       this == beer? ["name","style","ibu"]:
       this == nation? ["nationality","language", "capital"]:
       this == blood? ["type","rh_factor", "group"]:
+      this == device? ["manufacturer", "model", "platform"]:
       [];
   }
 }
@@ -40,6 +51,7 @@ class DataService{
     }
   );
 
+  var objetoOriginal = [];
   bool ordCres = false;
   static const maxItems = 15;
   static const minItems = 5;
@@ -54,20 +66,50 @@ class DataService{
   int get querySize => _querySize;
 
 
+
+
   void ordenarEstadoAtual(String propriedade){
     List objetos =  tableStateNotifier.value['dataObjects'] ?? [];
     if (objetos == []) return;
+    Ordenador ord = Ordenador();
     var objetosOrdenados = [];
     
-    objetosOrdenados = ordenarFuderoso(objetos, DecididorGeral(prop: propriedade, ordenadoCrescente: ordCres));
+    objetosOrdenados = ord.ordenargeral(objetos, DecididorJSON(propriedade,  ordCres));
     ordCres ? ordCres = false : ordCres = true;
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
 
 
 
+/*
+Adaptado de Dayanne Xavier, perfil github: https://github.com/DayXL
+Repositório: https://github.com/DayXL/Atividades-de-POO-1
+arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita9-10ab/lib/data/data_service.dart
+*/
+
+  void ordenarEstadoAtual2(String propriedade){
+    List objetos =  tableStateNotifier.value['dataObjects'] ?? [];
+    if (objetos == []) return;
+    Ordenador ord = Ordenador();
+    var objetosOrdenados = [];
+    
+    bool precisaTrocarAtualPeloProximo(atual, proximo) {
+      final ordemCorreta = ordCres ? [atual, proximo] : [proximo, atual];
+      return ordemCorreta[0][propriedade].compareTo(ordemCorreta[1][propriedade]) > 0;
+    }
+
+    objetosOrdenados = ord.ordenarItem2(objetos, precisaTrocarAtualPeloProximo);
+
+    ordCres ? ordCres = false : ordCres = true;
+    emitirEstadoOrdenado(objetosOrdenados, propriedade);
+  }
+
+
+
+
+
   void emitirEstadoOrdenado(List objetosOrdenados, String propriedade){
-    Map<String,dynamic> estado = {...tableStateNotifier.value};
+    var estado = Map<String, dynamic>.from(tableStateNotifier.value);
     estado['dataObjects'] = objetosOrdenados;
     estado['sortCriteria'] = propriedade;
     estado['ascending'] = true;
@@ -75,8 +117,36 @@ class DataService{
   }
 
 
+/*
+Adaptado de Dayanne Xavier, perfil github: https://github.com/DayXL
+Repositório: https://github.com/DayXL/Atividades-de-POO-1
+arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita9-10ab/lib/data/data_service.dart
+*/
+
+void filtrarEstadoAtual(String filtrar) {
+    List objetos = objetoOriginal;
+    if (objetos.isEmpty) return;
+
+    List objetosFiltrados = [];
+
+    if (filtrar != '') {
+      for (var objeto in objetos) {
+        if (objeto.toString().toLowerCase().contains(filtrar.toLowerCase())) {
+          objetosFiltrados.add(objeto);
+        }
+      }
+    }
+
+    else {
+      objetosFiltrados = objetoOriginal;
+    }
+    emitirEstadoFiltrado(objetosFiltrados);
+  }
+
+
+
   void carregar(index){
-    final params = [ItemType.coffee, ItemType.beer, ItemType.nation, ItemType.blood];
+    final params = [ItemType.coffee, ItemType.beer, ItemType.nation, ItemType.blood, ItemType.device];
     carregarPorTipo(params[index]);
   }
 
@@ -113,9 +183,22 @@ class DataService{
       'itemType': type,
       'status': TableStatus.ready,
       'dataObjects': json,
-      'propertyNames': type.properties, // Update the key to 'propertyNames'
+      'propertyNames': type.properties,
       'columnNames': type.columns
     };
+    objetoOriginal = json;
+  }
+
+/*
+Adaptado de Dayanne Xavier, perfil github: https://github.com/DayXL
+Repositório: https://github.com/DayXL/Atividades-de-POO-1
+arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita9-10ab/lib/data/data_service.dart
+*/
+
+  void emitirEstadoFiltrado(List objetosFiltrados) {
+    var estado = Map<String, dynamic>.from(tableStateNotifier.value);
+    estado['dataObjects'] = objetosFiltrados;
+    tableStateNotifier.value = estado;
   }
 
 
@@ -141,10 +224,10 @@ class DataService{
 final dataService = DataService();
 
 
-class DecididorGeral extends Decididor{
+class DecididorJSON extends Decididor{
   String prop; 
   bool ordenadoCrescente;
-  DecididorGeral({required this.prop, required this.ordenadoCrescente});
+  DecididorJSON(this.prop, [this.ordenadoCrescente = true]);
 
   @override
   bool precisaTrocarAtualPeloProximo(atual, proximo) {
