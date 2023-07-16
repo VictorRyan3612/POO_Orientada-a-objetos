@@ -8,9 +8,18 @@ import '../util/ordenador.dart';
 enum TableStatus{idle,loading,ready,error}
 
 enum ItemType{
-  beer, coffee, nation, blood, device, none;
+  coffee, beer, nation, blood, device, none;
   String get asString => '$name';
 
+  String get tipoNomes{
+    return
+      this == coffee? "Cafés":
+      this == beer? "Cervejas":
+      this == nation? "Nações":
+      this == blood? "Tipos Sanguineos":
+      this == device? "Dispositivos":
+      '';
+  }
   List<String> get columns {
     return
       this == coffee? ["Nome", "Origem", "Tipo"] :

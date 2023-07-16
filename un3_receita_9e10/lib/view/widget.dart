@@ -85,7 +85,18 @@ class MyApp extends StatelessWidget {
           ],
         ),
 
-        bottomNavigationBar: NewNavBar(itemSelectedCallback: dataService.carregar),
+        bottomNavigationBar: NewNavBar(
+          itemSelectedCallback: dataService.carregar,
+          myIcones: const [
+            Icons.coffee_outlined,
+            Icons.local_drink_outlined,
+            Icons.flag_outlined,
+            Icons.bloodtype,
+            Icons.phone_android
+          ],
+          
+          nomesIcones: ItemType.values.map((itemType) => itemType.tipoNomes).toList(),
+        )
       )
     );
   }
@@ -132,11 +143,17 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 class NewNavBar extends HookWidget {
   
-  // ignore: prefer_typing_uninitialized_variables
   final _itemSelectedCallback;
+  final List<IconData> myIcones;
+  final List<String> nomesIcones;
 
-  const NewNavBar({super.key, itemSelectedCallback}):
-    _itemSelectedCallback = itemSelectedCallback ?? (int);
+
+  const NewNavBar({
+    super.key,
+    required this.myIcones,
+    required this.nomesIcones,
+    itemSelectedCallback,
+  }) : _itemSelectedCallback = itemSelectedCallback ?? (int);
 
 
   @override
@@ -153,31 +170,12 @@ class NewNavBar extends HookWidget {
 
       currentIndex: state.value,
 
-
-      items: const [
+      items: myIcones.asMap().keys.map( (i) =>
         BottomNavigationBarItem(
-          label: "Cafés",
-          icon: Icon(Icons.coffee_outlined),
-        ),
-
-        BottomNavigationBarItem(
-          label: "Cervejas", 
-          icon: Icon(Icons.local_drink_outlined)
-        ),
-
-        BottomNavigationBarItem(
-          label: "Nações", 
-          icon: Icon(Icons.flag_outlined)
-        ),
-        BottomNavigationBarItem(
-          label: "Tipos Sanguineos", 
-          icon: Icon(Icons.bloodtype)
-        ),
-        BottomNavigationBarItem(
-          label: "Dispositivos", 
-          icon: Icon(Icons.phone_android)
-        )
-      ]
+          icon: Icon(myIcones[i]),
+          label: nomesIcones[i],
+          )
+        ).toList()
 
 
     );
