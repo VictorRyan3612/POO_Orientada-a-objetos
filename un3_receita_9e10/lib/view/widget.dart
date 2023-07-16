@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
                                   objects: value["dataObjects"],
                                   propertyNames: value["propertyNames"],
                                   columnNames: value["columnNames"],
-                                  sortCallback: dataService.ordenarEstadoAtual,
+                                  sortCallback: dataService.ordenarEstadoAtual2,
                                 ),
                               );
               

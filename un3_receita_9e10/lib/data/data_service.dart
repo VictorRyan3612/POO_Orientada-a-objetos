@@ -56,6 +56,8 @@ class DataService{
   int get querySize => _querySize;
 
 
+
+
   void ordenarEstadoAtual(String propriedade){
     List objetos =  tableStateNotifier.value['dataObjects'] ?? [];
     if (objetos == []) return;
@@ -66,6 +68,33 @@ class DataService{
     ordCres ? ordCres = false : ordCres = true;
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
+
+
+
+/*
+Adaptado de Dayanne Xavier, perfil github: https://github.com/DayXL
+Repositório: https://github.com/DayXL/Atividades-de-POO-1
+arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita9-10ab/lib/data/data_service.dart
+*/
+
+  void ordenarEstadoAtual2(String propriedade){
+    List objetos =  tableStateNotifier.value['dataObjects'] ?? [];
+    if (objetos == []) return;
+    Ordenador ord = Ordenador();
+    var objetosOrdenados = [];
+    
+    bool precisaTrocarAtualPeloProximo(atual, proximo) {
+      final ordemCorreta = ordCres ? [atual, proximo] : [proximo, atual];
+      return ordemCorreta[0][propriedade].compareTo(ordemCorreta[1][propriedade]) > 0;
+    }
+
+    objetosOrdenados = ord.ordenarItem2(objetos, precisaTrocarAtualPeloProximo);
+
+    ordCres ? ordCres = false : ordCres = true;
+    emitirEstadoOrdenado(objetosOrdenados, propriedade);
+  }
+
+
 
 
 
