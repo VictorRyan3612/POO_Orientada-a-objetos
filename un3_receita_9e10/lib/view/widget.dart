@@ -94,20 +94,38 @@ class MyApp extends StatelessWidget {
 
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppBar({super.key});
+  final callback;
+
+  MyAppBar({super.key, callback}):
+    callback = callback ?? (int){}
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text("Lista API's"),
+      title: Row(
+        children: [
+          const Expanded(
+            child: Text("Lista API's"),
+          ),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: TextField(
+                decoration: const InputDecoration(
+                  hintText: 'Digite algo...',
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
-  
 }
+
 
 
 
