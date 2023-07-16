@@ -20,9 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner:false,
 
       home: Scaffold(
-        appBar: AppBar( 
-          title: const Text("Dicas"),
-          ),
+        appBar: MyAppBar(),
 
         body: Column(
           children: [
@@ -95,6 +93,21 @@ class MyApp extends StatelessWidget {
 }
 
 
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const MyAppBar({super.key});
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: const Text("Lista API's"),
+    );
+  }
+  
+}
 
 
 
