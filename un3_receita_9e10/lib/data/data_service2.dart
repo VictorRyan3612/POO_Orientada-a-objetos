@@ -207,16 +207,71 @@ void filtrarEstadoAtual(String filtrar) {
   }
 
 
-  void emitirEstadoPronto(ItemType type, var json){
-    tableStateNotifier.value = {
-      'itemType': type,
-      'status': TableStatus.ready,
-      'dataObjects': json,
-      'propertyNames': type.properties,
-      'columnNames': type.columns
-    };
-    objetoOriginal = json;
+  void emitirEstadoPronto(ItemType type, var json) {
+    List<dynamic> dataObjects = json;
+
+    switch (type) {
+      case ItemType.coffee:
+        List<Coffee> coffeeList = parseCoffeeList(dataObjects);
+        tableStateNotifier.value = {
+          'itemType': type,
+          'status': TableStatus.ready,
+          'dataObjects': coffeeList,
+          'propertyNames': type.properties,
+          'columnNames': type.columns,
+        };
+        objetoOriginal = coffeeList;
+        break;
+      case ItemType.beer:
+        List<Beer> beerList = parseBeerList(dataObjects);
+        tableStateNotifier.value = {
+          'itemType': type,
+          'status': TableStatus.ready,
+          'dataObjects': beerList,
+          'propertyNames': type.properties,
+          'columnNames': type.columns,
+        };
+        objetoOriginal = beerList;
+        break;
+      case ItemType.nation:
+        List<Nation> nationList = parseNationList(dataObjects);
+        tableStateNotifier.value = {
+          'itemType': type,
+          'status': TableStatus.ready,
+          'dataObjects': nationList,
+          'propertyNames': type.properties,
+          'columnNames': type.columns,
+        };
+        objetoOriginal = nationList;
+        break;
+      case ItemType.blood:
+        List<Blood> bloodList = parseBloodList(dataObjects);
+        tableStateNotifier.value = {
+          'itemType': type,
+          'status': TableStatus.ready,
+          'dataObjects': bloodList,
+          'propertyNames': type.properties,
+          'columnNames': type.columns,
+        };
+        objetoOriginal = bloodList;
+        break;
+      case ItemType.device:
+        List<Device> deviceList = parseDeviceList(dataObjects);
+        tableStateNotifier.value = {
+          'itemType': type,
+          'status': TableStatus.ready,
+          'dataObjects': deviceList,
+          'propertyNames': type.properties,
+          'columnNames': type.columns,
+        };
+        objetoOriginal = deviceList;
+        break;
+      default:
+        // Handle unsupported types or add more cases if needed
+        break;
+    }
   }
+
 
 /*
 Adaptado de Dayanne Xavier, perfil github: https://github.com/DayXL
