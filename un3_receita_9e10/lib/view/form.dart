@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../data/data_service.dart';
-
+import '../data/data_service2.dart';
 
 
 
@@ -19,7 +19,7 @@ class MyCustomForm extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var state = useState(DataService.defautItems);
+    var state = useState(DataService2.defautItems);
     return Form(
       child: Column(
         children: [
@@ -27,21 +27,21 @@ class MyCustomForm extends HookWidget {
             decoration: const InputDecoration(labelText: 'Quantidade de itens'),
             value: state.value,
             onChanged: (newValue) {
-              state.value = newValue ?? DataService.defautItems;
+              state.value = newValue ?? DataService2.defautItems;
               callback(state.value);
             },
             
             items: const [
               DropdownMenuItem<int>(
-                value: DataService.minItems,
+                value: DataService2.minItems,
                 child: Text('5 Itens'),
               ),
               DropdownMenuItem<int>(
-                value: DataService.defautItems,
+                value: DataService2.defautItems,
                 child: Text('10 Itens'),
               ),
               DropdownMenuItem<int>(
-                value: DataService.maxItems,
+                value: DataService2.maxItems,
                 child: Text('15 Itens'),
               ),
             ],

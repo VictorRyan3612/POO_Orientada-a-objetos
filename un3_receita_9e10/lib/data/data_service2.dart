@@ -5,9 +5,9 @@ import '../util/ordenador.dart';
 import 'models.dart';
 
 
-enum TableStatus{idle,loading,ready,error}
+enum TableStatus2{idle,loading,ready,error}
 
-enum ItemType{
+enum ItemType2{
   coffee, beer, nation, blood, device, none;
   String get asString => '$name';
 
@@ -42,12 +42,12 @@ enum ItemType{
 }
 
 
-class DataService{
+class DataService2{
   final ValueNotifier<Map<String,dynamic>> tableStateNotifier = 
     ValueNotifier({
-      'status':TableStatus.idle,
+      'status':TableStatus2.idle,
       'dataObjects':[],
-      'itemType': ItemType.none
+      'ItemType2': ItemType2.none
     }
   );
 
@@ -175,12 +175,12 @@ void filtrarEstadoAtual(String filtrar) {
 
 
   void carregar(index){
-    final params = [ItemType.coffee, ItemType.beer, ItemType.nation, ItemType.blood, ItemType.device];
+    final params = [ItemType2.coffee, ItemType2.beer, ItemType2.nation, ItemType2.blood, ItemType2.device];
     carregarPorTipo(params[index]);
   }
 
 
-  Uri montarUri(ItemType type){
+  Uri montarUri(ItemType2 type){
     return Uri(
       scheme: 'https',
       host: 'random-data-api.com',
@@ -197,69 +197,69 @@ void filtrarEstadoAtual(String filtrar) {
     return json;
   }
 
-  void emitirEstadoCarregando(ItemType type){
+  void emitirEstadoCarregando(ItemType2 type){
     tableStateNotifier.value = {
-      'status': TableStatus.loading,
+      'status': TableStatus2.loading,
       'dataObjects': [],
       'propertyNames': type.properties,
-      'itemType': type
+      'ItemType2': type
     };
   }
 
 
-  void emitirEstadoPronto(ItemType type, var json) {
+  void emitirEstadoPronto(ItemType2 type, var json) {
     List<dynamic> dataObjects = json;
 
     switch (type) {
-      case ItemType.coffee:
+      case ItemType2.coffee:
         List<Coffee> coffeeList = parseCoffeeList(dataObjects);
         tableStateNotifier.value = {
-          'itemType': type,
-          'status': TableStatus.ready,
+          'ItemType2': type,
+          'status': TableStatus2.ready,
           'dataObjects': coffeeList,
           'propertyNames': type.properties,
           'columnNames': type.columns,
         };
         objetoOriginal = coffeeList;
         break;
-      case ItemType.beer:
+      case ItemType2.beer:
         List<Beer> beerList = parseBeerList(dataObjects);
         tableStateNotifier.value = {
-          'itemType': type,
-          'status': TableStatus.ready,
+          'ItemType2': type,
+          'status': TableStatus2.ready,
           'dataObjects': beerList,
           'propertyNames': type.properties,
           'columnNames': type.columns,
         };
         objetoOriginal = beerList;
         break;
-      case ItemType.nation:
+      case ItemType2.nation:
         List<Nation> nationList = parseNationList(dataObjects);
         tableStateNotifier.value = {
-          'itemType': type,
-          'status': TableStatus.ready,
+          'ItemType2': type,
+          'status': TableStatus2.ready,
           'dataObjects': nationList,
           'propertyNames': type.properties,
           'columnNames': type.columns,
         };
         objetoOriginal = nationList;
         break;
-      case ItemType.blood:
+      case ItemType2.blood:
         List<Blood> bloodList = parseBloodList(dataObjects);
         tableStateNotifier.value = {
-          'itemType': type,
-          'status': TableStatus.ready,
+          'ItemType2': type,
+          'status': TableStatus2.ready,
           'dataObjects': bloodList,
           'propertyNames': type.properties,
           'columnNames': type.columns,
         };
         objetoOriginal = bloodList;
         break;
-      case ItemType.device:
+      case ItemType2.device:
         List<Device> deviceList = parseDeviceList(dataObjects);
         tableStateNotifier.value = {
-          'itemType': type,
-          'status': TableStatus.ready,
+          'ItemType2': type,
+          'status': TableStatus2.ready,
           'dataObjects': deviceList,
           'propertyNames': type.properties,
           'columnNames': type.columns,
@@ -286,11 +286,11 @@ arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita
   }
 
 
-  bool temRequisicaoEmCurso() => tableStateNotifier.value['status'] == TableStatus.loading;
-  bool mudouTipoDeItemRequisitado(ItemType type) => tableStateNotifier.value['itemType'] != type;
+  bool temRequisicaoEmCurso() => tableStateNotifier.value['status'] == TableStatus2.loading;
+  bool mudouTipoDeItemRequisitado(ItemType2 type) => tableStateNotifier.value['ItemType2'] != type;
 
 
-  void carregarPorTipo(ItemType type) async{
+  void carregarPorTipo(ItemType2 type) async{
     //ignorar solicitação se uma requisição já estiver em curso
     if (temRequisicaoEmCurso()) return;
     if (mudouTipoDeItemRequisitado(type)){
@@ -305,7 +305,7 @@ arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita
 
 }
 
-final dataService = DataService();
+final dataService2 = DataService2();
 
 
 class DecididorJSON extends Decididor{

@@ -55,7 +55,7 @@ class DataTableWidget extends HookWidget {
       rows: objects.map( 
         (obj) => DataRow(
             cells: propertyNames.map(
-              (propName) => DataCell(Text(obj[propName]))
+              (propName) => DataCell(Text(propName))
             ).toList()
           )
         ).toList()

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../data/data_service.dart';
+import '../data/data_service2.dart';
 import '../view/form.dart';
 import '../view/datatable.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner:false,
 
       home: Scaffold(
-        appBar: MyAppBar(callback: dataService.filtrarEstadoAtual),
+        appBar: MyAppBar(callback: dataService2.filtrarEstadoAtual),
 
         body: Column(
           children: [
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Container(
                   constraints: const BoxConstraints(maxWidth: 600),
-                  child: MyCustomForm(callback: dataService.setQuerySize),
+                  child: MyCustomForm(callback: dataService2.setQuerySize),
                 ),
               ),
             ),
@@ -43,33 +44,33 @@ class MyApp extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
               
                     child: ValueListenableBuilder(
-                      valueListenable: dataService.tableStateNotifier,
+                      valueListenable: dataService2.tableStateNotifier,
                       builder: (_, value, __) {
                         switch (value['status']){
               
-                            case TableStatus.idle: 
+                            case TableStatus2.idle: 
                               return const Padding (
                                   padding: EdgeInsets.all(30.0),
                                   child: Text("Toque algum botão")
                                 );
               
-                            case TableStatus.loading:
+                            case TableStatus2.loading:
                               return const Padding (
                                   padding: EdgeInsets.all(200.0),
                                   child: CircularProgressIndicator()
                                 );
               
-                            case TableStatus.ready: 
+                            case TableStatus2.ready: 
                               return Center(
                                 child: DataTableWidget(
                                   objects: value["dataObjects"],
                                   propertyNames: value["propertyNames"],
                                   columnNames: value["columnNames"],
-                                  sortCallback: dataService.ordenarEstadoAtual2,
+                                  sortCallback: dataService2.ordenarEstadoAtual2,
                                 ),
                               );
               
-                            case TableStatus.error: 
+                            case TableStatus2.error: 
                               return const Padding (
                                   padding: EdgeInsets.all(30.0),
                                   child: Text("Erro de conexão: Verifique sua conexão com a internet.")
@@ -86,7 +87,7 @@ class MyApp extends StatelessWidget {
         ),
 
         bottomNavigationBar: NewNavBar(
-          itemSelectedCallback: dataService.carregar,
+          itemSelectedCallback: dataService2.carregar,
           myIcones: const [
             Icons.coffee_outlined,
             Icons.local_drink_outlined,
@@ -95,7 +96,7 @@ class MyApp extends StatelessWidget {
             Icons.phone_android
           ],
           
-          nomesIcones: ItemType.values.map((itemType) => itemType.tipoNomes).toList(),
+          nomesIcones: ItemType2.values.map((itemType) => itemType.tipoNomes).toList(),
         )
       )
     );
