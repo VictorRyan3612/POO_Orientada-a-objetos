@@ -59,9 +59,10 @@ class DataService{
   void ordenarEstadoAtual(String propriedade){
     List objetos =  tableStateNotifier.value['dataObjects'] ?? [];
     if (objetos == []) return;
+    Ordenador ord = Ordenador();
     var objetosOrdenados = [];
     
-    objetosOrdenados = ordenargeral(objetos, DecididorJSON(propriedade,  ordCres));
+    objetosOrdenados = ord.ordenargeral(objetos, DecididorJSON(propriedade,  ordCres));
     ordCres ? ordCres = false : ordCres = true;
     emitirEstadoOrdenado(objetosOrdenados, propriedade);
   }
