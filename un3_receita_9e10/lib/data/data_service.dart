@@ -42,6 +42,7 @@ class DataService{
     }
   );
 
+  var objetoOriginal = [];
   bool ordCres = false;
   static const maxItems = 15;
   static const minItems = 5;
@@ -107,6 +108,36 @@ arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita
   }
 
 
+/*
+Adaptado de Dayanne Xavier, perfil github: https://github.com/DayXL
+Repositório: https://github.com/DayXL/Atividades-de-POO-1
+arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita9-10ab/lib/data/data_service.dart
+*/
+
+void filtrarEstadoAtual(String filtrar) {
+    List objetos = objetoOriginal;
+
+    if (objetos.isEmpty) return;
+
+    List objetosFiltrados = [];
+
+    if (filtrar != '') {
+      for (var objeto in objetos) {
+        if (objeto.toString().toLowerCase().contains(filtrar.toLowerCase())) {
+          objetosFiltrados.add(objeto);
+        }
+      }
+    }
+
+    else {
+      objetosFiltrados = objetoOriginal;
+    }
+
+    emitirEstadoFiltrado(objetosFiltrados);
+  }
+
+
+
   void carregar(index){
     final params = [ItemType.coffee, ItemType.beer, ItemType.nation, ItemType.blood, ItemType.device];
     carregarPorTipo(params[index]);
@@ -148,6 +179,18 @@ arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita
       'propertyNames': type.properties, // Update the key to 'propertyNames'
       'columnNames': type.columns
     };
+  }
+  
+/*
+Adaptado de Dayanne Xavier, perfil github: https://github.com/DayXL
+Repositório: https://github.com/DayXL/Atividades-de-POO-1
+arquivo adaptado: https://github.com/DayXL/Atividades-de-POO-1/blob/main/receita9-10ab/lib/data/data_service.dart
+*/
+
+  void emitirEstadoFiltrado(List objetosFiltrados) {
+    var estado = Map<String, dynamic>.from(tableStateNotifier.value);
+    estado['dataObjects'] = objetosFiltrados;
+    tableStateNotifier.value = estado;
   }
 
 
