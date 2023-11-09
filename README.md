@@ -7,3 +7,20 @@ Inicialmente os commits para tais pastas foram extensos, pois peguei os códigos
 
 o site contendo as receitas mensionadas foi esse: 
 https://sites.google.com/view/fabricio10/página-inicial/cursos/oo-dart?authuser=0
+
+Tutorial para uso de qualquer dos programas em cada uma das pasta:
+
+- flutter pub get
+
+Escolha o Sistema operacional desejado:
+para windows:
+- flutter create --platforms=windows . 
+Para Macos:
+- flutter create --platforms=macos . 
+para Linux:
+- flutter create --platforms=linux .
+
+Execute o programa o sistema operacional desejado:
+- flutter run -d windows
+- flutter run -d macos
+- flutter run -d linux
