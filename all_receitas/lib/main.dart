@@ -19,7 +19,7 @@ import '/receita8/main.dart' as rec8;
 
 
 // 3ª Unidade
-
+import 'receita9_10/main.dart' as rec9a10;
 
 
 void main() {
@@ -77,6 +77,7 @@ class MainApp extends HookWidget {
         '/re6':(context) => rec6.Receita6(),
         '/re7':(context) => rec7.Receita7(),
         '/re8':(context) => rec8.Receita8(),
+        '/re9_10': (context) => rec9a10.Receita9a10(),
         '/config':(context) => TelaConfigs(currentBrightness: currentBrightness),
       }
     );

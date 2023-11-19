@@ -38,6 +38,10 @@ final List<Map<String, dynamic>> menuItens2 = [
     'rota': '/re8'
   },
   {
+    'title': 'Receita 9 a 10',
+    'rota': '/re9_10'
+  },
+  {
     'title': 'Configurações',
     'rota': '/config'
   }
